@@ -8,5 +8,6 @@ function textOperator() {
     $('#greeting').append(greetingText);
 };
 $(document).ready(function() {
-    textOperator();
+    //textOperator();
+    $('.moldingBox').addClass('revealed');
 })
