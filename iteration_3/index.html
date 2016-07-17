@@ -3,38 +3,42 @@
   <head>
     <link href="style.css" rel="stylesheet"/>
     <title>Charles, Stevens: Portfolio</title>
-    <nav>
-      <h3>Charles Stevens</h3><img src="images/toTop.svg"/>
-      <div id="button-ripple"></div>
-    </nav>
-    <header>
-      <h1>Charles Stevens, Aspiring Programmer</h1>
-    </header>
   </head>
   <body>
-    <div class="section-1 card"><img src="images/self.png" id="selfPortrait"/>
-      <ul id="intro">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul><br class="spreadLineDivider"/>
-      <div id="spreadline1L"></div><span></span>
-      <div id="spreadline1R"></div><br class="spreadLineDivider"/>
-      <div id="spreadline2R"></div><span></span>
-      <div id="spreadline2L"></div><br class="spreadLineDivider"/>
-      <div id="spreadline3R"></div><span></span>
-      <div id="spreadline3L"></div><br class="spreadLineDivider"/>
-      <div id="spreadline4R"></div><span></span>
-      <div id="spreadline4L"></div><br class="spreadLineDivider"/>
-      <div id="spreadline5R"></div><span></span>
-      <div id="spreadline5L"></div>
+    <nav>
+      <h3>Charles Stevens</h3>
+    </nav><img src="images/toTop_white.svg" id="navButton"/>
+    <div class="button-ripple" id="toTop"></div><img src="images/github_white.svg" id="githubButton"/><span>
+      <p>View GitHub profile</p></span>
+    <div class="button-ripple" id="github"></div>
+    <header>
+      <h1>Charles Stevens, Aspiring Programmer</h1>
+    </header><!--background elements here-->
+    <div id="card-stack">
+      <div class="section-card" id="card-one"> <img src="images/self.png"/>
+        <ul>
+          <li>This is one line of text</li>
+          <li>This is a second line of text</li>
+          <li>This is a longer third line of text</li>
+          <li>Now this is the final line</li>
+        </ul><br class="spreadLineDivider"/>
+        <div id="spreadline1L"></div><span></span>
+        <div id="spreadline1R"></div><br class="spreadLineDivider"/>
+        <div id="spreadline2R"></div><span></span>
+        <div id="spreadline2L"></div><br class="spreadLineDivider"/>
+        <div id="spreadline3R"></div><span></span>
+        <div id="spreadline3L"></div><br class="spreadLineDivider"/>
+        <div id="spreadline4R"></div><span></span>
+        <div id="spreadline4L"></div><br class="spreadLineDivider"/>
+        <div id="spreadline5R"></div><span></span>
+        <div id="spreadline5L"></div>
+      </div>
+      <div class="section-card" id="card-two">
+        <button type="button" href="../Sandbox/main.html">Goto Sandbox</button>
+      </div>
+      <div class="section-card" id="card-three"></div>
     </div>
-    <div class="section-2 card">
-      <button type="button" href="../Sandbox/main.html">Goto Sandbox</button>
-    </div>
-    <div class="section-3 card"></div>
-    <script src="../Vendors/jquery-3.0.0.js"></script>
-    <script stc="../script.js"></script>
   </body>
+  <script src="../Vendors/jquery-3.0.0.js"></script>
+  <script src="../script.js" type="text/javascript"></script>
 </html>

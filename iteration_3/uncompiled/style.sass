@@ -1,37 +1,167 @@
 @font-face
     font-family: slabo monospace
-    src: url('file:../Vendors/Fonts/Slabo/Slabo27px-Regular.ttf') format('truetype')
-nav
-    height: 50px
-    width: 100%
+    src: url('file:../Vendors/Fonts/Slabo/Slabo-Regular.ttf') format('truetye')
+
+html, body
     margin: 0 0 0 0
-    background-color: rgba(117, 114, 114, 0)
-    padding: 14px
-    position: fixed
-    display: block
-    h3
-        text-align: center
-        display: inline-block
-    img
-        cursor: pointer
-        float: left
-        z-index: -2
-        display: inline-block
-    #button-ripple
-        display: inline-block
-        float: left
-        background-color: rgb(101, 101, 101)
-        height: 40px
-        width: 40px
-        border-radius: 20px
-        z-index: 1
-body
-    margin: 0 0 0 0
+    padding: 0 0 0 0
     background-color: #c3c3c3
-    display: flex
-    flex-direction: column
-    justify-content: center
-    .section-1
-        height: 700px
-        width: 300px
-        border-radius: 7px
+    nav
+        height: 25px
+        width: 100%
+        background-color: rgba(21, 27, 128, 0)
+        padding: 14px
+        position: fixed
+        z-index: 5
+        display: flex
+        justify-content: center
+        h3
+            font: normal normal 19px slabo, monospace
+            font-weight: lighter
+            margin-top: 2px
+            color: white
+            opacity: 0
+    .button-ripple
+        height: 42px
+        width: 42px
+        position: fixed
+        display: inline-block
+        z-index: 7
+        margin-top: 6px
+        border-radius: 50%
+        background-color: rgb(101, 101, 101)
+        opacity: 0
+    img#navButton
+        height: 30px
+        width: 30px
+        position: fixed
+        display: inline-block
+        margin-top: 12px
+        margin-left: 12px
+        z-index: 6
+    #toTop
+        margin-left: 6px
+        &:hover
+            cursor: pointer
+    img#githubButton
+        @extend #navButton
+        margin-left: 96.5%
+        margin-right: 12px
+    span
+        margin-top: 18px
+        margin-left: 84.7%
+        width: 200px
+        height: 17px
+        position: fixed
+        display: inline-block
+        z-index: 6
+        overflow: hidden
+        p
+            margin-left: 210px
+            margin-top: 0
+            width: 200px
+            height: 17px
+            position: fixed
+            display: inline-block
+            z-index: 6
+            font: normal normal 16px helvetica, sans-serif
+            font-weight: lighter
+            font-kerning: normal
+            color: white
+            &.triggered
+                animation-name: slideLeft
+                animation-duration: 1s
+                animation-timing-function: ease-in-out
+                animation-fill-mode: forwards
+                animation-iteration-count: 1
+            &.reset
+                animation-name: slideRight
+                animation-duration: 1s
+                animation-timing-function: ease-in
+                animation-fill-mode: forwards
+                animation-iteration-count: 1
+    #github
+        margin-left: 96.1%
+        margin-right: 6px
+        &:hover
+            cursor: pointer
+    header
+        height: 600px
+        width: 100%
+        background-image: url('images/bg.png')
+        background-size: cover
+        text-align: center
+        h1
+            position: relative
+            display: inline-block
+            padding-top: 200px
+            z-index: 0
+            color: white
+            font: normal normal 35px slabo, monospace
+    #card-stack
+        width: 82%
+        height: auto
+        margin-top: -150px
+        margin-left: 9%
+        z-index: 2
+        position: absolute
+        display: flex
+        flex-direction: column
+        align-items: center
+        .section-card
+            height: 700px
+            width: 80%
+            margin-bottom: 15px
+            background-color: white
+            border-radius: 7px
+            padding: 12px
+            display: flex
+            flex-wrap: nowrap
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24), 1px 0 3px rgba(0, 0, 0, 0.12), -1px 0 3px rgba(0, 0, 0, 0.12)
+            transition: all 0.2s ease-in-out
+        .section-card:hover
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 8px 0 10px rgba(0,0,0,0.26), -8px 0 10px rgba(0, 0, 0, 0.26)
+        #card-one
+            img
+                height: 245px
+                width: 245px
+                border-radius: 50%
+                margin-left: 5px
+                margin-top: 5px
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.21)
+            ul
+                float: left
+                margin-top: 20px
+                margin-left: 25px
+                padding: 0
+                list-style: none
+                li:nth-child(1)
+                    font: normal normal 18px arial, sans-serif
+                    margin-bottom: 20px
+                li:nth-child(2)
+                    font: normal normal 18px helvetica, sans-serif
+                    margin-bottom: 20px
+                li:nth-child(3)
+                    font: normal normal 18px helvetica, sans-serif
+                    margin-bottom: 20px
+                li:nth-child(4)
+                    font: normal normal 18px helvetica, sans-serif
+
+@keyframes slideLeft
+    0%
+        margin-left: 210%
+        opacity: 0
+    85%
+        opacity: 0.7
+    100%
+        margin-left: 0%
+        opacity: 1
+@keyframes slideRight
+    0%
+        margin-left: 0%
+        opacity: 1
+    15%
+        opacity: 0.3
+    100%
+        margin-left: 210%
+        opacity: 0
