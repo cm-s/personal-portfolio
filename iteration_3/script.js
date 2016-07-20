@@ -1,6 +1,7 @@
 var headerHasText = false;
 
 $(document).ready(function() {
+    //navbar button controller
     $('#toTop').click(function() {
         window.scroll(0, 0);
     });
@@ -15,6 +16,12 @@ $(document).ready(function() {
         $('p').removeClass('triggered');
         $('p').addClass('reset');
     });
+    //card stack button controller
+    $('div#card-two, button').click(function() {
+        $(this).attr('id', 'clicked');
+        document.location.href = '../Sandbox/main.html';
+    });
+    //navbar scroll events controller
     $(document).on('scroll', function() {
         $('nav').css('background-color', 'rgba(21,27,128,' +  ((window.scrollY/3.8)/100)) + ')';
         if ( (window.scrollY/3.8)/100 >= 1 ) {
