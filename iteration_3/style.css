@@ -46,6 +46,7 @@ html .button-ripple, body .button-ripple {
 		border-radius: 50%;
 		background-color: #656565;
 		opacity: 0;
+		transition: all ease-in 0.1s;
 }
 
 html img#navButton, html img#githubButton, body img#navButton, body img#githubButton {
@@ -64,6 +65,7 @@ html #toTop, body #toTop {
 
 html #toTop:hover, body #toTop:hover {
 		cursor: pointer;
+		opacity: 0.4;
 }
 
 html img#githubButton, body img#githubButton {
@@ -120,6 +122,7 @@ html #github, body #github {
 
 html #github:hover, body #github:hover {
 		cursor: pointer;
+		opacity: 0.4;
 }
 
 html header, body header {
@@ -172,6 +175,7 @@ html #card-stack .section-card:hover, body #card-stack .section-card:hover {
 
 html #card-stack #card-one #intro-container, body #card-stack #card-one #intro-container {
 		width: 100%;
+		height: 250px;
 		margin: 0;
 		display: flex;
 		flex-wrap: nowrap;
@@ -191,6 +195,7 @@ html #card-stack #card-one #intro-container img, body #card-stack #card-one #int
 html #card-stack #card-one #intro-container p, body #card-stack #card-one #intro-container p {
 		margin-top: 30px;
 		margin-left: 10px;
+		max-height: 200px;
 		text-align: left;
 		font: normal normal 20px 'PT Sans', sans-serif;
 }
@@ -201,9 +206,174 @@ html #card-stack #card-one #intro-container p mark, body #card-stack #card-one #
 		color: #666;
 }
 
+html #card-stack #card-one #gContainer, body #card-stack #card-one #gContainer {
+		height: 180px;
+		width: 300px;
+		margin-top: 0;
+		margin-left: 60%;
+		display: flex;
+		justify-content: center;
+		align-items: centerd;
+		position: relative;
+}
+
+html #card-stack #card-one #gContainer .cog, body #card-stack #card-one #gContainer .cog {
+		transform-origin: 45px 45px;
+		animation-name: rotate;
+		animation-duration: 3s;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		height: 90px;
+		width: 90px;
+		position: absolute;
+		display: inline-block;
+		margin: 0 0 0 0;
+}
+
+html #card-stack #card-one #gContainer .cog-core, body #card-stack #card-one #gContainer .cog-core {
+		height: 30px;
+		width: 30px;
+		background-color: #444;
+		border-radius: 50%;
+		position: absolute;
+		display: inline-block;
+		z-index: 40;
+		box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+html #card-stack #card-one #gContainer .cog-hub, body #card-stack #card-one #gContainer .cog-hub {
+		height: 60px;
+		width: 60px;
+		border-radius: 50%;
+		background-color: #666;
+		position: absolute;
+		display: inline-block;
+}
+
+html #card-stack #card-one #gContainer .tendral, body #card-stack #card-one #gContainer .tendral {
+		height: 25px;
+		width: 20px;
+		position: absolute;
+		display: inline-block;
+		border-radius: 30% 30% 0 0;
+		background-color: #666;
+}
+
+html #card-stack #card-one #gContainer #gear1, body #card-stack #card-one #gContainer #gear1 {
+		animation-direction: reverse;
+		top: 60px;
+		left: 90px;
+}
+
+html #card-stack #card-one #gContainer #gear1 #left-core, body #card-stack #card-one #gContainer #gear1 #left-core {
+		top: 30px;
+		left: 30px;
+}
+
+html #card-stack #card-one #gContainer #gear1 #left-hub, body #card-stack #card-one #gContainer #gear1 #left-hub {
+		top: 15px;
+		left: 15px;
+}
+
+html #card-stack #card-one #gContainer #gear1 #g1t1, body #card-stack #card-one #gContainer #gear1 #g1t1 {
+		top: 0;
+		left: 35px;
+}
+
+html #card-stack #card-one #gContainer #gear1 #g1t2, body #card-stack #card-one #gContainer #gear1 #g1t2 {
+		top: 15px;
+		left: 5px;
+		transform: rotate(-50deg);
+}
+
+html #card-stack #card-one #gContainer #gear1 #g1t3, body #card-stack #card-one #gContainer #gear1 #g1t3 {
+		top: 50px;
+		left: 5px;
+		transform: rotate(-125deg);
+}
+
+html #card-stack #card-one #gContainer #gear1 #g1t4, body #card-stack #card-one #gContainer #gear1 #g1t4 {
+		top: 65px;
+		left: 35px;
+		transform: rotate(-175deg);
+}
+
+html #card-stack #card-one #gContainer #gear1 #g1t5, body #card-stack #card-one #gContainer #gear1 #g1t5 {
+		top: 50px;
+		left: 65px;
+		transform: rotate(130deg);
+}
+
+html #card-stack #card-one #gContainer #gear1 #g1t6, body #card-stack #card-one #gContainer #gear1 #g1t6 {
+		top: 15px;
+		left: 65px;
+		transform: rotate(50deg);
+}
+
+html #card-stack #card-one #gContainer #gear2, body #card-stack #card-one #gContainer #gear2 {
+		animation-direction: normal;
+		top: 40px;
+		left: 173px;
+}
+
+html #card-stack #card-one #gContainer #gear2 #right-core, body #card-stack #card-one #gContainer #gear2 #right-core {
+		top: 30px;
+		left: 30px;
+}
+
+html #card-stack #card-one #gContainer #gear2 #right-hub, body #card-stack #card-one #gContainer #gear2 #right-hub {
+		top: 15px;
+		left: 15px;
+}
+
+html #card-stack #card-one #gContainer #gear2 #g2t1, body #card-stack #card-one #gContainer #gear2 #g2t1 {
+		top: 0;
+		left: 35px;
+}
+
+html #card-stack #card-one #gContainer #gear2 #g2t2, body #card-stack #card-one #gContainer #gear2 #g2t2 {
+		top: 15px;
+		left: 5px;
+		transform: rotate(-50deg);
+}
+
+html #card-stack #card-one #gContainer #gear2 #g2t3, body #card-stack #card-one #gContainer #gear2 #g2t3 {
+		top: 50px;
+		left: 5px;
+		transform: rotate(-130deg);
+}
+
+html #card-stack #card-one #gContainer #gear2 #g2t4, body #card-stack #card-one #gContainer #gear2 #g2t4 {
+		top: 65px;
+		left: 35px;
+		transform: rotate(-180deg);
+}
+
+html #card-stack #card-one #gContainer #gear2 #g2t5, body #card-stack #card-one #gContainer #gear2 #g2t5 {
+		top: 50px;
+		left: 65px;
+		transform: rotate(130deg);
+}
+
+html #card-stack #card-one #gContainer #gear2 #g2t6, body #card-stack #card-one #gContainer #gear2 #g2t6 {
+		top: 15px;
+		left: 65px;
+		transform: rotate(50deg);
+}
+
+html #card-stack #card-one #gContainer #text, body #card-stack #card-one #gContainer #text {
+		font: normal normal 100 20px helvetica, sans-serif;
+		color: maroon;
+		position: absolute;
+		display: inline-block;
+		top: 170px;
+		left: 110px;
+}
+
 html #card-stack #card-one p:nth-last-of-type(1), body #card-stack #card-one p:nth-last-of-type(1) {
 		margin: 10px 10px 10px 10px;
-		text-align: center;
+		text-align: right;
 		font: normal normal 20px 'PT Sans', sans-serif;
 }
 
@@ -219,7 +389,7 @@ html #card-stack #card-two button, body #card-stack #card-two button {
 }
 
 html #card-stack #card-two button:hover, body #card-stack #card-two button:hover {
-		background-color: #f5f5f5;
+		background-color: #e8e8e8;
 		box-shadow: 0 10px 4px -5px rgba(0, 0, 0, 0.35);
 }
 
@@ -275,5 +445,14 @@ html #card-stack #card-two button#clicked, body #card-stack #card-two button#cli
 		}
 		100% {
 				transform: scaleY(0);
+		}
+}
+
+@keyframes rotate {
+		0% {
+				transform: rotate(0deg);
+		}
+		100% {
+				transform: rotate(360deg);
 		}
 }
