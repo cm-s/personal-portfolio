@@ -6,6 +6,8 @@ $(document).ready(function() {
         window.scroll(0, 0);
     });
     $('#github').click(function() {
+        $('#shroud').css('z-index', '20');
+        $('#shroud').animate({'opacity': '1'}, 200);
         document.location.href = 'https://github.com/cm-s/skillsDev';
     });
     $('#github').on('mouseenter', function() {
@@ -15,11 +17,6 @@ $(document).ready(function() {
     $('#github').on('mouseleave', function() {
         $('p').removeClass('triggered');
         $('p').addClass('reset');
-    });
-    //card stack button controller
-    $('div#card-two, button').click(function() {
-        $(this).attr('id', 'clicked');
-        document.location.href = '../Sandbox/main.html';
     });
     //navbar scroll events controller
     $(document).on('scroll', function() {

@@ -1,0 +1,101 @@
+html, body {
+		margin: 0 0 0 0;
+}
+
+#navbar-container {
+		position: fixed;
+		height: 55px;
+		width: 100%;
+		background-color: #0065c2;
+		display: flex;
+		align-items: center;
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+#navbar-container .button {
+		z-index: 2;
+		display: inline-block;
+		position: relative;
+		height: 30px;
+		width: 30px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		cursor: pointer;
+}
+
+#navbar-container .ripple {
+		z-index: 3;
+		display: inline-block;
+		position: relative;
+		height: 40px;
+		width: 40px;
+		background-color: #777;
+		border-radius: 50%;
+		opacity: 0;
+}
+
+#navbar-container #searchbar {
+		margin: 0 auto 0 auto;
+		width: 60%;
+		height: 30px;
+		background-color: rgba(191, 191, 191, 0.6);
+		text-align: center;
+		border-radius: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+#navbar-container #searchbar img {
+		height: 25px;
+		width: 25px;
+}
+
+#navbar-container #searchbar h4 {
+		font: normal normal large helvetica, sans-serif;
+		color: white;
+}
+
+#navbar-container #conversation-title {
+		position: absolute;
+		margin-top: 10px;
+		left: 50%;
+		transform: translate(-50%);
+		font: normal normal large helvetica, sans-serif;
+}
+
+#navbar-container .button#menu {
+		margin: 0 auto 0 20px;
+		background-image: url("images/menu_white.svg");
+}
+
+#navbar-container .button#menu .ripple#menu {
+		margin: -5px 0 0 -5px;
+}
+
+#navbar-container .button#settings {
+		margin: 0 auto 0 50px;
+		background-image: url("images/settings_white.svg");
+}
+
+#navbar-container .button#settings .ripple#settings {
+		margin: -5px 0 0 -5px;
+}
+
+#navbar-container .button#compose {
+		margin: 0 50px 0 auto;
+		background-image: url("images/message_white.svg");
+}
+
+#navbar-container .button#compose .ripple#compose {
+		margin: -5px 0 0 -5px;
+}
+
+#navbar-container .button#about {
+		margin: 0 20px 0 auto;
+		background-image: url("images/info_white.svg");
+}
+
+#navbar-container .button#about .ripple#about {
+		margin: -5px 0 0 -5px;
+}

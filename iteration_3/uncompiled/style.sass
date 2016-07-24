@@ -10,6 +10,21 @@ html, body
     padding: 0 0 0 0
     background-color: #c3c3c3
     min-width: 100%
+    #shroud
+        background-color: black
+        opacity: 0
+        position: fixed
+        height: 100%
+        width: 100%
+        margin: 0 0 0 0
+        z-index: -5
+        display: flex
+        align-items: center
+        justify-content: center
+        #standoff
+            font: normal normal 35px courier, sans-serif
+            color: #333
+            text-shadow: 1px 1px 4px #555
     nav
         height: 25px
         min-height: 25px
@@ -137,9 +152,11 @@ html, body
             #intro-container
                 width: 100%
                 height: 250px
-                margin: 0
+                margin-top: 9vh
                 display: flex
                 flex-wrap: nowrap
+                justify-content: center
+                align-items: center
                 img
                     height: 245px
                     min-height: 245px
@@ -154,134 +171,151 @@ html, body
                     margin-left: 10px
                     max-height: 200px
                     text-align: left
+                    color: #222
                     font: normal normal 20px 'PT Sans', sans-serif
                     mark
                         text-shadow: 0 2px 1px rgba(0, 0, 0, 0.24)
                         background-color: white
-                        color: #666
-            #gContainer
-                height: 180px
-                width: 300px
-                margin-top: 0
-                margin-left: 60%
+                        color: #670707
+            #connector
+                height: 125px
+                width: 3px
+                background-color: #999
+                position: absolute
+                margin-top: 30%
+                margin-left: 125px
+                z-index: 3
+            #intro-gearbox
+                max-height: 250px
                 display: flex
-                justify-content: center
-                align-items: centerd
+                flex-direction: row
+                align-items: center
+                justify-content: flex-start
                 position: relative
-                .cog
-                    transform-origin: 45px 45px
-                    animation-name: rotate
-                    animation-duration: 3s
-                    animation-fill-mode: forwards
-                    animation-timing-function: linear
-                    animation-iteration-count: infinite
-                    height: 90px
-                    width: 90px
-                    position: absolute
-                    display: inline-block
-                    margin: 0 0 0 0
-                .cog-core
-                    height: 30px
-                    width: 30px
-                    background-color: #444
-                    border-radius: 50%
-                    position: absolute
-                    display: inline-block
-                    z-index: 40
-                    box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.1)
-                .cog-hub
-                    height: 60px
-                    width: 60px
-                    border-radius: 50%
-                    background-color: #666
-                    position: absolute
-                    display: inline-block
-                .tendral
-                    height: 25px
-                    width: 20px
-                    position: absolute
-                    display: inline-block
-                    border-radius: 30% 30% 0 0
-                    background-color: #666
-                #gear1
-                    animation-direction: reverse
-                    top: 60px
-                    left: 90px
-                    #left-core
-                        top: 30px
-                        left: 30px
-                    #left-hub
-                        top: 15px
-                        left: 15px
-                    #g1t1
-                        top: 0
-                        left: 35px
-                    #g1t2
-                        top: 15px
-                        left: 5px
-                        transform: rotate(-50deg)
-                    #g1t3
-                        top: 50px
-                        left: 5px
-                        transform: rotate(-125deg)
-                    #g1t4
-                        top: 65px
-                        left: 35px
-                        transform: rotate(-175deg)
-                    #g1t5
-                        top: 50px
-                        left: 65px
-                        transform: rotate(130deg)
-                    #g1t6
-                        top: 15px
-                        left: 65px
-                        transform: rotate(50deg)
-                #gear2
-                    animation-direction: normal
-                    top: 40px
-                    left: 173px
-                    #right-core
-                        top: 30px
-                        left: 30px
-                    #right-hub
-                        top: 15px
-                        left: 15px
-                    #g2t1
-                        top: 0
-                        left: 35px
-                    #g2t2
-                        top: 15px
-                        left: 5px
-                        transform: rotate(-50deg)
-                    #g2t3
-                        top: 50px
-                        left: 5px
-                        transform: rotate(-130deg)
-                    #g2t4
-                        top: 65px
-                        left: 35px
-                        transform: rotate(-180deg)
-                    #g2t5
-                        top: 50px
-                        left: 65px
-                        transform: rotate(130deg)
-                    #g2t6
-                        top: 15px
-                        left: 65px
-                        transform: rotate(50deg)
-                #text
-                    font: normal normal 100 20px helvetica, sans-serif
-                    color: maroon
-                    position: absolute
-                    display: inline-block
-                    top: 170px
-                    left: 110px
-            p:nth-last-of-type(1)
-                margin: 10px 10px 10px 10px
-                text-align: right
-                font: normal normal 20px 'PT Sans', sans-serif
+                #gear-container
+                    height: 200px
+                    width: 200px
+                    margin: 0 30px 0 20px
+                    overflow: hidden
+                    display: flex
+                    justify-content: center
+                    position: relative
+                    .cog
+                        transform-origin: 45px 45px
+                        animation-name: rotate
+                        animation-duration: 3s
+                        animation-fill-mode: forwards
+                        animation-timing-function: linear
+                        animation-iteration-count: infinite
+                        height: 90px
+                        width: 90px
+                        position: absolute
+                        display: inline-block
+                        margin: 0 0 0 0
+                    .cog-core
+                        height: 30px
+                        width: 30px
+                        background-color: #444
+                        border-radius: 50%
+                        position: absolute
+                        display: inline-block
+                        z-index: 40
+                        box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.1)
+                    .cog-hub
+                        height: 60px
+                        width: 60px
+                        border-radius: 50%
+                        background-color: #666
+                        position: absolute
+                        display: inline-block
+                    .tendral
+                        height: 25px
+                        width: 20px
+                        position: absolute
+                        display: inline-block
+                        border-radius: 30% 30% 0 0
+                        background-color: #666
+                    #gear1
+                        animation-direction: reverse
+                        top: 60px
+                        left: 10px
+                        #left-core
+                            top: 30px
+                            left: 30px
+                        #left-hub
+                            top: 15px
+                            left: 15px
+                        #g1t1
+                            top: 0
+                            left: 35px
+                        #g1t2
+                            top: 15px
+                            left: 5px
+                            transform: rotate(-50deg)
+                        #g1t3
+                            top: 50px
+                            left: 5px
+                            transform: rotate(-125deg)
+                        #g1t4
+                            top: 65px
+                            left: 35px
+                            transform: rotate(-175deg)
+                        #g1t5
+                            top: 50px
+                            left: 65px
+                            transform: rotate(130deg)
+                        #g1t6
+                            top: 15px
+                            left: 65px
+                            transform: rotate(50deg)
+                    #gear2
+                        animation-direction: normal
+                        top: 40px
+                        left: 92px
+                        #right-core
+                            top: 30px
+                            left: 30px
+                        #right-hub
+                            top: 15px
+                            left: 15px
+                        #g2t1
+                            top: 0
+                            left: 35px
+                        #g2t2
+                            top: 15px
+                            left: 5px
+                            transform: rotate(-50deg)
+                        #g2t3
+                            top: 50px
+                            left: 5px
+                            transform: rotate(-130deg)
+                        #g2t4
+                            top: 65px
+                            left: 35px
+                            transform: rotate(-180deg)
+                        #g2t5
+                            top: 50px
+                            left: 65px
+                            transform: rotate(130deg)
+                        #g2t6
+                            top: 15px
+                            left: 65px
+                            transform: rotate(50deg)
+                    #text
+                        font: normal normal 100 large helvetica, sans-serif
+                        color: #222
+                        position: absolute
+                        display: inline-block
+                        min-width: 200
+                        top: 165px
+                        left: 13px
+                p:nth-last-of-type(1)
+                    max-width: 70%
+                    margin: 10px 10px 10px 10px
+                    text-align: left
+                    font: normal normal 20px 'PT Sans', sans-serif
         #card-two
-            button
+            button#sandbox
                 font: bold normal 28px courier, sans-serif
                 padding: 12px 12px 12px 12px
                 height: 52px
@@ -290,16 +324,22 @@ html, body
                 background-color: #ff4444
                 box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.25)
                 transition: all ease-in-out 0.5s
-            button:hover
-                background-color: #e8e8e8
-                box-shadow: 0 10px 4px -5px rgba(0, 0, 0, 0.35)
-            button#clicked
-                animation-name: shrink-disappear
-                animation-duration: 3s
-                animation-fill-mode: forwards
-                animation-delay: 300ms
-                animation-timing-function: ease-in-out
-                animation-iteration-count: 1
+                &:hover
+                    background-color: #e8e8e8
+                    box-shadow: 0 10px 4px -5px rgba(0, 0, 0, 0.35)
+            button#messenger
+                font: bold normal 20px helvetica, sans-serif
+                padding: 12px 12px 12px 12px
+                height: 52px
+                border: none
+                border-radius: 25px
+                margin: 0 0 0 12px
+                background-color: darken(#2998ff, 15%)
+                box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.25)
+                transition: all ease-in-out 0.5s
+                &:hover
+                    background-color: #e8e8e8
+                    box-shadow: 0 10px 4px -8px rgba(0, 0, 0, 0.35)
 @keyframes slideLeft
     0%
         margin-left: 210%
