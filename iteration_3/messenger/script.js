@@ -1,5 +1,13 @@
+var convo_set_btn_state = false;
+
 $(document).ready(function() {
-    $('.ripple').click(function() {
-        $(this).animate({'opacity': '0.6'}, 90).delay(50).animate({'opacity': '0'}, 90);
+    $('#conversation-settings').click(function() {
+        if (!convo_set_btn_state) {
+            $('#conversation-settings ul').attr('id', 'opened');
+            convo_set_btn_state = true;
+        } else {
+            $('#conversation-settings ul').attr('id', 'closed');
+            convo_set_btn_state = false;
+        };
     });
 });

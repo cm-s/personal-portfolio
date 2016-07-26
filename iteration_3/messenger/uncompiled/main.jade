@@ -11,12 +11,42 @@ html
             .button#settings
                 .ripple#settings
             #searchbar
-                img(id='search-icon', src='images/search_white.svg')
-                h4 Search
+                img(id='search-icon', src='images/buttons/search_white.svg')
+                h4 Search for people and groups
             #conversation-title
             .button#compose
                 .ripple#compose
             .button#about
                 .ripple#about
+        #info-section
+            header
+                #partner-profile
+                    img
+                    span
+                        #name Marylin Monroe
+                        #active-time Active 15m ago
+                #conversation-settings
+                    ul
+                        #arrow
+                        li Archive
+                        li Delete
+                        br
+                        li Mark as Unread
+                        li Mark as Spam
+            ul Options
+                li Edit Nicknames
+                li Change Color
+                li Change Emoji
+                li Mute Notifications
+                    img(id='mute-button')
+            span Facebook Page
+                p(onclick='window.location.href="profile/main.html"') https://face.book.com/marylin.monroe
+        #messages-section
+            ul
+                li.message
+                    img.bubble-head
+                    p.bubble-body
+        #toolbar
+            
     script(src='../Vendors/jquery-3.0.0.js')
     script(src='script.js', type='text/javascript')
