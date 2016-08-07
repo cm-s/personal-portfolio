@@ -1,0 +1,61 @@
+doctype default
+html
+    head
+        meta(name='robots', content='follow, index, noarchive;')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='style.css', rel='stylesheet')
+        title="Charles, Stevens: Portfolio"
+    body
+        span#shroud
+            div#standoff Loading...
+        nav
+            h3 Charles Stevens
+        img(src='images/toTop_white.svg', id='navButton')
+        .button-ripple#toTop
+        img(src='images/github_white.svg', id='githubButton')
+        span
+            p View GitHub profile
+        .button-ripple#github
+        header
+            h1 Charles Stevens, Aspiring Programmer
+        <!--background illistrations here-->
+        #card-stack
+            .section-card#card-one 
+                #intro-container
+                    img(src='images/self.png')
+                    p
+                        |I'm only seventeen and as such have learned far more lessons in programming and project development than products I have completed or than 
+                        mark
+                            | anything useful that I've done. 
+                        |With the small amount of time that I have been in a position to produce and project myself in a direction, independent of anyone else I have learned a great deal.
+                span#connector
+                #intro-gearbox
+                    #gear-container
+                        #gear1.cog
+                            .cog-core#left-core
+                            .cog-hub#left-hub
+                            .tendral#g1t1
+                            .tendral#g1t2
+                            .tendral#g1t3
+                            .tendral#g1t4
+                            .tendral#g1t5
+                            .tendral#g1t6
+                        #gear2.cog
+                            .cog-core#right-core
+                            .cog-hub#right-hub
+                            .tendral#g2t1
+                            .tendral#g2t2
+                            .tendral#g2t3
+                            .tendral#g2t4
+                            .tendral#g2t5
+                            .tendral#g2t6
+                        #text
+                            |Logical & Determined
+                    p
+                        |I have chosen to develop myself into a person with a flexible mindset, hungry for new and more relevant knowledge whilst retaining a wide range of abilities. Subsequently, I am also one to work continuously, self sustained on the problem at hand. With this, I am eager to come to work with others more often and collaborate with others in order to begin paying back into my time spent here.
+            .section-card#card-two
+                button(type='button', onclick='window.location.href="../Sandbox/main.html"', id='sandbox') Goto Sandbox
+                button(type='button', onclick='window.location.href="../Projects/Messenger/main.html"', id='messenger') See my version of messenger.com
+            .section-card#card-three
+    script(src='../Vendors/jquery-3.0.0.js')
+    script(src='../script.js', type='text/javascript')
