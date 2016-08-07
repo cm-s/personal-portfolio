@@ -11,6 +11,7 @@ This version does not include any dependencies other than the defaults;
 * byebug (for test and development environments)
 * web-console ~> 2.0 (for development environments only)
 * spring (for development environments only)
+
 Since this application is in very early stages, running the WEBrick server encompasses all that I have done.
 
 Changes in the upgrade from the third iteration of my site to this one include the following:
