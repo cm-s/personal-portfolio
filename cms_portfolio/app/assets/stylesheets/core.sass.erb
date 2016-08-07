@@ -1,0 +1,327 @@
+// Place all the styles related to the core controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face
+    font-family: 'Titillium Web'
+    src: asset-url('fonts/Titillium_Web/TitilliumWeb-Regular.ttf') format('truetype')
+@font-face
+    font-family: 'PT Sans'
+    asset-url: ('fonts/PT_Sans/PT_Sans-Web-Regular.ttf') format('truetype')
+@font-face
+    font-family: 'Mononoki'
+    asset-url: ('fonts/Mononoki/mononoki-Regular.ttf') format('truetype')
+@font-face
+    font-family: 'Ubuntu Mono'
+    asset-url: ('fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf') format('truetype')
+
+$rich-matte-black: #111
+
+html, body
+    margin: 0 0 0 0
+    padding: 0 0 0 0
+    background-color: $rich-matte-black
+    position: relative
+    min-width: 100%
+    height: auto
+    #shroud
+        background-color: black
+        opacity: 0
+        position: fixed
+        height: 100%
+        width: 100%
+        margin: 0 0 0 0
+        z-index: -5
+        display: flex
+        align-items: center
+        justify-content: center
+        #standoff
+            font: normal normal 35px courier, sans-serif
+            color: #333
+            text-shadow: 1px 1px 4px #555
+    nav
+        top: 0
+        left: 0
+        height: 25px
+        min-height: 25px
+        width: 100%
+        min-width: 100%
+        background-color: rgba(21, 27, 128, 0)
+        padding: 14px
+        position: fixed
+        z-index: 5
+        display: flex
+        align-items: center
+        .button-ripple
+            height: 42px
+            width: 42px
+            z-index: 6
+            border-radius: 50%
+            background-color: rgba(101, 101, 101, 0)
+            transition: all ease-in-out 0.1s
+            &:hover
+                cursor: pointer
+                background-color: rgba(101, 101, 101, 0.5)
+        .button
+            z-index: 7
+            margin: 50% 0 0 50%
+            transform: translate(-50%, -50%)
+        #toTop
+            margin: 50% auto 50% 0
+        h3
+            opacity: 0
+            color: white
+            margin: 50% auto 50% auto
+            font-weight: lighter
+            font: normal normal 19px 'Titillium Web', sans-serif
+        #github
+            margin: 50% 28px 50% auto
+        span
+            position: absolute
+            z-index: 6
+            left: 100%
+            #github_link
+                font: normal normal 1rem helvetica, sans-serif
+                font-weight: lighter
+                text-decoration: none
+                color: white
+            &.triggered
+                animation-name: slideLeft
+                animation-duration: 1s
+                animation-timing-function: ease-in-out
+                animation-fill-mode: forwards
+                animation-iteration-count: 1
+            &.reset
+                animation-name: slideRight
+                animation-duration: 1s
+                animation-timing-function: ease-in
+                animation-fill-mode: forwards
+                animation-iteration-count: 1
+    header
+        height: 600px
+        min-width: 100%
+        text-align: center
+        position: relative
+        background-image: asset-url('core/bg.png')
+        background-size: cover
+        h1
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -40px)
+            z-index: 0
+            color: white
+            font: normal normal 35px 'Titillium Web', sans-serif
+    #gradient-shadow
+        z-index: 0
+        position: relative
+        width: 100%
+        height: 1px
+        box-shadow: 0 0 90px 60px $rich-matte-black
+        background-color: $rich-matte-black
+    #card-stack
+        width: 82%
+        min-width: 82%
+        height: auto
+        margin: -150px auto auto 9%
+        z-index: 2
+        position: absolute
+        display: flex
+        flex-direction: column
+        align-items: center
+        .section-card
+            height: 700px
+            width: 80%
+            margin-bottom: 15px
+            background-color: white
+            border-radius: 7px
+            padding: 12px
+            display: flex
+            flex-wrap: wrap
+            flex-direction: column
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 1px 0 3px rgba(0, 0, 0, 0.5), -1px 0 3px rgba(0, 0, 0, 0.5)
+            transition: all 0.2s ease-in-out
+            &:hover
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7), 8px 0 10px rgba(0,0,0,0.7), -8px 0 10px rgba(0, 0, 0, 0.7)
+        #card-one
+            #intro-container
+                width: 100%
+                height: 190px
+                padding: 15px 0 15px 0
+                display: flex
+                align-items: center
+                flex-wrap: wrap
+                #portrait
+                    max-height: 145px
+                    max-width: 145px
+                    border-radius: 50%
+                    margin: 0 20px 0 auto
+                    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.21)
+                p:nth-of-type(1)
+                    font: normal normal 1.2rem 'PT Sans', sans-serif
+                    margin: 0 auto 0 0
+            #terminal-sect-container
+                width: 100%
+                display: flex
+                #terminal-explanation
+                    max-width: 340px
+                    margin: 55px auto 0 auto
+                    position: relative
+                    font: normal normal 1.1rem 'Slabo', monospace
+                    color: lighten(#444, 5)
+                    mark
+                        background-color: transparent
+                        color: lighten(orange, 5)
+                        animation-name: tantilize
+                        animation-duration: 2s
+                        animation-fill-mode: forwards
+                        animation-timing-function: ease-in
+                        animation-direction: alternate
+                        animation-iteration-count: infinite
+                        &:hover
+                            text-shadow: 0 2px 3px transparentize(lighten(orange, 5), .4)
+                            border: 1px solid orange
+                            border-radius: 2px
+                #console-container
+                    width: 60%
+                    height: 330px
+                    margin: 10px 0 0 auto
+                    position: relative
+                    overflow: hidden
+                    box-shadow: 0 8px 10px 5px rgba(0,0,0,0.3)
+                    #console-navbar
+                        height: 25px
+                        width: 100%
+                        border-top-left-radius: 4px
+                        border-top-right-radius: 4px
+                        background-color: #272727
+                        display: flex
+                        align-items: center
+                        .console-navbutton
+                            height: 19px
+                            width: 19px
+                            margin: 0 0 0 5px
+                            background-repeat: no-repeat
+                            background-size: cover
+                        .console-navbutton:nth-child(1)
+                            margin: 0 0 0 12px
+                        #window-close
+                            background-image: asset-url('core/terminal_navbuttons/close.svg')
+                            &:hover
+                                background-image: asset-url('core/terminal_navbuttons/close_prelight.svg')
+                        #window-min
+                            background-image: asset-url('core/terminal_navbuttons/min.svg')
+                            &:hover
+                                background-image: asset-url('core/terminal_navbuttons/min_prelight.svg')
+                        #window-max
+                            background-image: asset-url('core/terminal_navbuttons/maximize.svg')
+                            &:hover
+                                background-image: asset-url('core/terminal_navbuttons/maximize_prelight.svg')
+                        #console-window-title
+                            position: absolute
+                            margin: 0
+                            left: 50%
+                            transform: translateX(-50%)
+                            color: #bbb
+                            font: normal normal 16px 'Mononoki', monospace
+                    #console-window
+                        height: 100%
+                        width: 100%
+                        background-color: darken(#272727, 10)
+                        padding: 3px 0 0 3px
+                        .terminal-line
+                            color: #999
+                            font: normal normal 15px 'Ubuntu Mono', monospace
+                            width: 100%
+                            margin: 0
+                            height: 1rem
+                        pre
+                            transform: translate(-150px)
+                        #terminal-last-line
+                            margin: 0
+                            #terminal-last-text
+                                font: normal normal 15px 'Ubuntu Mono', monospace
+                                margin: 0
+                                display: inline-block
+                                width: 20px
+                                color: #999
+                            #cursor
+                                width: 10px
+                                height: 17px
+                                background-color: #999
+                                display: inline-block
+                                position: absolute
+                                animation-name: blink
+                                animation-duration: 1300ms
+                                animation-fill-mode: forwards
+                                animation-timing-function: linear
+                                animation-iteration-count: infinite
+            footer
+                font: normal normal .7rem arial, sans-serif
+                margin: auto auto 0 auto
+                color: transparentize(#666, .3)
+        #card-two
+            h4
+                font: normal normal 2.5rem arial, sans-serif
+                color: #666
+                letter-spacing: 15px
+                font-weight: lighter
+                margin: 10px auto 10px auto
+            #site-ext-container
+                width: 100%
+                display: flex
+                height: 65%
+                .topic-container
+                    height: 300px
+                    width: 300px
+                    margin: 40px auto auto auto
+                    background-color: pink
+                    text-align: center
+                    .canvas
+                        width: 100%
+                        height: 78%
+                    .topicButton
+                        display: inline-block
+                        padding: 15px
+                        border-radius: 10px
+                        box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2)
+                        font: bold normal 1rem 'Titillium Web', sans-serif
+                        text-decoration: none
+                        color: black
+                    #messenger-link
+                        background-color: #2998ff
+                    #skits-link
+                        background-color: lighten(orange, 20)
+@keyframes blink
+    0%
+        opacity: 1
+    10%
+        opacity: 1
+    11%
+        opacity: 0
+    100%
+        opacity: 0
+@keyframes tantilize
+    0%
+        color: lighten(orange, 5)
+    50%
+        color: darken(orange, 12)
+    100%
+        color: lighten(orange, 30)
+@keyframes slideLeft
+    0%
+        left: 100%
+        opacity: 0
+    70%
+        opacity: 0
+    100%
+        opacity: 1
+        left: 84%
+@keyframes slideRight
+    0%
+        left: 84%
+        opacity: 1
+    30%
+        opacity: 0
+    100%
+        left: 100%
+        opacity: 0
