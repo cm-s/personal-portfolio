@@ -20,3 +20,5 @@ Changes in the upgrade from the third iteration of my site to this one include t
 * The button to navigate to the top of the page now scrolls smoothly
 * Page markup has been converted to raw HTML and now implements embedded ruby mechanisms
 * The styles for the index page have been further optimized for performance and scalability
+* Added database for messenger section
+* Added ability to add a user to messenger

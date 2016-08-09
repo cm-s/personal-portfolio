@@ -1,0 +1,4 @@
+<h1>Welcome to Material Messenger Desktop Veiw!</h1>
+<%= form_for(:messenger, :url => {:action => 'create'}) do |usr| %>
+<%= render(:partial => 'new', :locals => { :usr => usr }) %>
+<% end %>
