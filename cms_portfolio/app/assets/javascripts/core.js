@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
 var headerHasText = false;
 
 $(document).ready(function() {

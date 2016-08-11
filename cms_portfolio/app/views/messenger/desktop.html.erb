@@ -1,4 +1,49 @@
-<h1>Welcome to Material Messenger Desktop Veiw!</h1>
-<%= form_for(:messenger, :url => {:action => 'create'}) do |usr| %>
-<%= render(:partial => 'new', :locals => { :usr => usr }) %>
-<% end %>
+<nav id="navbar-container">
+    <div class="button" id="menu">
+        <div class="ripple" id="menu"></div>
+    </div>
+    <div class="button" id="settings">
+        <div class="ripple" id="settings"></div>
+    </div>
+    <div id="search-bar">
+        <%= image_tag('messenger/buttons/search_white.svg', :id => 'search-icon') %>
+        <h4>Search for people and groups</h4>
+    </div>
+    <div id="conversation-title"></div>
+    <div class="button" id="compose">
+        <div class="ripple" id="compose"></div>
+    </div>
+    <div class="button" id="about">
+        <div class="ripple" id="about"></div>
+    </div>
+</nav>
+<menu>
+    <ul>
+        <li id="signup-link">
+            <%= image_tag('messenger/buttons/signon_black.svg') %>
+            <em>Sign Up!</em>
+        </li>
+        <li id="login-link">
+            <style media="screen">
+                #login-link { display: none; }
+            </style>
+            <em>Log In</em>
+        </li>
+        <li>
+            <%= image_tag('messenger/profile-pictures/marylin.jpeg') %>
+            <em>Marylin Monroe</em>
+        </li>
+        <li>
+            <em>Person2 LastName</em>
+        </li>
+        <li>
+            <em>Person3 LastName</em>
+        </li>
+    </ul>
+</menu>
+<div id="signup-forum">
+    <%= image_tag('messenger/buttons/close_black.svg', :id => 'close') %><span id="closing-shroud"></span>
+    <%= form_for(:messenger, :url => {:action => 'create'}) do |usr| %>
+    <%= render(:partial => 'new', :locals => { :usr => usr }) %>
+    <% end %>
+</div>

@@ -10,7 +10,7 @@ class MessengerController < ApplicationController
 
         if @user.save
             render js: 'alert("User successfully sreated!"); var home = confirm("Go Home?");
-            if (home) {window.location.href = "core/index"}; I know this does not work :)'
+            if (home) {window.location.href = "core/index"};'
         else
             render html: '<h1>Failed</h1>'
         end

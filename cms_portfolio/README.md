@@ -14,11 +14,13 @@ This version does not include any dependencies other than the defaults;
 
 Since this application is in very early stages, running the WEBrick server encompasses all that I have done.
 
-Changes in the upgrade from the third iteration of my site to this one include the following:
-* renovation of the background for the index page
-* Changes to to the first section (of three), Now talking about my work instead of myself
-* The button to navigate to the top of the page now scrolls smoothly
-* Page markup has been converted to raw HTML and now implements embedded ruby mechanisms
-* The styles for the index page have been further optimized for performance and scalability
-* Added database for messenger section
-* Added ability to add a user to messenger
+All changes to my personal portfolio will most likely be on this application
+Log of current implemented/transitioned features is organized below;
+###Material Messenger
+* User database
+* Card-style sign up page
+* Sliding side menu
+* Fully equipped navigation bar
+###Index page
+* Dynamic navigation bar
+* Preview of my work on first card
