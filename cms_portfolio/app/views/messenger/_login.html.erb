@@ -1,0 +1,6 @@
+<h3>Login to Material Messenger</h3>
+    <%= form_tag(:action => 'login') do %>
+        <p>Username: </p> <%= text_field_tag(:user_name) %><br>
+        <p>Password: </p> <%= password_field_tag(:password) %><br>
+    <%= submit_tag('Login') %>
+    <% end %>

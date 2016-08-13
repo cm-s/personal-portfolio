@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-    resources :messenger
-    # ------------ After 'rake routes' -------------------
-    #     Prefix Verb   URI Pattern                   Controller#Action
-    # messenger_index GET    /messenger(.:format)          messenger#index
-    #               POST   /messenger(.:format)          messenger#create
-    # new_messenger GET    /messenger/new(.:format)      messenger#new
-    # edit_messenger GET    /messenger/:id/edit(.:format) messenger#edit
-    #     messenger GET    /messenger/:id(.:format)      messenger#show
-    #               PATCH  /messenger/:id(.:format)      messenger#update
-    #               PUT    /messenger/:id(.:format)      messenger#update
-    #               DELETE /messenger/:id(.:format)      messenger#destroy
-    #          root GET    /                             core#index
-    root 'core#index'
+    get 'messenger/logout' => 'messenger#logout'
+    post 'messenger/login' => 'messenger#login'
+    resources( :messenger, :only => [:create, :new, :show, :destroy] )
+    # The ':only => []' option removes the listed default actions that are included with 'resources :resource'
+    # ------------ After 'rake routes' -----------------------------------
+    #           Prefix Verb   URI Pattern                 Controller#Action
+    # messenger_logout GET    /messenger/logout(.:format) messenger#logout
+    #  messenger_login GET    /messenger/login(.:format)  messenger#login
+    #  messenger_index POST   /messenger(.:format)        messenger#create
+    #    new_messenger GET    /messenger/new(.:format)    messenger#new
+    #        messenger GET    /messenger/:id(.:format)    messenger#show
+    #                  DELETE /messenger/:id(.:format)    messenger#destroy
+    #             root GET    /                           core#index
+
+    root 'core#index' # This is represented with 'root_url' in the controller.rb file
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

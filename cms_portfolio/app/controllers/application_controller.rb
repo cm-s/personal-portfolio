@@ -1,5 +1,24 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+    # Prevent CSRF attacks by raising an exception.
+    # For APIs, you may want to use :null_session instead.
+    protect_from_forgery with: :exception
+
+    def authenticate_login
+        if session[:logged_user_id] # If a session logged_user_id exists and isn't nil (logged out);
+            # find the user by the id they logged in with ˥
+            @current_user = Messenger.find session[:logged_user_id]
+            return true
+        else
+            redirect_to('/messenger/desktop')
+            return false
+        end
+    end
+    def enforce_logged_state
+        if session[:logged_user_id] # Prohibit the user from logging in, if already logged in
+            redirect_to('/messenger/desktop')
+            return false
+        else
+            return true
+        end
+    end
 end

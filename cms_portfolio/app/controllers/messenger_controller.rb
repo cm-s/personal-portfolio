@@ -1,5 +1,10 @@
 class MessengerController < ApplicationController
+    # apply ApplicationController actions to logged users
+    before_filter :authenticate_login, :only => [:desktop, :setting]
+    before_filter :enforce_logged_state, :only => [:new, :create, :login]
+
     def show
+        @title = "Material Messenger"
         render :desktop
     end
     def new
@@ -7,13 +12,28 @@ class MessengerController < ApplicationController
     end
     def create
         @user = Messenger.new(user_params)
-
-        if @user.save
-            render js: 'alert("User successfully sreated!"); var home = confirm("Go Home?");
-            if (home) {window.location.href = "core/index"};'
+        @user.save!
+        if @user.save!
+            render :desktop, :notice => "Signup Successful!"
         else
-            render html: '<h1>Failed</h1>'
+            render :desktop, :notice => "Signup Failed"
         end
+    end
+    def login
+        user_logged = Messenger.authenticate(params[:user_name], params[:password])
+
+        if user_logged # If authentication returns, being anything other than false (an object)
+            session[:logged_user_id] = user_logged.id
+            render :desktop
+            puts "ApplicationController::MessengerController: Success; User logged in sucessfully"
+        else
+            render :desktop
+            puts "ApplicationController::MessengerController: Failure; Invalid Credentials, User redirected"
+        end
+    end
+    def logout
+        session[:logged_user_id] = nil
+        redirect_to(:desktop)
     end
     private
     def user_params
