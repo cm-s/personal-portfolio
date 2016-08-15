@@ -33,7 +33,14 @@ class MessengerController < ApplicationController
     end
     def logout
         session[:logged_user_id] = nil
-        redirect_to(:desktop)
+        redirect_to root_url
+    end
+    def logged_in
+        if @current_user.id
+            return true
+        else
+            return false
+        end
     end
     private
     def user_params

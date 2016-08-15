@@ -3,29 +3,36 @@
         <div class="ripple" id="menu"></div>
     </div>
     <div class="button" id="settings">
+        <i class=" mdi mdi-settings mdi-24px mdi-light"></i>
         <div class="ripple" id="settings"></div>
     </div>
     <div id="search-bar">
-        <%= image_tag('messenger/buttons/search_white.svg', :id => 'search-icon') %>
+        <i class="mdi mdi-magnify mdi-24px mdi-light"></i>
         <h4>Search for people and groups</h4>
     </div>
     <div id="conversation-title"></div>
     <div class="button" id="compose">
+        <i class="mdi mdi-message-plus mdi-24px mdi-light"></i>
         <div class="ripple" id="compose"></div>
     </div>
     <div class="button" id="about">
+        <i class=" mdi mdi-information-outline mdi-24px mdi-light"></i>
         <div class="ripple" id="about"></div>
     </div>
 </nav>
 <menu>
     <ul>
         <li id="signup-link">
+            <i class="mdi mdi-account-plus mdi-24px mdi-dark"></i>
             <em>Sign Up!</em>
         </li>
         <li id="login-link">
+            <i class="mdi mdi-account-network mdi-24px mdi-dark"></i>
             <em>Log In</em>
         </li>
-        <li>
+        <li id="logout-container">
+            <%= link_to(:logout) %>
+            <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
             <em>Log Out</em>
         </li>
         <li>
@@ -33,19 +40,25 @@
             <em>Marylin Monroe</em>
         </li>
         <li>
+            <%= image_tag('messenger/profile-pictures/default.svg') %>
             <em>Person2 LastName</em>
         </li>
         <li>
+            <%= image_tag('messenger/profile-pictures/default.svg') %>
             <em>Person3 LastName</em>
         </li>
     </ul>
 </menu>
-<div id="signup-forum">
-    <%= image_tag('messenger/buttons/close_black.svg', :id => 'close') %><span id="closing-shroud"></span>
-    <%= form_for(:messenger, :url => {:action => 'create'}) do |usr| %>
-    <%= render(:partial => 'new', :locals => { :usr => usr }) %>
-    <% end %>
-</div>
-<div id="login-forum">
-    <%= render(:partial => 'login') %>
+<div id="content-section">
+    <div id="signup-forum" class="forum">
+        <%= image_tag('messenger/buttons/close_black.svg', :id => 'close') %><span id="closing-shroud" class="forum-close"></span>
+        <%= form_for(:messenger, :url => {:action => 'create'}) do |usr| %>
+        <%= render(:partial => 'new', :locals => { :usr => usr }) %>
+        <% end %>
+    </div>
+    <div id="login-forum" class="forum">
+        <%= image_tag('messenger/buttons/close_black.svg', :id => 'close-login') %> <span id="closing-login-shroud" class="forum-close"></span>
+        <%= render(:partial => 'login') %>
+    </div>
+
 </div>

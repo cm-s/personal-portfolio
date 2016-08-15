@@ -1,0 +1,69 @@
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+var UserNameForumFilled = { value: false };
+var PasswordForumFilled = { value: false };
+var menu_out = false;
+
+// Check if input field has text in it and reflect that in the reporter(either UserNameForumFilled or PasswordForumFilled)
+function monitor_entries(inputObject, reporter, buttonObject, buttonShroud) {
+    if ($(inputObject).val() != '') { reporter.value = true; }
+    else {
+        if (inputObject) {
+            reporter.value = false;
+        };
+    };
+    if (PasswordForumFilled.value && UserNameForumFilled.value) {
+        $(buttonShroud).css('display', 'none');
+        $(buttonObject).removeClass('disabled').addClass('enabled');
+    }
+    else {
+        $(buttonShroud).css('display', 'block');
+        $(buttonObject).removeClass('enabled').addClass('disabled');
+    };
+};
+
+$(document).ready(function() {
+    $('#menu').click(function() {
+        $('menu').animate({'margin-left': '0'}, 200);
+    });
+    $('#close').click(function() {
+        $('#closing-shroud').addClass('pressed');
+        setTimeout(function () {
+            $('#signup-forum').css('display', 'none');
+        }, 120);
+    });
+    $('#close-login').click(function() {
+        $('#closing-login-shroud').addClass('pressed');
+        setTimeout(function() {
+            $('#login-forum').css('display', 'none');
+        }, 120);
+    });
+    $('#signup-link').click(function() {
+        UserNameForumFilled.value = false;
+        PasswordForumFilled.value = false;
+        $('#signup-forum').css('height', '0').css('display', 'block');
+        $('#signup-forum').animate({'height': '350px'}, 65)
+        $('menu').animate({'margin-left': '-335px'}, 200);
+    });
+    $('#login-link').click(function() {
+        UserNameForumFilled.value = false;
+        PasswordForumFilled.value = false;
+        $('#login-forum').css('height', '0').css('display', 'block')
+        $('#login-forum').animate({'height': '300px'}, 65);
+        $('menu').animate({'margin-left': '-335px'}, 200);
+    });
+    //Forum entry enforcement aggragators
+        $('#messenger_user_name').keyup(function() {
+            monitor_entries('#messenger_user_name', UserNameForumFilled, '#signup-button', '#signup-shroud');
+        });
+        $('#messenger_password').keyup(function() {
+            monitor_entries('#messenger_password', PasswordForumFilled, '#signup-button', '#signup-shroud');
+        });
+        $('#user_name').keyup(function() {
+            monitor_entries('#user_name', UserNameForumFilled, '#login-button', '#login-shroud');
+        });
+        $('#password').keyup(function() {
+            monitor_entries(null, PasswordForumFilled, '#login-button', '#login-shroud');
+        });
+});

@@ -11,3 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += ['messenger.css', 'core.css'] #This isn't DRY & application.(js/css) is empty!
 Rails.application.config.assets.precompile += ['messenger.js', 'core.js']
+Rails.application.config.assets.precompile += %w( materialdesignicons )

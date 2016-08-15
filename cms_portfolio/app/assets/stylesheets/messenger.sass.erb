@@ -2,6 +2,20 @@
     font-family: 'Source Sans Pro'
     asset-url: ('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf')
 
+@import 'MaterialDesignIcons/materialdesignicons.scss'
+
+//material design dark according to guidelines: http://goo.gl/vkRHaV
+.mdi.mdi-dark
+    color: rgba(0,0,0,0.54)
+.mdi.mdi-dark.mdi-inactive
+    color: rgba(0,0,0,0.26)
+
+//material design light according to guidelines: http://goo.gl/vkRHaV
+.mdi.mdi-light
+    color: rgba(255,255,255,1)
+.mdi.mdi-light.mdi-inactive
+    color: rgba(255,255,255,0.3)
+
 $messenger-blue: #2998ff
 
 html, body
@@ -9,7 +23,7 @@ html, body
     height: 100%
     width: 100%
     background-color: darken(white, 8)
-    z-index: 0
+    z-index: -3
 #navbar-container
     z-index: 2
     position: fixed
@@ -23,14 +37,13 @@ html, body
         position: relative
         height: 25px
         width: 25px
-        background-size: cover
         cursor: pointer
     .ripple
         z-index: 3
-        position: relative
+        position: absolute
         height: 41px
         width: 41px
-        margin: -8px 0 0 -8px
+        margin: -33px 0 0 -8px
         background-color: #777
         border-radius: 50%
         opacity: 0
@@ -47,9 +60,6 @@ html, body
         display: flex
         justify-content: center
         align-items: center
-        img
-            height: 25px
-            width: 25px
         h4
             font: normal normal large helvetica, sans-serif
             color: white
@@ -62,15 +72,14 @@ html, body
     .button#menu
         margin: 0 auto 0 20px
         background-image: asset-url('messenger/buttons/menu_white.svg')
+        .ripple#menu
+            margin: -8px 0 0 -8px
     .button#settings
         margin: 0 auto 0 50px
-        background-image: asset-url('messenger/buttons/settings_white.svg')
     .button#compose
         margin: 0 50px 0 auto
-        background-image: asset-url('messenger/buttons/message_white.svg')
     .button#about
         margin: 0 20px 0 auto
-        background-image: asset-url('messenger/buttons/info_white.svg')
 menu
     z-index: 3
     height: 100%
@@ -87,10 +96,17 @@ menu
         #signup-link
             border-bottom: 1px solid transparentize(#888, 0.5)
             cursor: pointer
-            img:nth-of-type(1)
-                height: 30px
-                width: 30px
-                margin: auto 20px 12px 20px
+        #login-link
+            cursor: pointer
+        #logout-container
+            border-bottom: 1px solid transparentize(#888, 0.5)
+            cursor: pointer
+            position: relative
+            a
+                position: absolute
+                height: 100%
+                width: 100%
+                color: transparent
         li
             margin: 5px auto 5px auto
             height: 50px
@@ -100,89 +116,45 @@ menu
             align-items: center
             em
                 font: normal normal 1rem 'Source Sans Pro', sans-serif
+            i
+                margin: auto 10px auto 10px
             img
                 height: 40px
                 width: 40px
                 border-radius: 50%
                 margin-right: 15px
-#signup-forum
-    display: none
-    z-index: 5
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    height: 350px
-    width: 450px
-    padding: 10px
-    background-color: white
-    border-radius: 8px
-    box-shadow: 0 6px 8px 2px rgba(0,0,0,0.2)
-    form
-        height: 95%
-        margin: 0
-        h3
-            max-width: 280px
-            margin: 20px auto 0 auto
-            font: normal normal 1.25rem 'Source Sans Pro', sans-serif
-        h4#signup-subtext
-            max-width: 200px
-            font: normal normal 0.9rem 'Source Sans Pro', sans-serif
-            margin: 10px auto 15px auto
-        .signup-entry
-            font: normal normal 1rem 'Source Sans Pro', sans-serif
-            padding: 5px
-            margin: 15px auto 0 20px
-            height: 1.5rem
-            width: 230px
-            border: none
-            border-bottom: 1px solid #888
-            outline: none
-            transition: all ease-in 200ms
-            &:focus
-                border-bottom: 1px solid $messenger-blue
-        #signup-submit
-            font: normal normal 1.5rem 'Source Sans Pro', sans-serif
-            color: mix(#333, darken($messenger-blue, 50), 50)
-            padding: 10px
-            position: absolute
-            top: 78%
-            left: 50%
-            transform: translate(-50%)
-            border: none
-            border-radius: 4px
+#content-section
+    width: 100%
+    height: 100%
+    z-index: -1
+    padding-top: 55px
+    .forum
+        z-index: 5
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        padding: 10px
+        background-color: white
+        border-radius: 8px
+        box-shadow: 0 6px 8px 2px rgba(0,0,0,0.2)
+    .forum-button
+        position: absolute
+        left: 50%
+        transform: translate(-50%)
+        background-color: #777
+        border: none
+        color: mix(#333, darken($messenger-blue, 50), 50)
+        box-shadow: 0 10px 12px -8px rgba(0,0,0,0.5)
+        transition: all ease-in-out 0.2s
+        &:hover
+            box-shadow: 0 16px 18px -11px rgba(0,0,0,0.3)
+            transform: translate(-50%, -4px)
+        &.enabled
+            background-color: $messenger-blue
+        &.disabled
             background-color: #777
-            box-shadow: 0 10px 12px -8px rgba(0,0,0,0.15)
-            transition: all ease-in-out 0.2s
-            &:hover
-                box-shadow: 0 16px 18px -11px rgba(0,0,0,0.3)
-                transform: translate(-50%, -4px)
-            &.enabled
-                background-color: $messenger-blue
-            &.disabled
-                background-color: #777
-        #signup-shroud
-            height: 200px
-            width: 230px
-            position: absolute
-            z-index: 10
-            left: 50%
-            top: 76%
-            transform: translate(-50%)
-    img#close
-        position: absolute
-        top: 15px
-        left: 430px
-        height: 20px
-        width: 20px
-        color: #777
-    #closing-shroud
-        position: absolute
-        z-index: 6
-        left: 425px
-        top: 10px
-        height: 30px
-        width: 30px
+    .forum-close
         background-color: #777
         opacity: 0.7
         border-radius: 50%
@@ -193,6 +165,115 @@ menu
             animation-duration: 150ms
             animation-timing-function: ease-in-out
             animation-iteration-count: 1
+    #signup-forum
+        display: none
+        height: 350px
+        width: 450px
+        form
+            height: 95%
+            margin: 0
+            h3
+                max-width: 280px
+                margin: 20px auto 0 auto
+                font: normal normal 1.25rem 'Source Sans Pro', sans-serif
+            h4#signup-subtext
+                max-width: 200px
+                font: normal normal 0.9rem 'Source Sans Pro', sans-serif
+                margin: 10px auto 15px auto
+            .signup-entry
+                font: normal normal 1rem 'Source Sans Pro', sans-serif
+                padding: 5px
+                margin: 15px auto 0 20px
+                height: 1.5rem
+                width: 230px
+                border: none
+                border-bottom: 1px solid #888
+                outline: none
+                transition: all ease-in 200ms
+                &:focus
+                    border-bottom: 1px solid $messenger-blue
+            #signup-button
+                font: normal normal 1.5rem 'Source Sans Pro', sans-serif
+                padding: 10px
+                top: 78%
+                border-radius: 4px
+            #signup-shroud
+                height: 200px
+                width: 230px
+                position: absolute
+                z-index: 10
+                left: 50%
+                top: 76%
+                transform: translate(-50%)
+        img#close
+            position: absolute
+            top: 15px
+            left: 430px
+            height: 20px
+            width: 20px
+            color: #777
+        #closing-shroud
+            position: absolute
+            z-index: 6
+            left: 425px
+            top: 10px
+            height: 30px
+            width: 30px
+    #login-forum
+        display: none
+        height: 300px
+        width: 400px
+        #close-login
+            position: absolute
+            top: 10px
+            left: 385px
+            height: 20px
+            width: 20px
+        #closing-login-shroud
+            position: absolute
+            top: 7px
+            left: 382px
+            height: 25px
+            width: 25px
+        h3
+            max-width: 260px
+            margin: 20px auto 0 auto
+            font: normal normal 1.25rem 'Source Sans Pro', sans-serif
+        form
+            height: 80%
+            position: relative
+            .login-entry
+                font: normal normal 1rem 'Source Sans Pro', sans-serif
+                padding: 5px
+                outline: none
+                border: none
+                border-bottom: 1px solid #888
+                margin-top: 5px
+            p#user-name
+                font: normal normal 1rem 'Source Sans Pro', sans-serif
+                text-align: center
+                position: absolute
+                top: 40px
+                left: 50%
+                transform: translate(-50%, -50%)
+            p#password
+                @extend p#user-name
+                top: 110px
+            #login-button
+                font: normal normal 1rem 'Source Sans Pro', sans-serif
+                position: absolute
+                top: 195px
+                left: 50%
+                padding: 15px
+                border-radius: 12px
+            #login-shroud
+                position: absolute
+                z-index: 6
+                height: 100px
+                width: 220px
+                top: 180px
+                left: 50%
+                transform: translate(-50%)
 @keyframes ripple
     0%
         transform: scale(0)
