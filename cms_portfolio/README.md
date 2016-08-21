@@ -22,7 +22,7 @@ Log of current implemented/transitioned features is organized below;
 * Sliding side menu
 * Fully equipped navigation bar
 * Login and logout functions
-* Settings menu
+
 ###Index page
 * Dynamic navigation bar
 * Preview of my work on first card
