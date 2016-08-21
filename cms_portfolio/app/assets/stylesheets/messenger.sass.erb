@@ -107,6 +107,12 @@ menu
                 height: 100%
                 width: 100%
                 color: transparent
+        #logout-shroud
+            z-index: 4
+            position: absolute
+            height: 100%
+            width: 105%
+            color: transparent
         li
             margin: 5px auto 5px auto
             height: 50px
@@ -274,8 +280,67 @@ menu
                 top: 180px
                 left: 50%
                 transform: translate(-50%)
+    ul#settings-dropdown
+        display: none
+        position: absolute
+        z-index: 4
+        font: normal normal .95rem 'Source Sans Pro', sans-serif
+        list-style: none
+        margin: 0
+        padding: 8px 0 8px 0
+        background-color: white
+        opacity: 0
+        border-radius: 4px
+        box-shadow: 0 5px 10px 5px rgba(0,0,0,0.18)
+        .settings-divider
+            display: none
+            margin: 10px 0 10px 0
+            height: 1px
+            width: 100%
+            background-color: darken(white, 20)
+        .settings-index
+            display: none
+            height: 20px
+            width: auto
+            padding: 0 14px 0 18px
+            &:hover
+                background-color: darken(white, 22)
+        &.revealed
+            animation-name: menu_reveal
+            animation-duration: 380ms
+            animation-fill-mode: forwards
+            animation-timing-function: ease-in-out
+            animation-iteration-count: 1
+        &.hidden
+            animation-name: menu_fadeout
+            animation-duration: 300ms
+            animation-fill-mode: forwards
+            animation-timing-function: ease-in-out
+            animation-iteration-count: 1
 @keyframes ripple
     0%
         transform: scale(0)
     100%
         transform: scale(1)
+@keyframes menu_reveal
+    0%
+        width: 0
+        height: 0
+        opacity: 0
+        margin-left: 98px
+    80%
+        width: 196.25px
+        height: 194.4px
+        opacity: 0.8
+    100%
+        margin-left: 0
+        opacity: 1
+        height: 243px
+@keyframes menu_fadeout
+    0%
+        opacity: 1
+    100%
+        opacity: 0
+        height: 0
+        width: 0
+        display: none

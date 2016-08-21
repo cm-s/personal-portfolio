@@ -5,14 +5,17 @@ var UserNameForumFilled = { value: false };
 var PasswordForumFilled = { value: false };
 var menu_out = false;
 
-// Check if input field has text in it and reflect that in the reporter(either UserNameForumFilled or PasswordForumFilled)
+var settings_dropdown_pos = 0;
+
 function monitor_entries(inputObject, reporter, buttonObject, buttonShroud) {
+    // Check if input field has text in it and reflect that in the reporter(either UserNameForumFilled or PasswordForumFilled)
     if ($(inputObject).val() != '') { reporter.value = true; }
     else {
         if (inputObject) {
             reporter.value = false;
         };
     };
+    // If fields are filled, allow submission
     if (PasswordForumFilled.value && UserNameForumFilled.value) {
         $(buttonShroud).css('display', 'none');
         $(buttonObject).removeClass('disabled').addClass('enabled');
@@ -24,21 +27,38 @@ function monitor_entries(inputObject, reporter, buttonObject, buttonShroud) {
 };
 
 $(document).ready(function() {
-    $('#menu').click(function() {
+    // Presets
+    settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 50 - 98;
+    console.log(settings_dropdown_pos);
+    // Menu mechanics
+    $('#menu').click(function(event) {
+        event.stopPropagation();
+        $('html').click(function() {
+            $('menu').animate({'margin-left': '-335px'}, 200);
+        });
         $('menu').animate({'margin-left': '0'}, 200);
     });
+    $('menu').click(function(event) {
+        event.stopPropagation();
+    });
+    // Window close mechanics
     $('#close').click(function() {
         $('#closing-shroud').addClass('pressed');
         setTimeout(function () {
+            $('#messenger_user_name').val("")
+            $('#messenger_password').val("")
+            $('#messenger_display_name').val("")
             $('#signup-forum').css('display', 'none');
         }, 120);
     });
     $('#close-login').click(function() {
         $('#closing-login-shroud').addClass('pressed');
         setTimeout(function() {
+            $('#user_name').val("")
             $('#login-forum').css('display', 'none');
         }, 120);
     });
+    // Link ckicking mechanics
     $('#signup-link').click(function() {
         UserNameForumFilled.value = false;
         PasswordForumFilled.value = false;
@@ -53,7 +73,7 @@ $(document).ready(function() {
         $('#login-forum').animate({'height': '300px'}, 65);
         $('menu').animate({'margin-left': '-335px'}, 200);
     });
-    //Forum entry enforcement aggragators
+    // Forum entry enforcement aggragators
         $('#messenger_user_name').keyup(function() {
             monitor_entries('#messenger_user_name', UserNameForumFilled, '#signup-button', '#signup-shroud');
         });
@@ -66,4 +86,20 @@ $(document).ready(function() {
         $('#password').keyup(function() {
             monitor_entries(null, PasswordForumFilled, '#login-button', '#login-shroud');
         });
+    // Settings button mechanics
+    $('#settings').click(function(event) {
+        $('#settings-dropdown').css('left', settings_dropdown_pos + 'px');
+        $('#settings-dropdown').addClass('revealed').css('display', 'block').removeClass('hidden');
+        setTimeout(function () {
+            $('.settings-index').css('display', 'block');
+            $('.settings-divider').css('display', 'block');
+        }, 400);
+        event.stopPropagation();
+        $('html').click(function() {
+            $('#settings-dropdown').removeClass('revealed').addClass('hidden');
+        });
+    });
+    $('#settings-dropdown').click(function(event) {
+        event.stopPropagation();
+    });
 });

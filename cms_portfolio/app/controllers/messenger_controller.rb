@@ -33,6 +33,7 @@ class MessengerController < ApplicationController
     end
     def logout
         session[:logged_user_id] = nil
+        puts "ApplicationController::MessengerController: Logout Succeded. Redirecting to root"
         redirect_to root_url
     end
     def logged_in
