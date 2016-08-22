@@ -4,7 +4,7 @@
 var UserNameForumFilled = { value: false };
 var PasswordForumFilled = { value: false };
 var menu_out = false;
-
+var details_menu_out = false;
 var settings_dropdown_pos = 0;
 
 function monitor_entries(inputObject, reporter, buttonObject, buttonShroud) {
@@ -29,7 +29,7 @@ function monitor_entries(inputObject, reporter, buttonObject, buttonShroud) {
 $(document).ready(function() {
     // Presets
     settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 50 - 98;
-    console.log(settings_dropdown_pos);
+    $('.checkbox-ripple').css('transform', 'scale(0)');
     // Menu mechanics
     $('#menu').click(function(event) {
         event.stopPropagation();
@@ -101,5 +101,14 @@ $(document).ready(function() {
     });
     $('#settings-dropdown').click(function(event) {
         event.stopPropagation();
+    });
+    $('#about').click(function() {
+        if (!details_menu_out) {
+            $('#details-container').animate({'left': '100%'}, 200);
+            details_menu_out = true;
+        } else {
+            $('#details-container').animate({'left': '120%'}, 200);
+            details_menu_out = false;
+        };
     });
 });

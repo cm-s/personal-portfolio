@@ -75,4 +75,37 @@
         <li class="settings-index">Help</li>
         <li class="settings-index">Report a Problem</li>
     </ul>
+    <div id="details-container">
+        <div id="details-header">
+            <%= image_tag('messenger/profile-pictures/default.svg', :id => 'profile-image') %>
+            <h5 id="profile-user_name">Username Here</h5>
+            <i class="mdi mdi-settings mdi-16px mdi-dark" id="profile-info-settings"></i>
+        </div>
+        <ul id="details-options">
+            Options
+            <p>
+                <i class="mdi mdi-border-color mdi-24px account-color"></i>
+                Edit Nicknames
+            </p>
+            <p>
+                <i class="mdi mdi-format-color-fill mdi-24px account-color"></i>
+                Change Color
+            </p>
+            <p>
+                <i class="mdi mdi-emoticon mdi-24px account-color"></i>
+                Change Emoji
+            </p>
+            <label>
+                <input type="checkbox" name="mute" value="" class="mdi">
+                <i class="mdi mdi-checkbox-blank-outline mdi-24px mdi-dark account-color unchecked"></i>
+                <i class="mdi mdi-checkbox-marked mdi-24px mdi-dark account-color checked"></i>
+                <div class="checkbox-ripple"></div>
+                <span>Mute Notifications</span>
+            </label>
+        </ul>
+        <div id="details-page-info">
+            <span>Face.book Page</span><br>
+            <span>https://face.book.com/enteruser.here</span>
+        </div>
+    </div>
 </div>
