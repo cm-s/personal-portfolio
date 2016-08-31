@@ -12,6 +12,7 @@
     asset-url: ('fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf') format('truetype')
 
 $rich-matte-black: #111
+$messenger-blue: #2998ff
 
 html, body
     margin: 0 0 0 0
@@ -270,12 +271,100 @@ html, body
                 .topic-container
                     height: 300px
                     width: 300px
-                    margin: 40px auto auto auto
-                    background-color: pink
+                    margin: 75px auto auto auto
+                    background-color: white
                     text-align: center
                     .canvas
+                        position: relative
                         width: 100%
                         height: 78%
+
+                        // Material Messenger Link Area
+                        #mm-icon-right
+                            top: 30px
+                            left: 110px
+                            border-bottom-right-radius: 0
+                            border-bottom-left-radius: 20px
+                            z-index: 3
+                            box-shadow: none
+                        .background-top
+                            height: 100px
+                            width: 100px
+                            background-color: $messenger-blue
+                            position: absolute
+                            left: 48px
+                            top: 59px
+                            box-shadow: 4px -4px 8px 3px rgba(0,0,0,0.2)
+                            border-top-left-radius: 20px
+                            border-top-right-radius: 20px
+                            border-bottom-right-radius: 20px
+                            z-index: 4
+                            .mm-icon-text-line
+                                position: absolute
+                                top: 22px
+                                left: 50%
+                                transform: translate(-50%)
+                                width: 70%
+                                height: 8px
+                                background-color: transparentize(#555, .3)
+                                + :nth-of-type(2)
+                                    top: 44px
+                                + :nth-of-type(3)
+                                    top: 66px
+                        #mm-icon-right-bottom
+                            top: 130px
+                            left: 110px
+                            z-index: 3
+                        .background-bottom
+                            height: 50px
+                            width: 100px
+                            background-color: $messenger-blue
+                            position: absolute
+                            z-index: 4
+                            left: 48px
+                            top: 159px
+                            + :nth-of-type(2)
+                                top: 169px
+                                left: 100px
+                            #blue-cutoff-left
+                                position: absolute
+                                background-color: white
+                                height: 50px
+                                width: 100px
+                                border-top-left-radius: 50px
+                            #blue-cutoff-right
+                                @extend #blue-cutoff-left
+                                border-top-right-radius: 50px
+                                border-top-left-radius: 0
+                        .mm-background-bubble
+                            position: absolute
+                            border-radius: 50%
+                            background-color: transparentize(darken($messenger-blue, 30), .3)
+                            opacity: 0.6
+                        #mm-center-bubble
+                            height: 150px
+                            width: 150px
+                            top: 50px
+                            left: 89px
+                            transform: translate(-50%, -50%)
+                        #mm-outer-bubble1
+                            height: 95px
+                            width: 95px
+                            top: 12px
+                            left: 133px
+                        #mm-outer-bubble2
+                            height: 50px
+                            width: 50px
+                            top: 100px
+                            left: 215px
+                        #mm-outer-bubble3
+                            height: 40px
+                            width: 40px
+                            top: -36px
+                            left: 165px
+
+                        // Projects Link Area
+
                     .topicButton
                         display: inline-block
                         padding: 15px

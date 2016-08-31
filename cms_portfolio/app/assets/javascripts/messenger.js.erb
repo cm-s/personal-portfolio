@@ -25,10 +25,13 @@ function monitor_entries(inputObject, reporter, buttonObject, buttonShroud) {
         $(buttonObject).removeClass('enabled').addClass('disabled');
     };
 };
+function position_settings_dropdown() {
+    settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 50 - 98;
+};
 
 $(document).ready(function() {
     // Presets
-    settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 50 - 98;
+    position_settings_dropdown();
     $('.checkbox-ripple').css('transform', 'scale(0)');
     // Menu mechanics
     $('#menu').click(function(event) {
@@ -88,6 +91,7 @@ $(document).ready(function() {
         });
     // Settings button mechanics
     $('#settings').click(function(event) {
+        position_settings_dropdown();
         $('#settings-dropdown').css('left', settings_dropdown_pos + 'px');
         $('#settings-dropdown').addClass('revealed').css('display', 'block').removeClass('hidden');
         setTimeout(function () {

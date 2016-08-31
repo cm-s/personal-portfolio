@@ -26,6 +26,9 @@
         </div>
         <div id="terminal-sect-container">
         <p id="terminal-explanation">
+            <style media="screen">
+                #csci-page { color: #009db9; }
+            </style>
             My biggest <mark>completed*</mark> project (in it's many versions) is called adv_game. Originally modeled after the requirements listed from <%= link_to("foobt.net", 'http://foobt.net', :id => 'csci-page') %> for a text adventure; My interpretation of such comes complete with semi-modular functionallity for easy level setup and many built in features. All this rewritten in Python, Java, and C++.
         </p>
         <div id="console-container">
@@ -83,7 +86,30 @@
         <div id="site-ext-container">
             <div class="topic-container">
                 <div class="canvas">
+                <!-- chat bubble one -->
+                    <div class="background-top" id="mm-icon-left">
+                        <div class="mm-icon-text-line"></div>
+                        <div class="mm-icon-text-line"></div>
+                        <div class="mm-icon-text-line"></div>
+                    </div>
+                    <div class="background-bottom" id="mm-icon-left-bottom">
+                        <div id="blue-cutoff-left"></div>
+                    </div>
+                <!-- chat bubble two -->
+                    <div class="background-top" id="mm-icon-right">
+                        <div class="mm-icon-text-line"></div>
+                        <div class="mm-icon-text-line"></div>
+                        <div class="mm-icon-text-line"></div>
+                    </div>
+                    <div class="background-bottom" id="mm-icon-right-bottom">
+                        <div id="blue-cutoff-right"></div>
+                    </div>
 
+                    <div class="mm-background-bubble" id="mm-center-bubble"></div>
+                    <div class="mm-background-bubble" id="mm-outer-bubble1"></div>
+                    <div class="mm-background-bubble" id="mm-outer-bubble2"></div>
+                    <div class="mm-background-bubble" id="mm-outer-bubble3"></div>
+                    <div class="mm-background-bubble" id="mm-outer-bubble4"></div>
                 </div>
                 <%= link_to("Goto Messenger", 'messenger/desktop', :id => 'messenger-link', :class => 'topicButton') %>
             </div>

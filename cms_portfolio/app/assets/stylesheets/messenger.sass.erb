@@ -62,8 +62,8 @@ html, body
     #search-bar
         margin: 0 auto 0 auto
         width: 60%
-        height: 30px
-        background-color: rgba(191, 191, 191, 0.6)
+        height: 39px
+        background-color: rgba(191, 191, 191, 0.2)
         text-align: center
         border-radius: 5px
         display: flex
@@ -72,6 +72,9 @@ html, body
         h4
             font: normal normal large helvetica, sans-serif
             color: white
+        &:hover
+            background-color: rgba(255, 255, 255, 0.25)
+            cursor: text
     #conversation-title
         position: absolute
         margin-top: 10px
@@ -399,7 +402,7 @@ menu
                             + .checkbox-ripple
                                 animation-name: ripple
                                 animation-duration: 200ms
-                                animation-fill-mode: forwards
+                                animation-fill-mode: none
                                 animation-timing-function: ease-in-out
                                 animation-iteration-count: 1
         #details-page-info
