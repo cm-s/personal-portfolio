@@ -5,6 +5,7 @@ class MessengerController < ApplicationController
 
     def show
         @title = "Material Messenger"
+        @users = Messenger.find(params[*])
         render :desktop
     end
     def new
