@@ -98,6 +98,7 @@ menu
     width: 300px
     position: fixed
     margin: 0 0 0 -335px
+    overflow-y: auto
     background-color: white
     padding: 15px
     box-shadow: 3px 0 3px rgba(0,0,0,0.2)
@@ -148,7 +149,7 @@ menu
     padding-top: 55px
     .forum
         z-index: 5
-        position: absolute
+        position: fixed
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
@@ -185,7 +186,11 @@ menu
             animation-iteration-count: 1
     #signup-forum
         display: none
-        height: 350px
+        // The following two height and width values are trivial
+        // The real height and width are the values that the forum
+        // is animated to. Check messenger.js.erb under assets/javascripts
+        // for these values
+        height: 370px
         width: 450px
         form
             height: 95%
@@ -213,7 +218,7 @@ menu
             #signup-button
                 @include mm-standard-font(1.5rem)
                 padding: 10px
-                top: 78%
+                top: 320px
                 border-radius: 4px
             #signup-shroud
                 height: 200px
@@ -221,7 +226,7 @@ menu
                 position: absolute
                 z-index: 10
                 left: 50%
-                top: 76%
+                top: 310px
                 transform: translate(-50%)
         img#close
             position: absolute

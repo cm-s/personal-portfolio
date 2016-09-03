@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     get 'messenger/logout' => 'messenger#logout'
     post 'messenger/login' => 'messenger#login'
-    resources( :messenger, :only => [:create, :new, :show, :destroy] )
+    resources( :messenger, :only => [:create, :new, :show, :destroy, :index] )
     # The ':only => []' option removes the listed default actions that are included with 'resources :resource'
     # ------------ After 'rake routes' -----------------------------------
     #           Prefix Verb   URI Pattern                 Controller#Action

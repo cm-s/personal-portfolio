@@ -36,18 +36,7 @@
             <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
             <em>Log Out</em>
         </li>
-        <li>
-            <%= image_tag('messenger/profile-pictures/marylin.jpg') %>
-            <em>Marylin Monroe</em>
-        </li>
-        <li>
-            <%= image_tag('messenger/profile-pictures/default.svg') %>
-            <em>Person2 LastName</em>
-        </li>
-        <li>
-            <%= image_tag('messenger/profile-pictures/default.svg') %>
-            <em>Person3 LastName</em>
-        </li>
+        <%= render(:partial => 'users_index') %>
     </ul>
 </menu>
 <div id="content-section">

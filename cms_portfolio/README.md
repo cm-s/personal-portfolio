@@ -27,6 +27,7 @@ Log of current implemented/transitioned features is organized below;
 * Fully equipped navigation bar
 * Login and logout functions
 * Settings menu
+* 'Friends' list
 
 ###Index page
 * Dynamic navigation bar

@@ -14,9 +14,10 @@
 ActiveRecord::Schema.define(version: 20160809064828) do
 
   create_table "messengers", force: :cascade do |t|
-    t.string   "user_name",    limit: 25, null: false
-    t.string   "password",     limit: 15, null: false
-    t.string   "display_name", limit: 10
+    t.string   "user_name",  limit: 25, null: false
+    t.string   "password",   limit: 15, null: false
+    t.string   "first_name", limit: 20, null: false
+    t.string   "last_name",  limit: 20, null: false
     t.datetime "created_at"
   end
 
