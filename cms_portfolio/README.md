@@ -32,3 +32,4 @@ Log of current implemented/transitioned features is organized below;
 ###Index page
 * Dynamic navigation bar
 * Preview of my work on first card
+* Material Messenger(mm) icon on second card

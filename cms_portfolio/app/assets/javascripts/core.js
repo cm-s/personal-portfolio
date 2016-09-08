@@ -3,7 +3,53 @@
 //= require turbolinks
 var headerHasText = false;
 
+// MM bubble floating effects
+var spatial_delimiter = 0;
+var drift_direction = 0;
+
+function drift(applicant) {
+    switch (drift_direction) {
+        case 1:
+            $(applicant).addClass('dritfting_direc1');
+            break;
+        case 2:
+            $(applicant).addClass('dritfting_direc2');
+            break;
+        case 3:
+            $(applicant).addClass('dritfting_direc3');
+            break;
+    };
+    setTimeout(function () {
+        $(applicant).removeClass('dritfting_direc1');
+        $(applicant).removeClass('dritfting_direc2');
+        $(applicant).removeClass('dritfting_direc3');
+    }, 600);
+};
+
+function spatial_randomizer() {
+    spatial_delimiter = Math.floor(Math.random() * 40);
+    drift_direction = (drift_direction >= 25) ? 1 : 2;
+    drift_direction = (drift_direction == 2 && spatial_delimiter > 10) ? 3 : 2;
+    if (spatial_delimiter <= 10) {
+        drift('#mm-center-bubble');
+    };
+    if ((spatial_delimiter <= 25) && (spatial_delimiter >= 8)) {
+        drift('#mm-outer-bubble1');
+    };
+    if ((spatial_delimiter <= 30) && (spatial_delimiter >= 21)) {
+        drift('#mm-outer-bubble2');
+    };
+    if ((spatial_delimiter <= 40) && (spatial_delimiter >= 28)) {
+        drift('#mm-outer-bubble3');
+    };
+    setTimeout(function () {
+        spatial_randomizer();
+    }, 300);
+};
+
 $(document).ready(function() {
+    spatial_randomizer();
+
     $('#toTop').click(function() {
         $('html, body').animate({scrollTop: 0}, 600);
     });

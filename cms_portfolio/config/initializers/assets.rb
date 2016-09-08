@@ -9,6 +9,6 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += ['messenger.css', 'core.css'] #This isn't DRY & application.(js/css) is empty!
-Rails.application.config.assets.precompile += ['messenger.js', 'core.js']
+Rails.application.config.assets.precompile += ['messenger.css', 'core.css', 'projects.css', 'nutrition_facts.css'] #This isn't DRY & application.(js/css) is empty!
+Rails.application.config.assets.precompile += ['messenger.js', 'core.js', 'projects.js']
 Rails.application.config.assets.precompile += %w( materialdesignicons )

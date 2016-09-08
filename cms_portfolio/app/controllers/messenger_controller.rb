@@ -2,56 +2,63 @@ class MessengerController < ApplicationController
     # apply ApplicationController actions to logged users
     before_filter :authenticate_login, :only => [:desktop, :setting]
     before_filter :enforce_logged_state, :only => [:new, :create, :login]
+    before_filter :determine_disabled
 
     def index
     end
     def show
         @title = "Material Messenger"
-        @users = Messenger.all.order('created_at ASC') # ordering messages from least current to most
+        list_messagers
         render :desktop
     end
     def new
         @user = Messenger.new
     end
     def create
-        @users = Messenger.all.order('created_at ASC')
+        list_messagers
         @user = Messenger.new(user_params)
         @user.save!
         if @user.save!
             puts "ApplicationController::MessengerController: Database entry creation successful"
             session[:logged_user_id] = @user.id
+            flash[:postprocess] = "User Created Successfully"
             render :desktop
         else
             puts "ApplicationController::MessengerController: Database entry creation unsuccessful"
+            flash[:user_error] = "...Something Went Wrong"
             render :desktop, :notice => "Signup Failed"
         end
     end
     def login
-        user_logged = Messenger.authenticate(params[:user_name], params[:password])
+        list_messagers
+        logged_user = Messenger.authenticate(params[:user_name], params[:password])
 
-        if user_logged # If authentication returns, being anything other than false (an object)
-            session[:logged_user_id] = user_logged.id
+        if logged_user # If authentication returns, being anything other than false (an object)
+            session[:logged_user_id] = logged_user.id
             puts "ApplicationController::MessengerController: Success; User logged in sucessfully"
+            flash[:pastprocess] = "Logged In Successfully"
+            determine_disabled
             render :desktop
         else
             puts "ApplicationController::MessengerController: Failure; Invalid Credentials, User redirected"
+            flash[:user_error] = "Couldn\'t Log In"
+            determine_disabled
             render :desktop
         end
     end
     def logout
-        session[:logged_user_id] = nil
+        reset_session
         puts "ApplicationController::MessengerController: Logout Succeded. Redirecting to root"
+        flash[:postprocess] = "Logout Succeded"
         redirect_to root_url
     end
-    def logged_in
-        if @current_user.id
-            return true
-        else
-            return false
-        end
-    end
+
     private
+
     def user_params
         params.require(:messenger).permit(:user_name, :password, :first_name, :last_name)
+    end
+    def list_messagers
+        @users = Messenger.all.order('created_at ASC') # ordering messages from least current to most
     end
 end

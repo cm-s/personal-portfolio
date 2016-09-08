@@ -21,4 +21,11 @@ class ApplicationController < ActionController::Base
             return true
         end
     end
+    def determine_disabled
+        @disabled = true
+        if !session[:logged_user_id]
+            @disabled = false
+        end
+        puts "ApplicationController: \'Disabled\' environment variable set to #{@disabled}"
+    end
 end

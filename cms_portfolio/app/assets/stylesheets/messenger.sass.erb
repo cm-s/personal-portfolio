@@ -33,6 +33,19 @@ html, body
     width: 100%
     background-color: darken(white, 8)
     z-index: -3
+#postprocess-message
+    position: absolute
+    top: -10%
+    left: -50%
+    transform: translate(-50%, -50%)
+    padding: 25px
+    border-radius: 6px
+    @include mm-standard-font(1.2rem)
+    box-shadow: 0 5px 6px 1px rgba(0,0,0,0.3)
+    animation-name: message-popdown
+    animation-duration: 5000ms
+    animation-timing-function: ease-in-out
+    animation-iteration-count: 1
 #navbar-container
     z-index: 2
     position: fixed
@@ -106,6 +119,8 @@ menu
         list-style: none
         margin: 0
         padding: 0
+        .link-disabled
+            color: rgba(0,0,0,0.26)
         #signup-link
             border-bottom: 1px solid transparentize(#888, 0.5)
             cursor: pointer
@@ -465,3 +480,12 @@ menu
     100%
         opacity: 0
         transform: scale(0)
+@keyframes message-popdown
+    0%
+        transform: translate(-50% -50%)
+    10%
+        transform: translate(-50%, 150%)
+    90%
+        transform: translate(-50%, 150%)
+    100%
+        transform: translate(-50%, -50%)

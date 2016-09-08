@@ -1,3 +1,8 @@
+<% if flash[:postprocess] %>
+    <div id="postprocess-message">
+        <%= flash[:postprocess] %>
+    </div>
+<% end %>
 <nav id="navbar-container">
     <div class="button" id="menu">
         <div class="ripple" id="menu"></div>
@@ -23,18 +28,32 @@
 <menu>
     <ul>
         <li id="signup-link">
-            <i class="mdi mdi-account-plus mdi-24px mdi-dark"></i>
-            <em>Sign Up!</em>
+            <% if !@disabled %>
+                <i class="mdi mdi-account-plus mdi-24px mdi-dark"></i>
+                <em>Sign Up!</em>
+            <% else %>
+                <i class="mdi mdi-account-plus mdi-24px mdi-dark mdi-inactive"></i>
+                <em class="link-disabled">Sign Up!</em>
+            <% end %>
         </li>
         <li id="login-link">
-            <i class="mdi mdi-account-network mdi-24px mdi-dark"></i>
-            <em>Log In</em>
+            <% if !@disabled %>
+                <i class="mdi mdi-account-network mdi-24px mdi-dark"></i>
+                <em>Log In</em>
+            <% else %>
+                <i class="mdi mdi-account-network mdi-24px mdi-dark mdi-inactive"></i>
+                <em class="link-disabled">Log In</em>
+            <% end %>
         </li>
         <li id="logout-container">
-            <span id="logout-shroud"></span>
-            <%= link_to(:logout) %>
-            <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
-            <em>Log Out</em>
+            <% if @disabled %>
+                <%= link_to('', messenger_logout_url) %>
+                <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
+                <em>Log Out</em>
+            <% else %>
+                <i class="mdi mdi-logout-variant mdi-24px mdi-dark mdi-inactive"></i>
+                <em class="link-disabled">Log Out</em>
+            <% end %>
         </li>
         <%= render(:partial => 'users_index') %>
     </ul>

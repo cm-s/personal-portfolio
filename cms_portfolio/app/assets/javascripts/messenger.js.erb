@@ -5,6 +5,7 @@ var entries_filled = { user_name: false, first_name: false, last_name: false, pa
 var menu_out = false;
 var details_menu_out = false;
 var settings_dropdown_pos = 0;
+var disabled_link = false;
 
 // Entry setter, helper function for the monitor_signup_entries() function and the monitor_login_entries() funciton.
 function permit_entry(reporter) {
@@ -100,24 +101,38 @@ $(document).ready(function() {
     });
     // Link ckicking mechanics
     $('#signup-link').click(function() {
-        // If the signup field has been opened, make sure entry data detectors are preset to false
-        entries_filled.user_name = false;
-        entries_filled.password = false;
-        entries_filled.first_name = false;
-        entries_filled.last_name = false;
+        if ($('#login-link em').hasClass('link-disabled')) {
+            disabled_link = true;
+        } else {
+            disabled_link = false;
+        };
+        if (!disabled_link) {
+            // If the signup field has been opened, make sure entry data detectors are preset to false
+            entries_filled.user_name = false;
+            entries_filled.password = false;
+            entries_filled.first_name = false;
+            entries_filled.last_name = false;
 
-        $('#signup-forum').css('height', '0').css('display', 'block');
-        $('#signup-forum').animate({'height': '370px'}, 65)
-        $('menu').animate({'margin-left': '-335px'}, 200);
+            $('#signup-forum').css('height', '0').css('display', 'block');
+            $('#signup-forum').animate({'height': '370px'}, 65)
+            $('menu').animate({'margin-left': '-335px'}, 200);
+        };
     });
     $('#login-link').click(function() {
-        // If the signup field has been opened, make sure entry data detectors are preset to false
-        entries_filled.user_name = false;
-        entries_filled.password = false;
+        if ($('#signup-link em').hasClass('link-disabled')) {
+            disabled_link = true;
+        } else {
+            disabled_link = false;
+        };
+        if (!disabled_link) {
+            // If the signup field has been opened, make sure entry data detectors are preset to false
+            entries_filled.user_name = false;
+            entries_filled.password = false;
 
-        $('#login-forum').css('height', '0').css('display', 'block')
-        $('#login-forum').animate({'height': '300px'}, 65);
-        $('menu').animate({'margin-left': '-335px'}, 200);
+            $('#login-forum').css('height', '0').css('display', 'block')
+            $('#login-forum').animate({'height': '300px'}, 65);
+            $('menu').animate({'margin-left': '-335px'}, 200);
+        };
     });
     // Forum entry enforcement aggragators, envoking enforcement functions
         $('#messenger_user_name').keyup(function() {

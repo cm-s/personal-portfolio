@@ -105,7 +105,7 @@ html, body
             position: absolute
             top: 50%
             left: 50%
-            transform: translate(-50%, -40px)
+            transform: translate(-50%, -50%)
             z-index: 0
             color: white
             font: normal normal 35px 'Titillium Web', sans-serif
@@ -253,7 +253,7 @@ html, body
                                 animation-fill-mode: forwards
                                 animation-timing-function: linear
                                 animation-iteration-count: infinite
-            footer
+            #card-one-footer
                 font: normal normal .7rem arial, sans-serif
                 margin: auto auto 0 auto
                 color: transparentize(#666, .3)
@@ -339,40 +339,77 @@ html, body
                         .mm-background-bubble
                             position: absolute
                             border-radius: 50%
-                            background-color: transparentize(darken($messenger-blue, 30), .3)
+                            background-color: transparentize(lighten(purple, 40), .3)
                             opacity: 0.6
+                            transition: all ease-in-out 2s
                         #mm-center-bubble
                             height: 150px
                             width: 150px
                             top: 50px
                             left: 89px
                             transform: translate(-50%, -50%)
+                            &.dritfting_direc1
+                                transform: translate(-55%, -52%)
+                                height: 160px
+                                width: 155px
+                            &.dritfting_direc2
+                                transform: translate(-58%, -58%)
+                            &.dritfting_direc3
+                                transform: translate(-46%, -48%)
                         #mm-outer-bubble1
                             height: 95px
                             width: 95px
                             top: 12px
                             left: 133px
+                            &.dritfting_direc1
+                                transform: translate(-8px, -17px)
+                            &.dritfting_direc2
+                                transform: translate(10px, 17px) scale(1.4)
+                            &.dritfting_direc3
+                                transform: translate(5px, -13px)
                         #mm-outer-bubble2
                             height: 50px
                             width: 50px
                             top: 100px
                             left: 215px
+                            &.dritfting_direc1
+                                transform: translate(-7px, -12px)
+                                height: 60px
+                                width: 60px
+                            &.dritfting_direc2
+                                transform: translate(9px, 11px)
+                            &.dritfting_direc3
+                                transform: translate(-12px, 16px)
                         #mm-outer-bubble3
                             height: 40px
                             width: 40px
                             top: -36px
                             left: 165px
+                            &.dritfting_direc1
+                                transform: translate(-10px, -12px)
+                                height: 75px
+                                width: 75px
+                            &.dritfting_direc2
+                                transform: translate(5px, -8px)
+                            &.dritfting_direc3
+                                transform: translate(-5px, -17px)
 
                         // Projects Link Area
 
-                    .topicButton
+                    .topic-button
                         display: inline-block
                         padding: 15px
-                        border-radius: 10px
-                        box-shadow: 0 2px 4px 2px rgba(0,0,0,0.2)
+                        border-radius: 6px
                         font: bold normal 1rem 'Titillium Web', sans-serif
                         text-decoration: none
+                        z-index: 3
                         color: black
+                        background-color: white
+                        box-shadow: 0 3px 4px rgba(0,0,0,0.15)
+                        transition: all ease-in-out 0.2s
+                        &:hover
+                            transform: translateY(-5px)
+                            box-shadow: 0 7px 9px -3px rgba(0,0,0,0.3)
                     #messenger-link
                         background-color: #2998ff
                     #skits-link
