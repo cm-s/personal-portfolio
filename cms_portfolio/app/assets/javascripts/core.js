@@ -28,8 +28,19 @@ function drift(applicant) {
 
 function spatial_randomizer() {
     spatial_delimiter = Math.floor(Math.random() * 40);
-    drift_direction = (drift_direction >= 25) ? 1 : 2;
-    drift_direction = (drift_direction == 2 && spatial_delimiter > 10) ? 3 : 2;
+    switch (drift_direction) {
+        case 1:
+            drift_direction = 2;
+            break;
+        case 2:
+            drift_direction = 3;
+            break;
+        case 3:
+            drift_direction = 1;
+            break;
+        default:
+            break;
+    };
     if (spatial_delimiter <= 10) {
         drift('#mm-center-bubble');
     };

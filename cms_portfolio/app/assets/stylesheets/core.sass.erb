@@ -1,6 +1,13 @@
 @font-face
+    font-family: 'Pacifico'
+    font-style: normal
+    font-weight: 400
+    asset-url: ('fonts/Pacifico/Pacifico.ttf') format('truetype')
+// Not Working
+@font-face
     font-family: 'Titillium Web'
     asset-url: ('fonts/Titillium_Web/TitilliumWeb-Regular.ttf') format('truetype')
+// Not Working
 @font-face
     font-family: 'PT Sans'
     asset-url: ('fonts/PT_Sans/PT_Sans-Web-Regular.ttf') format('truetype')
@@ -10,6 +17,20 @@
 @font-face
     font-family: 'Ubuntu Mono'
     asset-url: ('fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf') format('truetype')
+
+@import "MaterialDesignIcons/materialdesignicons.scss"
+
+//material design dark according to guidelines: http://goo.gl/vkRHaV
+.mdi.mdi-dark
+    color: rgba(0,0,0,0.54)
+.mdi.mdi-dark.mdi-inactive
+    color: rgba(0,0,0,0.26)
+
+//material design light according to guidelines: http://goo.gl/vkRHaV
+.mdi.mdi-light
+    color: rgba(255,255,255,1)
+.mdi.mdi-light.mdi-inactive
+    color: rgba(255,255,255,0.3)
 
 $rich-matte-black: #111
 $messenger-blue: #2998ff
@@ -180,7 +201,7 @@ html, body
                             border: 1px solid orange
                             border-radius: 2px
                 #console-container
-                    width: 60%
+                    width: 535px
                     height: 330px
                     margin: 10px 0 0 auto
                     position: relative
@@ -263,17 +284,26 @@ html, body
                 color: #666
                 letter-spacing: 15px
                 font-weight: lighter
-                margin: 10px auto 10px auto
+                margin: 10px auto 55px auto
             #site-ext-container
                 width: 100%
                 display: flex
-                height: 65%
+                height: 56%
                 .topic-container
+                    position: relative
                     height: 300px
                     width: 300px
                     margin: 75px auto auto auto
                     background-color: white
                     text-align: center
+                    .topic-title
+                        position: absolute
+                        top: -90px
+                        width: 130%
+                        transform: translateX(-50%)
+                        font-size: 1.7rem
+                    #mm-title
+                        font: normal normal 1.7rem 'Pacifico', cursive
                     .canvas
                         position: relative
                         width: 100%
@@ -414,6 +444,20 @@ html, body
                         background-color: #2998ff
                     #skits-link
                         background-color: lighten(orange, 20)
+            #site-ext-info-container
+                position: relative
+                display: flex
+                width: 100%
+                .site-topic-info-sect
+                    width: 50%
+                    height: 190px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    font: normal normal 1.2rem helvetica, sans-serif
+                    color: green
+                    .info-popout
+                        display: none
 @keyframes blink
     0%
         opacity: 1
@@ -432,19 +476,19 @@ html, body
         color: lighten(orange, 30)
 @keyframes slideLeft
     0%
-        left: 100%
         opacity: 0
     70%
         opacity: 0
+        transform: translateX(-60px)
     100%
         opacity: 1
-        left: 84%
+        transform: translateX(-150px)
 @keyframes slideRight
     0%
-        left: 84%
         opacity: 1
     30%
+        transform: translateX(50px)
         opacity: 0
     100%
-        left: 100%
+        transform: translateX(150px)
         opacity: 0

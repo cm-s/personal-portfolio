@@ -3,11 +3,11 @@
 </div></span>
 <nav>
     <div class="button-ripple" id="toTop">
-        <%= image_tag('core/toTop_white.svg', :class => 'button') %>
+        <i class="mdi mdi-format-vertical-align-top mdi-light mdi-24px button"></i>
     </div>
     <h3>Mordecai Stevens (observe font) </h3>
     <div class="button-ripple" id="github">
-        <%= image_tag('core/github_white.svg', :class => 'button') %>
+        <i class="mdi mdi-code-tags mdi-light mdi-24px button"></i>
     </div>
     <span id="github-slider"><%= link_to("View GitHub profile", 'https://github.com/cm-s/skillsDev', :id => 'github_link') %></span>
 </nav>
@@ -85,6 +85,9 @@
         <h4>Internal Links</h4>
         <div id="site-ext-container">
             <div class="topic-container">
+                <span class="topic-title" id="mm-title">
+                    Material Messenger
+                </span>
                 <div class="canvas">
                 <!-- chat bubble one -->
                     <div class="background-top" id="mm-icon-left">
@@ -113,10 +116,27 @@
                 <%= link_to("Goto Messenger", 'messenger/desktop', :id => 'messenger-link', :class => 'topic-button') %>
             </div>
             <div class="topic-container">
+                <span class="topic-title" id="projects-title">Projects</span>
                 <div class="canvas">
 
                 </div>
                 <%= link_to("Check it Out", 'core/projects', :id => 'skits-link', :class => 'topic-button') %>
+            </div>
+        </div>
+        <div id="site-ext-info-container">
+            <div class="site-topic-info-sect">
+                <em>What is Material Messenger?</em><i class="mdi mdi-arrange-send-backward mdi-dark mdi-24px"></i>
+                <div class="info-popout">
+                    <p>
+                        Material Messenger is an immitation messaging application, modeled after Facebook's Messenger and more specifically the basic functions of <mark>messenger.com</mark>.
+                    </p>
+                </div>
+            </div>
+            <div class="site-topic-info-sect">
+                <em>More on these projects</em><i class="mdi mdi-arrange-send-backward mdi-dark mdi-24px"></i>
+                <div class="info-popout">
+
+                </div>
             </div>
         </div>
     </div>
