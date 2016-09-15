@@ -316,15 +316,25 @@ menu
         display: none
         position: absolute
         z-index: 4
-        overflow: hidden
-        @include mm-standard-font(.95rem)
-        list-style: none
         margin: 0
+        top: 110px
+        list-style: none
+        @include mm-standard-font(.95rem)
         padding: 8px 0 8px 0
         background-color: white
         opacity: 0
         border-radius: 4px
         box-shadow: 0 5px 10px 5px rgba(0,0,0,0.18)
+        overflow: visible
+        #settings-dropdown-arrow
+            height: 0
+            width: 0
+            border-left: 10px solid transparent
+            border-right: 10px solid transparent
+            border-bottom: 10px solid white
+            position: absolute
+            left: 50%
+            top: -10px
         .settings-divider
             display: none
             margin: 10px 0 10px 0
@@ -344,12 +354,21 @@ menu
             animation-fill-mode: forwards
             animation-timing-function: ease-in-out
             animation-iteration-count: 1
+            & > *
+                opacity: 0
+                animation-name: fadein
+                animation-duration: 600ms
+                animation-fill-mode: forwards
+                animation-timing-function: ease-out
+                animation-iteration-count: 1
         &.hidden
             animation-name: menu_fadeout
             animation-duration: 300ms
             animation-fill-mode: forwards
             animation-timing-function: ease-in-out
             animation-iteration-count: 1
+            & > *
+                opacity: 1
     #details-container
         position: fixed
         left: 120%
@@ -452,22 +471,37 @@ menu
         height: 0
         opacity: 0
         margin-left: 98px
+        overflow: visible
     80%
         width: 196.25px
         height: 194.4px
         opacity: 0.8
+        overflow: visible
     100%
         margin-left: 0
         opacity: 1
         height: 243px
+        overflow: visible
+@keyframes fadein
+    0%
+        opacity: 0
+    50%
+        opacity: 0
+    100%
+        opacity: 1
 @keyframes menu_fadeout
     0%
         opacity: 1
+        overflow: hidden
+    99%
+        opacity: 0
+        overflow: hidden
     100%
         opacity: 0
         height: 0
         width: 0
         display: none
+        overflow: hidden
 @keyframes ripple
     0%
         transform: scale(0)
