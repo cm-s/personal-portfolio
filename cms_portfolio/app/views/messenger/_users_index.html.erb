@@ -1,5 +1,5 @@
 <% @users.each do |usr| %>
-    <li>
-        <em><%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %></em>
-    </li>
+  <li>
+    <em><%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %></em>
+  </li>
 <% end %>

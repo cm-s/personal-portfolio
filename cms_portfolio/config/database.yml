@@ -1,22 +1,22 @@
 default: &default
-    adapter: mysql
-    pool: 5
-    timeout: 5000
-    username: root
-    password: 8gpk6l5
-    host: localhost
+  adapter: mysql
+  pool: 5
+  timeout: 5000
+  username: root
+  password: 8gpk6l5
+  host: localhost
 
 development:
-    <<: *default
-    database: cms_portfolio_dev
+  <<: *default
+  database: cms_portfolio_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-    <<: *default
-    database: cms_portfolio_test
+  <<: *default
+  database: cms_portfolio_test
 
 production:
-    <<: *default
-    database:
+  <<: *default
+  database:

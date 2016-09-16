@@ -1,525 +1,525 @@
 @font-face
-    font-family: 'Source Sans Pro'
-    asset-url: ('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf')
+  font-family: 'Source Sans Pro'
+  asset-url: ('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf')
 
 @import 'MaterialDesignIcons/materialdesignicons.scss'
 
 //material design dark according to guidelines: http://goo.gl/vkRHaV
 .mdi.mdi-dark
-    color: rgba(0,0,0,0.54)
+  color: rgba(0,0,0,0.54)
 .mdi.mdi-dark.mdi-inactive
-    color: rgba(0,0,0,0.26)
+  color: rgba(0,0,0,0.26)
 
 //material design light according to guidelines: http://goo.gl/vkRHaV
 .mdi.mdi-light
-    color: rgba(255,255,255,1)
+  color: rgba(255,255,255,1)
 .mdi.mdi-light.mdi-inactive
-    color: rgba(255,255,255,0.3)
+  color: rgba(255,255,255,0.3)
 
 $messenger-blue: #2998ff
 
 @mixin mm-standard-font($size)
-    font: normal normal $size 'Source Sans Pro', sans-serif
+  font: normal normal $size 'Source Sans Pro', sans-serif
 @mixin user-select($value)
-    -webkit-touch-callout: $value
-    -webkit-user-select: $value
-    -khtml-user-select: $value
-    -moz-user-select: $value
-    -ms-user-select: $value
+  -webkit-touch-callout: $value
+  -webkit-user-select: $value
+  -khtml-user-select: $value
+  -moz-user-select: $value
+  -ms-user-select: $value
 
 html, body
-    margin: 0 0 0 0
-    height: 100%
-    width: 100%
-    background-color: darken(white, 8)
-    z-index: -3
+  margin: 0 0 0 0
+  height: 100%
+  width: 100%
+  background-color: darken(white, 8)
+  z-index: -3
 #postprocess-message
-    position: absolute
-    top: -10%
-    left: -50%
-    transform: translate(-50%, -50%)
-    padding: 25px
-    border-radius: 6px
-    @include mm-standard-font(1.2rem)
-    box-shadow: 0 5px 6px 1px rgba(0,0,0,0.3)
-    animation-name: message-popdown
-    animation-duration: 5000ms
-    animation-timing-function: ease-in-out
-    animation-iteration-count: 1
+  position: absolute
+  top: -10%
+  left: -50%
+  transform: translate(-50%, -50%)
+  padding: 25px
+  border-radius: 6px
+  @include mm-standard-font(1.2rem)
+  box-shadow: 0 5px 6px 1px rgba(0,0,0,0.3)
+  animation-name: message-popdown
+  animation-duration: 5000ms
+  animation-timing-function: ease-in-out
+  animation-iteration-count: 1
 #navbar-container
-    z-index: 2
-    position: fixed
-    height: 55px
-    width: 100%
-    background-color: darken($messenger-blue, 10%)
-    display: flex
-    align-items: center
-    box-shadow: 0 4px 4px rgba(0,0,0,0.35)
-    .button
-        position: relative
-        height: 25px
-        width: 25px
-        cursor: pointer
-    .ripple
-        z-index: 3
-        position: absolute
-        height: 41px
-        width: 41px
-        margin: -33px 0 0 -8px
-        background-color: #777
-        border-radius: 50%
-        opacity: 0
-        transition: all ease-in-out 0.2s
-        &:hover
-            opacity: 0.5
-    #search-bar
-        margin: 0 auto 0 auto
-        width: 60%
-        height: 39px
-        background-color: rgba(191, 191, 191, 0.2)
-        text-align: center
-        border-radius: 5px
-        display: flex
-        justify-content: center
-        align-items: center
-        h4
-            font: normal normal large helvetica, sans-serif
-            color: white
-        &:hover
-            background-color: rgba(255, 255, 255, 0.25)
-            cursor: text
-    #conversation-title
-        position: absolute
-        margin-top: 10px
-        left: 50%
-        transform: translate(-50%)
-        font: normal normal large helvetica, sans-serif
-    .button#menu
-        margin: 0 auto 0 20px
-        background-image: asset-url('messenger/buttons/menu_white.svg')
-        .ripple#menu
-            margin: -8px 0 0 -8px
-    .button#settings
-        margin: 0 auto 0 50px
-    .button#compose
-        margin: 0 50px 0 auto
-    .button#about
-        margin: 0 20px 0 auto
-menu
+  z-index: 2
+  position: fixed
+  height: 55px
+  width: 100%
+  background-color: darken($messenger-blue, 10%)
+  display: flex
+  align-items: center
+  box-shadow: 0 4px 4px rgba(0,0,0,0.35)
+  .button
+    position: relative
+    height: 25px
+    width: 25px
+    cursor: pointer
+  .ripple
     z-index: 3
-    height: 100%
-    width: 300px
-    position: fixed
-    margin: 0 0 0 -335px
-    overflow-y: auto
-    background-color: white
-    padding: 15px
-    box-shadow: 3px 0 3px rgba(0,0,0,0.2)
-    ul
-        list-style: none
-        margin: 0
-        padding: 0
-        .link-disabled
-            color: rgba(0,0,0,0.26)
-        #signup-link
-            border-bottom: 1px solid transparentize(#888, 0.5)
-            cursor: pointer
-        #login-link
-            cursor: pointer
-        #logout-container
-            border-bottom: 1px solid transparentize(#888, 0.5)
-            cursor: pointer
-            position: relative
-            a
-                position: absolute
-                height: 100%
-                width: 100%
-                color: transparent
-        #logout-shroud
-            z-index: 4
-            position: absolute
-            height: 100%
-            width: 105%
-            color: transparent
-        li
-            margin: 5px auto 5px auto
-            height: 50px
-            width: 100%
-            display: flex
-            justify-content: flex-start
-            align-items: center
-            em
-                font: normal normal 1rem 'Source Sans Pro', sans-serif
-            i
-                margin: auto 10px auto 10px
-            img
-                height: 40px
-                width: 40px
-                border-radius: 50%
-                margin-right: 15px
+    position: absolute
+    height: 41px
+    width: 41px
+    margin: -33px 0 0 -8px
+    background-color: #777
+    border-radius: 50%
+    opacity: 0
+    transition: all ease-in-out 0.2s
+    &:hover
+      opacity: 0.5
+  #search-bar
+    margin: 0 auto 0 auto
+    width: 60%
+    height: 39px
+    background-color: rgba(191, 191, 191, 0.2)
+    text-align: center
+    border-radius: 5px
+    display: flex
+    justify-content: center
+    align-items: center
+    h4
+      font: normal normal large helvetica, sans-serif
+      color: white
+    &:hover
+      background-color: rgba(255, 255, 255, 0.25)
+      cursor: text
+  #conversation-title
+    position: absolute
+    margin-top: 10px
+    left: 50%
+    transform: translate(-50%)
+    font: normal normal large helvetica, sans-serif
+  .button#menu
+    margin: 0 auto 0 20px
+    background-image: asset-url('messenger/buttons/menu_white.svg')
+    .ripple#menu
+      margin: -8px 0 0 -8px
+  .button#settings
+    margin: 0 auto 0 50px
+  .button#compose
+    margin: 0 50px 0 auto
+  .button#about
+    margin: 0 20px 0 auto
+menu
+  z-index: 3
+  height: 100%
+  width: 300px
+  position: fixed
+  margin: 0 0 0 -335px
+  overflow-y: auto
+  background-color: white
+  padding: 15px
+  box-shadow: 3px 0 3px rgba(0,0,0,0.2)
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+    .link-disabled
+      color: rgba(0,0,0,0.26)
+    #signup-link
+      border-bottom: 1px solid transparentize(#888, 0.5)
+      cursor: pointer
+    #login-link
+      cursor: pointer
+    #logout-container
+      border-bottom: 1px solid transparentize(#888, 0.5)
+      cursor: pointer
+      position: relative
+      a
+        position: absolute
+        height: 100%
+        width: 100%
+        color: transparent
+    #logout-shroud
+      z-index: 4
+      position: absolute
+      height: 100%
+      width: 105%
+      color: transparent
+    li
+      margin: 5px auto 5px auto
+      height: 50px
+      width: 100%
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      em
+        font: normal normal 1rem 'Source Sans Pro', sans-serif
+      i
+        margin: auto 10px auto 10px
+      img
+        height: 40px
+        width: 40px
+        border-radius: 50%
+        margin-right: 15px
 #content-section
-    width: 100%
-    height: 100%
-    z-index: -1
-    padding-top: 55px
-    .forum
-        z-index: 5
-        position: fixed
-        top: 50%
+  width: 100%
+  height: 100%
+  z-index: -1
+  padding-top: 55px
+  .forum
+    z-index: 5
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    padding: 10px
+    background-color: white
+    border-radius: 8px
+    box-shadow: 0 6px 8px 2px rgba(0,0,0,0.2)
+  .forum-button
+    position: absolute
+    left: 50%
+    transform: translate(-50%)
+    background-color: #777
+    border: none
+    color: mix(#333, darken($messenger-blue, 50), 50)
+    box-shadow: 0 10px 12px -8px rgba(0,0,0,0.7)
+    transition: all ease-in-out 0.2s
+    &:hover
+      box-shadow: 0 16px 18px -11px rgba(0,0,0,0.5)
+      transform: translate(-50%, -4px)
+    &.enabled
+      background-color: $messenger-blue
+    &.disabled
+      background-color: #777
+  .forum-close
+    background-color: #777
+    opacity: 0.7
+    border-radius: 50%
+    transform-origin: center
+    transform: scale(0)
+    &.pressed
+      animation-name: ripple
+      animation-duration: 150ms
+      animation-timing-function: ease-in-out
+      animation-iteration-count: 1
+  #signup-forum
+    display: none
+    // The following two height and width values are trivial
+    // The real height and width are the values that the forum
+    // is animated to. Check messenger.js.erb under assets/javascripts
+    // for these values
+    height: 370px
+    width: 450px
+    form
+      height: 95%
+      margin: 0
+      h3
+        max-width: 280px
+        margin: 20px auto 0 auto
+        @include mm-standard-font(1.25rem)
+      h4#signup-subtext
+        max-width: 200px
+        @include mm-standard-font(.9rem)
+        margin: 10px auto 15px auto
+      .signup-entry
+        @include mm-standard-font(1rem)
+        padding: 5px
+        margin: 15px auto 0 20px
+        height: 1.5rem
+        width: 230px
+        border: none
+        border-bottom: 1px solid #888
+        outline: none
+        transition: all ease-in 200ms
+        &:focus
+          border-bottom: 1px solid $messenger-blue
+      #signup-button
+        @include mm-standard-font(1.5rem)
+        padding: 10px
+        top: 320px
+        border-radius: 4px
+      #signup-shroud
+        height: 200px
+        width: 230px
+        position: absolute
+        z-index: 10
+        left: 50%
+        top: 310px
+        transform: translate(-50%)
+    img#close
+      position: absolute
+      top: 15px
+      left: 430px
+      height: 20px
+      width: 20px
+      color: #777
+    #closing-shroud
+      position: absolute
+      z-index: 6
+      left: 425px
+      top: 10px
+      height: 30px
+      width: 30px
+  #login-forum
+    display: none
+    height: 300px
+    width: 400px
+    #close-login
+      position: absolute
+      top: 10px
+      left: 385px
+      height: 20px
+      width: 20px
+    #closing-login-shroud
+      position: absolute
+      top: 7px
+      left: 382px
+      height: 25px
+      width: 25px
+    h3
+      max-width: 260px
+      margin: 20px auto 0 auto
+      @include mm-standard-font(1.25rem)
+    form
+      height: 80%
+      position: relative
+      .login-entry
+        @include mm-standard-font(1rem)
+        padding: 5px
+        outline: none
+        border: none
+        border-bottom: 1px solid #888
+        margin-top: 5px
+      p#user-name
+        @include mm-standard-font(1rem)
+        text-align: center
+        position: absolute
+        top: 40px
         left: 50%
         transform: translate(-50%, -50%)
-        padding: 10px
-        background-color: white
-        border-radius: 8px
-        box-shadow: 0 6px 8px 2px rgba(0,0,0,0.2)
-    .forum-button
+      p#password
+        @extend p#user-name
+        top: 110px
+      #login-button
+        @include mm-standard-font(1rem)
         position: absolute
+        top: 195px
+        left: 50%
+        padding: 15px
+        border-radius: 12px
+      #login-shroud
+        position: absolute
+        z-index: 6
+        height: 100px
+        width: 220px
+        top: 180px
         left: 50%
         transform: translate(-50%)
-        background-color: #777
-        border: none
-        color: mix(#333, darken($messenger-blue, 50), 50)
-        box-shadow: 0 10px 12px -8px rgba(0,0,0,0.7)
-        transition: all ease-in-out 0.2s
-        &:hover
-            box-shadow: 0 16px 18px -11px rgba(0,0,0,0.5)
-            transform: translate(-50%, -4px)
-        &.enabled
-            background-color: $messenger-blue
-        &.disabled
-            background-color: #777
-    .forum-close
-        background-color: #777
-        opacity: 0.7
+  ul#settings-dropdown
+    display: none
+    position: absolute
+    z-index: 4
+    margin: 0
+    top: 110px
+    list-style: none
+    @include mm-standard-font(.95rem)
+    padding: 8px 0 8px 0
+    background-color: white
+    opacity: 0
+    border-radius: 4px
+    box-shadow: 0 5px 10px 5px rgba(0,0,0,0.18)
+    overflow: visible
+    #settings-dropdown-arrow
+      height: 0
+      width: 0
+      border-left: 10px solid transparent
+      border-right: 10px solid transparent
+      border-bottom: 10px solid white
+      position: absolute
+      left: 50%
+      top: -10px
+    .settings-divider
+      display: none
+      margin: 10px 0 10px 0
+      height: 1px
+      width: 100%
+      background-color: darken(white, 20)
+    .settings-index
+      display: none
+      height: 20px
+      width: auto
+      padding: 0 14px 0 18px
+      &:hover
+        background-color: darken(white, 22)
+    &.revealed
+      animation-name: menu_reveal
+      animation-duration: 380ms
+      animation-fill-mode: forwards
+      animation-timing-function: ease-in-out
+      animation-iteration-count: 1
+      & > *
+        opacity: 0
+        animation-name: fadein
+        animation-duration: 600ms
+        animation-fill-mode: forwards
+        animation-timing-function: ease-out
+        animation-iteration-count: 1
+    &.hidden
+      animation-name: menu_fadeout
+      animation-duration: 300ms
+      animation-fill-mode: forwards
+      animation-timing-function: ease-in-out
+      animation-iteration-count: 1
+      & > *
+        opacity: 1
+  #details-container
+    position: fixed
+    left: 120%
+    transform: translate(-275px)
+    height: 100%
+    width: 275px
+    padding-top: 10px
+    #details-header
+      height: 60px
+      width: 100%
+      display: flex
+      align-items: center
+      img
+        margin: auto 5px auto 5px
+        height: 50px
+        width: 50px
         border-radius: 50%
-        transform-origin: center
-        transform: scale(0)
-        &.pressed
-            animation-name: ripple
-            animation-duration: 150ms
-            animation-timing-function: ease-in-out
-            animation-iteration-count: 1
-    #signup-forum
-        display: none
-        // The following two height and width values are trivial
-        // The real height and width are the values that the forum
-        // is animated to. Check messenger.js.erb under assets/javascripts
-        // for these values
-        height: 370px
-        width: 450px
-        form
-            height: 95%
-            margin: 0
-            h3
-                max-width: 280px
-                margin: 20px auto 0 auto
-                @include mm-standard-font(1.25rem)
-            h4#signup-subtext
-                max-width: 200px
-                @include mm-standard-font(.9rem)
-                margin: 10px auto 15px auto
-            .signup-entry
-                @include mm-standard-font(1rem)
-                padding: 5px
-                margin: 15px auto 0 20px
-                height: 1.5rem
-                width: 230px
-                border: none
-                border-bottom: 1px solid #888
-                outline: none
-                transition: all ease-in 200ms
-                &:focus
-                    border-bottom: 1px solid $messenger-blue
-            #signup-button
-                @include mm-standard-font(1.5rem)
-                padding: 10px
-                top: 320px
-                border-radius: 4px
-            #signup-shroud
-                height: 200px
-                width: 230px
-                position: absolute
-                z-index: 10
-                left: 50%
-                top: 310px
-                transform: translate(-50%)
-        img#close
-            position: absolute
-            top: 15px
-            left: 430px
-            height: 20px
-            width: 20px
-            color: #777
-        #closing-shroud
-            position: absolute
-            z-index: 6
-            left: 425px
-            top: 10px
-            height: 30px
-            width: 30px
-    #login-forum
-        display: none
-        height: 300px
-        width: 400px
-        #close-login
-            position: absolute
-            top: 10px
-            left: 385px
-            height: 20px
-            width: 20px
-        #closing-login-shroud
-            position: absolute
-            top: 7px
-            left: 382px
-            height: 25px
-            width: 25px
-        h3
-            max-width: 260px
-            margin: 20px auto 0 auto
-            @include mm-standard-font(1.25rem)
-        form
-            height: 80%
-            position: relative
-            .login-entry
-                @include mm-standard-font(1rem)
-                padding: 5px
-                outline: none
-                border: none
-                border-bottom: 1px solid #888
-                margin-top: 5px
-            p#user-name
-                @include mm-standard-font(1rem)
-                text-align: center
-                position: absolute
-                top: 40px
-                left: 50%
-                transform: translate(-50%, -50%)
-            p#password
-                @extend p#user-name
-                top: 110px
-            #login-button
-                @include mm-standard-font(1rem)
-                position: absolute
-                top: 195px
-                left: 50%
-                padding: 15px
-                border-radius: 12px
-            #login-shroud
-                position: absolute
-                z-index: 6
-                height: 100px
-                width: 220px
-                top: 180px
-                left: 50%
-                transform: translate(-50%)
-    ul#settings-dropdown
-        display: none
-        position: absolute
-        z-index: 4
-        margin: 0
-        top: 110px
-        list-style: none
-        @include mm-standard-font(.95rem)
-        padding: 8px 0 8px 0
-        background-color: white
-        opacity: 0
-        border-radius: 4px
-        box-shadow: 0 5px 10px 5px rgba(0,0,0,0.18)
-        overflow: visible
-        #settings-dropdown-arrow
-            height: 0
-            width: 0
-            border-left: 10px solid transparent
-            border-right: 10px solid transparent
-            border-bottom: 10px solid white
-            position: absolute
-            left: 50%
-            top: -10px
-        .settings-divider
+      h5
+        margin: auto auto auto 5px
+        @include mm-standard-font(.8rem)
+      #profile-info-settings
+        margin: auto 20px auto auto
+    #details-options
+      margin: 0
+      width: 100%
+      padding: 18px 0 0 5px
+      color: #777
+      font: bold italic .8rem 'Source Sans Pro', sans-serif
+      .account-color
+        color: $messenger-blue
+      p
+        color: black
+        @include mm-standard-font(1rem)
+        @include user-select(none)
+        cursor: pointer
+        display: flex
+        align-items: center
+        i
+          margin-right: 8px
+      label
+        position: relative
+        cursor: pointer
+        display: flex
+        align-items: center
+        .checkbox-ripple
+          position: absolute
+          height: 30px
+          width: 30px
+          border-radius: 50%
+          background-color: #555
+          opacity: .7
+          top: -3px
+          left: -3px
+          transform-origin: center
+        span
+          color: black
+          @include mm-standard-font(1rem)
+          margin-left: 8px
+          @include user-select(none)
+        .checked
+          display: none
+        .unchecked
+          display: block
+        input[type='checkbox']
+          display: none
+          &:checked + .unchecked
             display: none
-            margin: 10px 0 10px 0
-            height: 1px
-            width: 100%
-            background-color: darken(white, 20)
-        .settings-index
-            display: none
-            height: 20px
-            width: auto
-            padding: 0 14px 0 18px
-            &:hover
-                background-color: darken(white, 22)
-        &.revealed
-            animation-name: menu_reveal
-            animation-duration: 380ms
-            animation-fill-mode: forwards
-            animation-timing-function: ease-in-out
-            animation-iteration-count: 1
-            & > *
-                opacity: 0
-                animation-name: fadein
-                animation-duration: 600ms
-                animation-fill-mode: forwards
-                animation-timing-function: ease-out
+            + .checked
+              display: block
+              + .checkbox-ripple
+                animation-name: ripple
+                animation-duration: 200ms
+                animation-fill-mode: none
+                animation-timing-function: ease-in-out
                 animation-iteration-count: 1
-        &.hidden
-            animation-name: menu_fadeout
-            animation-duration: 300ms
-            animation-fill-mode: forwards
-            animation-timing-function: ease-in-out
-            animation-iteration-count: 1
-            & > *
-                opacity: 1
-    #details-container
-        position: fixed
-        left: 120%
-        transform: translate(-275px)
-        height: 100%
-        width: 275px
-        padding-top: 10px
-        #details-header
-            height: 60px
-            width: 100%
-            display: flex
-            align-items: center
-            img
-                margin: auto 5px auto 5px
-                height: 50px
-                width: 50px
-                border-radius: 50%
-            h5
-                margin: auto auto auto 5px
-                @include mm-standard-font(.8rem)
-            #profile-info-settings
-                margin: auto 20px auto auto
-        #details-options
-            margin: 0
-            width: 100%
-            padding: 18px 0 0 5px
-            color: #777
-            font: bold italic .8rem 'Source Sans Pro', sans-serif
-            .account-color
-                color: $messenger-blue
-            p
-                color: black
-                @include mm-standard-font(1rem)
-                @include user-select(none)
-                cursor: pointer
-                display: flex
-                align-items: center
-                i
-                    margin-right: 8px
-            label
-                position: relative
-                cursor: pointer
-                display: flex
-                align-items: center
-                .checkbox-ripple
-                    position: absolute
-                    height: 30px
-                    width: 30px
-                    border-radius: 50%
-                    background-color: #555
-                    opacity: .7
-                    top: -3px
-                    left: -3px
-                    transform-origin: center
-                span
-                    color: black
-                    @include mm-standard-font(1rem)
-                    margin-left: 8px
-                    @include user-select(none)
-                .checked
-                    display: none
-                .unchecked
-                    display: block
-                input[type='checkbox']
-                    display: none
-                    &:checked + .unchecked
-                        display: none
-                        + .checked
-                            display: block
-                            + .checkbox-ripple
-                                animation-name: ripple
-                                animation-duration: 200ms
-                                animation-fill-mode: none
-                                animation-timing-function: ease-in-out
-                                animation-iteration-count: 1
-        #details-page-info
-            height: 50px
-            width: 100%
-            @include mm-standard-font(.8rem)
-            color: #777
-            padding: 15px 0 0 5px
-            display: flex
-            flex-wrap: wrap
-            align-content: space-around
-            span
-                margin-top: 5px
-                @include user-select(none)
-            span:nth-last-of-type(1)
-                color: $messenger-blue
-                cursor: pointer
-                @include user-select(all)
+    #details-page-info
+      height: 50px
+      width: 100%
+      @include mm-standard-font(.8rem)
+      color: #777
+      padding: 15px 0 0 5px
+      display: flex
+      flex-wrap: wrap
+      align-content: space-around
+      span
+        margin-top: 5px
+        @include user-select(none)
+      span:nth-last-of-type(1)
+        color: $messenger-blue
+        cursor: pointer
+        @include user-select(all)
 @keyframes ripple
-    0%
-        transform: scale(0)
-    100%
-        transform: scale(1)
+  0%
+    transform: scale(0)
+  100%
+    transform: scale(1)
 @keyframes menu_reveal
-    0%
-        width: 0
-        height: 0
-        opacity: 0
-        margin-left: 98px
-        overflow: visible
-    80%
-        width: 196.25px
-        height: 194.4px
-        opacity: 0.8
-        overflow: visible
-    100%
-        margin-left: 0
-        opacity: 1
-        height: 243px
-        overflow: visible
+  0%
+    width: 0
+    height: 0
+    opacity: 0
+    margin-left: 98px
+    overflow: visible
+  80%
+    width: 196.25px
+    height: 194.4px
+    opacity: 0.8
+    overflow: visible
+  100%
+    margin-left: 0
+    opacity: 1
+    height: 243px
+    overflow: visible
 @keyframes fadein
-    0%
-        opacity: 0
-    50%
-        opacity: 0
-    100%
-        opacity: 1
+  0%
+    opacity: 0
+  50%
+    opacity: 0
+  100%
+    opacity: 1
 @keyframes menu_fadeout
-    0%
-        opacity: 1
-        overflow: hidden
-    99%
-        opacity: 0
-        overflow: hidden
-    100%
-        opacity: 0
-        height: 0
-        width: 0
-        display: none
-        overflow: hidden
+  0%
+    opacity: 1
+    overflow: hidden
+  99%
+    opacity: 0
+    overflow: hidden
+  100%
+    opacity: 0
+    height: 0
+    width: 0
+    display: none
+    overflow: hidden
 @keyframes ripple
-    0%
-        transform: scale(0)
-    80%
-        opacity: .7
-        transform: scale(1)
-    99%
-        opacity: 0
-        transform: scale(1)
-    100%
-        opacity: 0
-        transform: scale(0)
+  0%
+    transform: scale(0)
+  80%
+    opacity: .7
+    transform: scale(1)
+  99%
+    opacity: 0
+    transform: scale(1)
+  100%
+    opacity: 0
+    transform: scale(0)
 @keyframes message-popdown
-    0%
-        transform: translate(-50% -50%)
-    10%
-        transform: translate(-50%, 150%)
-    90%
-        transform: translate(-50%, 150%)
-    100%
-        transform: translate(-50%, -50%)
+  0%
+    transform: translate(-50% -50%)
+  10%
+    transform: translate(-50%, 150%)
+  90%
+    transform: translate(-50%, 150%)
+  100%
+    transform: translate(-50%, -50%)
