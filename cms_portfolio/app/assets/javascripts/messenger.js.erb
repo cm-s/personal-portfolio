@@ -83,10 +83,10 @@ $(document).ready(function() {
         $('#closing-shroud').addClass('pressed');
         setTimeout(function () {
             // If forum has been closed, empty it's data
-            $('#messenger_user_name').val("");
-            $('#messenger_password').val("");
-            $('#messenger_first_name').val("");
-            $('#messenger_last_name').val("");
+            $('#user_user_name').val("");
+            $('#user_password').val("");
+            $('#user_first_name').val("");
+            $('#user_last_name').val("");
 
             $('#signup-forum').css('display', 'none');
         }, 120);
@@ -136,16 +136,16 @@ $(document).ready(function() {
         };
     });
     // Forum entry enforcement aggragators, envoking enforcement functions
-        $('#messenger_user_name').keyup(function() {
+        $('#user_user_name').keyup(function() {
             monitor_signup_entries('#messenger_user_name', 'user_name', '#signup-button', '#signup-shroud');
         });
-        $('#messenger_password').keyup(function() {
+        $('#user_password').keyup(function() {
             monitor_signup_entries('#messenger_password', 'password', '#signup-button', '#signup-shroud');
         });
-        $('#messenger_first_name').keyup(function() {
+        $('#user_first_name').keyup(function() {
             monitor_signup_entries('#messenger_first_name', 'first_name', '#signup-button', '#signup-shroud');
         });
-        $('#messenger_last_name').keyup(function() {
+        $('#user_last_name').keyup(function() {
             monitor_signup_entries('#messenger_last_name', 'last_name', '#signup-button', '#signup-shroud');
         });
         $('#user_name').keyup(function() {

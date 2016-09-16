@@ -1,6 +1,6 @@
-class CreateMessengers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :messengers do |t|
+    create_table :users do |t|
       t.string :user_name, :null => false, :limit => 25
       t.string :password, :null => false, :limit => 15
       t.string :first_name, :null => false, :limit => 20

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def authenticate_login
     if session[:logged_user_id] # If a session logged_user_id exists and isn't nil (logged out);
       # find the user by the id they logged in with ˥
-      @current_user = Messenger.find session[:logged_user_id]
+      @current_user = User.find session[:logged_user_id]
       return true
     else
       redirect_to('/messenger/desktop')

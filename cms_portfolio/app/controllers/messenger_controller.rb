@@ -12,11 +12,11 @@ class MessengerController < ApplicationController
     render :desktop
   end
   def new
-    @user = Messenger.new
+    @user = User.new
   end
   def create
     list_messagers
-    @user = Messenger.new(user_params)
+    @user = User.new(user_params)
     @user.save!
     if @user.save!
       puts "ApplicationController::MessengerController: Database entry creation successful"
@@ -31,7 +31,7 @@ class MessengerController < ApplicationController
   end
   def login
     list_messagers
-    logged_user = Messenger.authenticate(params[:user_name], params[:password])
+    logged_user = User.authenticate(params[:user_name], params[:password])
 
     if logged_user # If authentication returns, being anything other than false (an object)
       session[:logged_user_id] = logged_user.id
@@ -56,9 +56,9 @@ class MessengerController < ApplicationController
   private
 
   def user_params
-    params.require(:messenger).permit(:user_name, :password, :first_name, :last_name)
+    params.require(:user).permit(:user_name, :password, :first_name, :last_name)
   end
   def list_messagers
-    @users = Messenger.all.order('created_at ASC') # ordering messages from least current to most
+    @users = User.all.order('created_at ASC') # ordering users from least current to most
   end
 end

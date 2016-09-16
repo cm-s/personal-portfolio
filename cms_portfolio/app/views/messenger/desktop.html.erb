@@ -61,7 +61,7 @@
 <div id="content-section">
   <div id="signup-forum" class="forum">
     <%= image_tag('messenger/buttons/close_black.svg', :id => 'close') %><span id="closing-shroud" class="forum-close"></span>
-    <%= form_for(:messenger, :url => {:action => 'create'}) do |usr| %>
+    <%= form_for(:user, :url => {:action => 'create'}) do |usr| %>
     <%= render(:partial => 'new', :locals => { :usr => usr }) %>
     <% end %>
   </div>

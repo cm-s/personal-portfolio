@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   #                 root GET    /                               core#index
   #        core_projects GET    /core/projects(.:format)        core#projects
   # core_nutrition_facts GET    /core/nutrition_facts(.:format) core#nutrition_facts
-  #     messenger_logout GET    /messenger/logout(.:format)     messenger#logout
-  #      messenger_login POST   /messenger/login(.:format)      messenger#login
-  #      messenger_index GET    /messenger(.:format)            messenger#index
-  #                      POST   /messenger(.:format)            messenger#create
-  #        new_messenger GET    /messenger/new(.:format)        messenger#new
-  #            messenger GET    /messenger/:id(.:format)        messenger#show
-  #                      DELETE /messenger/:id(.:format)        messenger#destroy
+  #          user_logout GET    /user/logout(.:format)          user#logout
+  #           user_login POST   /user/login(.:format)           user#login
+  #           user_index GET    /user(.:format)                 user#index
+  #                      POST   /user(.:format)                 user#create
+  #             new_user GET    /user/new(.:format)             user#new
+  #                 user GET    /user/:id(.:format)             user#show
+  #                      DELETE /user/:id(.:format)             user#destroy
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
