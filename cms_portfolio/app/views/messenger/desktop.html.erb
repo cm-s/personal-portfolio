@@ -1,3 +1,4 @@
+<body id="messenger">
 <% if flash[:postprocess] %>
     <div id="postprocess-message">
     <%= flash[:postprocess] %>
@@ -84,6 +85,7 @@
     <li class="settings-index">Help</li>
     <li class="settings-index">Report a Problem</li>
   </ul>
+
   <div id="details-container">
     <div id="details-header">
       <%= image_tag('messenger/profile-pictures/default.svg', :id => 'profile-image') %>
@@ -118,3 +120,4 @@
     </div>
   </div>
 </div>
+</body>

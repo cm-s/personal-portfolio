@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
+<style media="screen">
+  html {
+    height: 100%;
+    width: 100%;
+    margin: 0,0,0,0;
+  };
+</style>
 <head>
   <title><%= render_title %></title> <!--Taken from http://goo.gl/BZKrzZ-->
-  <%= stylesheet_link_tag params[:controller], 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag params[:controller], 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag :application, 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :application, 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
 <%= yield %>
 
-</body>
 </html>

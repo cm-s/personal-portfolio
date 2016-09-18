@@ -8,22 +8,24 @@ Rails.application.routes.draw do
   get 'messenger/logout' => 'messenger#logout'
   post 'messenger/login' => 'messenger#login'
   resources( :messenger, :only => [:create, :new, :show, :destroy, :index] )
-  # The ':only => []' option removes the listed default actions that are included with 'resources :resource'
+  # Message Controller
+  resources( :message, :only => [:create, :new, :destroy, :index] )
+  # The ':only => []' option only supplies routes resources specified in the given array
   # ------------ After 'rake routes' -----------------------------------
   #               Prefix Verb   URI Pattern                     Controller#Action
   #                 root GET    /                               core#index
   #        core_projects GET    /core/projects(.:format)        core#projects
   # core_nutrition_facts GET    /core/nutrition_facts(.:format) core#nutrition_facts
-  #          user_logout GET    /user/logout(.:format)          user#logout
-  #           user_login POST   /user/login(.:format)           user#login
-  #           user_index GET    /user(.:format)                 user#index
-  #                      POST   /user(.:format)                 user#create
-  #             new_user GET    /user/new(.:format)             user#new
-  #                 user GET    /user/:id(.:format)             user#show
-  #                      DELETE /user/:id(.:format)             user#destroy
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  #     messenger_logout GET    /messenger/logout(.:format)     messenger#logout
+  #      messenger_login POST   /messenger/login(.:format)      messenger#login
+  #      messenger_index GET    /messenger(.:format)            messenger#index
+  #                      POST   /messenger(.:format)            messenger#create
+  #        new_messenger GET    /messenger/new(.:format)        messenger#new
+  #            messenger GET    /messenger/:id(.:format)        messenger#show
+  #                      DELETE /messenger/:id(.:format)        messenger#destroy
+  #        message_index POST   /message(.:format)              message#create
+  #          new_message GET    /message/new(.:format)          message#new
+  #              message DELETE /message/:id(.:format)          message#destroy
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

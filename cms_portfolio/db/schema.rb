@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809064828) do
+ActiveRecord::Schema.define(version: 20160916234746) do
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "content",    limit: 65535, null: false
+    t.datetime "created_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name",  limit: 25, null: false

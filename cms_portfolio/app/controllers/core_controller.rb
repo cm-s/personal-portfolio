@@ -1,5 +1,6 @@
 class CoreController < ApplicationController
   def index
+    @page = 'index'
   end
   def projects
   end
