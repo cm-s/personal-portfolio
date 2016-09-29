@@ -68,6 +68,7 @@ $(document).ready(function() {
     });
     $('#window-close').on('')
     $(document).on('scroll', function() {
+    if (page == "index") {
         $('nav').css('background-color', 'rgba(21, 27, 128, ' + ((window.scrollY/3.8)/100) + ')');
         if ( (window.scrollY/3.8)/100 >= 1 ) {
             $('nav').css('box-shadow', '0 2px 5px 2px rgba(0, 0, 0, 0.25)');
@@ -83,5 +84,6 @@ $(document).ready(function() {
                 headerHasText = false;
             };
         };
+    };
     });
 });

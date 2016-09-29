@@ -5,11 +5,14 @@ class MessengerController < ApplicationController
   before_filter :determine_disabled
 
   def index
+    @page = "messenger"
+    @users = User.all.order('created_at ASC') # ordering users from least current to most
   end
   def show
     @title = "Material Messenger"
-    list_users
-    render(:desktop)
+    @page = "messenger"
+    @users = User.all.order('created_at ASC') # ordering users from least current to most
+    render(:index)
   end
   def new
     @user = User.new
@@ -31,7 +34,6 @@ class MessengerController < ApplicationController
   end
 
   def login
-    list_users
     logged_user = User.authenticate(params[:user_name], params[:password])
 
     if logged_user # If authentication returns, being anything other than false (an object)
@@ -58,9 +60,5 @@ class MessengerController < ApplicationController
 
   def user_params
     params.require(:user).permit(:user_name, :password, :first_name, :last_name)
-  end
-
-  def list_users
-    @users = User.all.order('created_at ASC') # ordering users from least current to most
   end
 end

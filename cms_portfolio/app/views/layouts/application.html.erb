@@ -4,7 +4,7 @@
   html {
     height: 100%;
     width: 100%;
-    margin: 0,0,0,0;
+    margin: 0;
   };
 </style>
 <head>
@@ -13,7 +13,139 @@
   <%= javascript_include_tag :application, 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<%= javascript_tag do %>
+  var page = "<%= determine_page %>"
+<% end %>
 
-<%= yield %>
+<% if determine_page == "messenger" %>
+
+<body id="messenger">
+  <% if flash[:postprocess] %>
+      <div id="postprocess-message">
+        <%= flash[:postprocess] %>
+      </div>
+  <% end %>
+
+  <nav id="navbar-container">
+    <div class="button" id="menu">
+      <div class="ripple" id="menu"></div>
+    </div>
+    <div class="button" id="settings">
+      <i class=" mdi mdi-settings mdi-24px mdi-light"></i>
+      <div class="ripple" id="settings"></div>
+    </div>
+    <div id="search-bar">
+      <i class="mdi mdi-magnify mdi-24px mdi-light"></i>
+      <h4>Search for people and groups</h4>
+    </div>
+    <div id="conversation-title"></div>
+    <div class="button" id="compose">
+      <i class="mdi mdi-message-plus mdi-24px mdi-light"></i>
+      <div class="ripple" id="compose"></div>
+    </div>
+    <div class="button" id="about">
+      <i class=" mdi mdi-information-outline mdi-24px mdi-light"></i>
+      <div class="ripple" id="about"></div>
+    </div>
+  </nav>
+
+  <menu>
+    <ul>
+        <li id="signup-link">
+          <% if !@disabled %>
+            <i class="mdi mdi-account-plus mdi-24px mdi-dark"></i>
+            <em>Sign Up!</em>
+          <% else %>
+            <i class="mdi mdi-account-plus mdi-24px mdi-dark mdi-inactive"></i>
+            <em class="link-disabled">Sign Up!</em>
+          <% end %>
+        </li>
+        <li id="login-link">
+          <% if !@disabled %>
+            <i class="mdi mdi-account-network mdi-24px mdi-dark"></i>
+            <em>Log In</em>
+          <% else %>
+            <i class="mdi mdi-account-network mdi-24px mdi-dark mdi-inactive"></i>
+            <em class="link-disabled">Log In</em>
+          <% end %>
+        </li>
+        <li id="logout-container">
+          <% if @disabled %>
+            <%= link_to('', messenger_logout_url) %>
+            <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
+            <em>Log Out</em>
+          <% else %>
+            <i class="mdi mdi-logout-variant mdi-24px mdi-dark mdi-inactive"></i>
+            <em class="link-disabled">Log Out</em>
+          <% end %>
+        </li>
+        <%= render(:partial => 'users_index') %>
+    </ul>
+  </menu>
+
+  <div id="content-section">
+
+    <%= yield %>
+
+    <!--for settings navbutton-->
+    <ul id="settings-dropdown">
+      <div id="settings-dropdown-arrow"></div>
+      <li class="settings-index">Settings</li>
+      <div class="settings-divider"></div>
+      <li class="settings-index">Active Face.book Fiends</li>
+      <li class="settings-index">Message Requests</li>
+      <div class="settings-divider"></div>
+      <li class="settings-index">About</li>
+      <li class="settings-index">Terms</li>
+      <li class="settings-index">Priacy Policy</li>
+      <li class="settings-index">Cookie Policy</li>
+      <div class="settings-divider"></div>
+      <li class="settings-index">Help</li>
+      <li class="settings-index">Report a Problem</li>
+    </ul>
+
+    <!--for details navbutton-->
+    <div id="details-container">
+      <div id="details-header">
+        <%= image_tag('messenger/profile-pictures/default.svg', :id => 'profile-image') %>
+        <h5 id="profile-user_name">Username Here</h5>
+        <i class="mdi mdi-settings mdi-16px mdi-dark" id="profile-info-settings"></i>
+      </div>
+      <ul id="details-options">
+        Options
+        <p>
+          <i class="mdi mdi-border-color mdi-24px account-color"></i>
+          Edit Nicknames
+        </p>
+        <p>
+          <i class="mdi mdi-format-color-fill mdi-24px account-color"></i>
+          Change Color
+        </p>
+        <p>
+          <i class="mdi mdi-emoticon mdi-24px account-color"></i>
+          Change Emoji
+        </p>
+        <label>
+          <input type="checkbox" name="mute" value="" class="mdi">
+          <i class="mdi mdi-checkbox-blank-outline mdi-24px mdi-dark account-color unchecked"></i>
+          <i class="mdi mdi-checkbox-marked mdi-24px mdi-dark account-color checked"></i>
+          <div class="checkbox-ripple"></div>
+          <span>Mute Notifications</span>
+        </label>
+      </ul>
+      <div id="details-page-info">
+        <span>Face.book Page</span><br>
+        <span>https://face.book.com/enteruser.here</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+<% else %>
+
+  <%= yield %>
+
+<% end %>
 
 </html>

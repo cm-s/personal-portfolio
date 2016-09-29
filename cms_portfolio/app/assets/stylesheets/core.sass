@@ -13,7 +13,7 @@
   asset-url: ('fonts/PT_Sans/PT_Sans-Web-Regular.ttf') format('truetype')
 @font-face
   font-family: 'Mononoki'
-  asset-url: ('fonts//mononoki-Regular.ttf') format('truetype')
+  asset-url: ('fonts/Mononoki/mononoki-Regular.ttf') format('truetype')
 @font-face
   font-family: 'Ubuntu Mono'
   asset-url: ('fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf') format('truetype')
@@ -95,10 +95,12 @@ body#index
     #github
       margin: 50% 28px 50% auto
     span
+      width: 150px
       position: absolute
       z-index: 6
       left: 100%
       #github_link
+        width: 150px
         font: normal normal 1rem helvetica, sans-serif
         font-weight: lighter
         text-decoration: none
@@ -189,6 +191,7 @@ body#index
           color: lighten(#444, 5)
           mark
             background-color: transparent
+          mark#caveat
             color: lighten(orange, 5)
             animation-name: tantilize
             animation-duration: 2s
@@ -200,6 +203,12 @@ body#index
               text-shadow: 0 2px 3px transparentize(lighten(orange, 5), .4)
               border: 1px solid orange
               border-radius: 2px
+          mark#python
+            color: lighten(desaturate(green, 60), 20)
+          mark#java
+            color: desaturate(red, 55)
+          mark#cplusplus
+            color: desaturate(lighten(blue, 10), 35)
         #console-container
           width: 535px
           height: 330px
@@ -254,7 +263,7 @@ body#index
               margin: 0
               height: 1rem
             pre
-              transform: translate(-150px)
+              transform: translate(-75px)
             #terminal-last-line
               margin: 0
               #terminal-last-text
@@ -450,14 +459,15 @@ body#index
         width: 100%
         .site-topic-info-sect
           width: 50%
-          height: 190px
-          display: flex
-          justify-content: center
           align-items: center
           font: normal normal 1.2rem helvetica, sans-serif
           color: green
-          .info-popout
-            display: none
+          text-align: center
+          p
+            color: #555
+            padding: 0 20px 0 20px
+          link
+
 @keyframes blink
   0%
     opacity: 1
@@ -482,7 +492,7 @@ body#index
     transform: translateX(-60px)
   100%
     opacity: 1
-    transform: translateX(-150px)
+    transform: translateX(-230px)
 @keyframes slideRight
   0%
     opacity: 1
@@ -490,5 +500,5 @@ body#index
     transform: translateX(50px)
     opacity: 0
   100%
-    transform: translateX(150px)
+    transform: translateX(230px)
     opacity: 0
