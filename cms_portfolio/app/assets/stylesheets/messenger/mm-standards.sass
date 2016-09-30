@@ -1,0 +1,68 @@
+@font-face
+  font-family: 'Source Sans Pro'
+  asset-url: ('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf')
+
+@import 'MaterialDesignIcons/materialdesignicons.scss'
+
+//material design dark according to guidelines: http://goo.gl/vkRHaV
+.mdi.mdi-dark
+  color: rgba(0,0,0,0.54)
+.mdi.mdi-dark.mdi-inactive
+  color: rgba(0,0,0,0.26)
+
+//material design light according to guidelines: http://goo.gl/vkRHaV
+.mdi.mdi-light
+  color: rgba(255,255,255,1)
+.mdi.mdi-light.mdi-inactive
+  color: rgba(255,255,255,0.3)
+
+$messenger-blue: #2998ff
+$mm-dull-white: darken(white, 8)
+
+@mixin mm-standard-font($size)
+  font: normal normal $size 'Source Sans Pro', sans-serif
+@mixin user-select($value)
+  -webkit-touch-callout: $value
+  -webkit-user-select: $value
+  -khtml-user-select: $value
+  -moz-user-select: $value
+  -ms-user-select: $value
+
+.mm-forum
+  z-index: 5
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  padding: 10px
+  background-color: white
+  border-radius: 8px
+  box-shadow: 0 6px 8px 2px rgba(0,0,0,0.2)
+  .mm-forum-button
+    position: absolute
+    left: 50%
+    transform: translate(-50%)
+    background-color: #777
+    border: none
+    color: mix(#333, darken($messenger-blue, 50), 50)
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.5)
+    transition: all ease-in-out 0.2s
+    &:hover
+      box-shadow: 0 12px 18px -6px rgba(0,0,0,0.3)
+      transform: translate(-50%, -4px)
+    &.enabled
+      background-color: $messenger-blue
+    &.disabled
+      background-color: #777
+  .mm-forum-entry
+    @include mm-standard-font(1rem)
+    padding: 5px
+    height: 1.5rem
+    width: 230px
+    border: none
+    border-bottom: 1px solid #888
+    background-color: $mm-dull-white
+    outline: none
+    transition: all ease-in 200ms
+    &:focus
+      border-bottom: 1px solid $messenger-blue

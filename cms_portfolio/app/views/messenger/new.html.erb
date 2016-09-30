@@ -1,12 +1,18 @@
-<div id="signup-forum" class="forum">
-  <%= image_tag('messenger/buttons/close_black.svg', :id => 'close') %><span id="closing-shroud" class="forum-close"></span>
-  <%= form_for(:user, :url => {:action => 'create'}) do |usr| %>
-  <h3>Signup for Material Messenger</h3>
+<body id="signup-container">
+  <div id="signup-forum" class="mm-forum">
+    <%= form_for(:user, :url => {:action => 'create'}) do |usr| %>
+    <h3>Signup for Material Messenger</h3>
     <h4 id="signup-subtext">Enter Username and Password</h4>
-    <%= usr.text_field( :user_name, :placeholder => "Username", :class => 'signup-entry' ) %><br>
-    <%= usr.text_field( :password, :placeholder => "Password", :class => 'signup-entry' ) %><br>
-    <%= usr.text_field( :first_name , :placeholder => "First Name", :class => 'signup-entry' ) %><br>
-    <%= usr.text_field( :last_name , :placeholder => "Last Name", :class => 'signup-entry' ) %><br>
-    <%= usr.submit( :id => 'signup-button', :class => 'forum-button' ) %><span id="signup-shroud"></span>
-  <% end %>
-</div>
+    <%= usr.text_field( :user_name, :placeholder => "Username",
+      :class => [ 'mm-forum-entry', 'mm-signup' ] ) %><br>
+    <%= usr.text_field( :password, :placeholder => "Password",
+      :class => [ 'mm-forum-entry', 'mm-signup' ] ) %><br>
+    <%= usr.text_field( :first_name , :placeholder => "First Name",
+      :class => [ 'mm-forum-entry', 'mm-signup' ] ) %><br>
+    <%= usr.text_field( :last_name , :placeholder => "Last Name",
+      :class => [ 'mm-forum-entry', 'mm-signup' ] ) %><br>
+    <%= usr.submit( :id => 'signup-button', :class => 'mm-forum-button' ) %><span id="signup-shroud"></span>
+    <% end %>
+  </div>
+  <footer id="signup-footer"></footer>
+</body>

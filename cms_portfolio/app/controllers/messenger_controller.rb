@@ -4,10 +4,6 @@ class MessengerController < ApplicationController
   before_filter :enforce_logged_state, :only => [:new, :create, :login]
   before_filter :determine_disabled
 
-  def index
-    @page = "messenger"
-    @users = User.all.order('created_at ASC') # ordering users from least current to most
-  end
   def show
     @title = "Material Messenger"
     @page = "messenger"
@@ -19,15 +15,13 @@ class MessengerController < ApplicationController
     @user = User.new
   end
   def create
-    list_users
     @user = User.new(user_params)
-    @user.save!
     if @user.save!
       puts "ApplicationController::MessengerController: Database entry creation successful"
       session[:logged_user_id] = @user.id
       flash[:postprocess] = "User Created Successfully"
       @page = "messenger"
-      render(:index)
+      render(:show)
     else
       puts "ApplicationController::MessengerController: Database entry creation unsuccessful"
       flash[:user_error] = "...Something Went Wrong"
@@ -45,7 +39,7 @@ class MessengerController < ApplicationController
       flash[:pastprocess] = "Logged In Successfully"
       determine_disabled
       @page = "messenger"
-      render(:index)
+      render(:show)
     else
       puts "ApplicationController::MessengerController: Failure; Invalid Credentials, User redirected"
       flash[:user_error] = "Couldn\'t Log In"

@@ -7,24 +7,25 @@ Rails.application.routes.draw do
 
   # Messenger Controller
   get 'messenger/logout' => 'messenger#logout'
-  post 'messenger/login' => 'messenger#login'
+  get 'messenger/login' => 'messenger#login' # need seperate for POST action
   resources( :messenger, :only => [:create, :new, :show, :destroy] )
   # Message Controller
   resources( :message, :only => [:create, :new, :destroy, :index] )
   # The ':only => []' option only supplies routes resources specified in the given array
-  # ------------ After 'rake routes' -----------------------------------
+  # -------------------- After 'rake routes' -----------------------------------
   #               Prefix Verb   URI Pattern                     Controller#Action
   #                 root GET    /                               core#index
   #        core_projects GET    /core/projects(.:format)        core#projects
   # core_nutrition_facts GET    /core/nutrition_facts(.:format) core#nutrition_facts
+  #    core_getmessenger GET    /core/getmessenger(.:format)    core#getmessenger
   #     messenger_logout GET    /messenger/logout(.:format)     messenger#logout
   #      messenger_login POST   /messenger/login(.:format)      messenger#login
-  #      messenger_index GET    /messenger(.:format)            messenger#index
-  #                      POST   /messenger(.:format)            messenger#create
+  #      messenger_index POST   /messenger(.:format)            messenger#create
   #        new_messenger GET    /messenger/new(.:format)        messenger#new
   #            messenger GET    /messenger/:id(.:format)        messenger#show
   #                      DELETE /messenger/:id(.:format)        messenger#destroy
-  #        message_index POST   /message(.:format)              message#create
+  #        message_index GET    /message(.:format)              message#index
+  #                      POST   /message(.:format)              message#create
   #          new_message GET    /message/new(.:format)          message#new
   #              message DELETE /message/:id(.:format)          message#destroy
 
