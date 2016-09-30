@@ -53,6 +53,7 @@
     <ul>
         <li id="signup-link">
           <% if !@disabled %>
+            <%= link_to('', new_messenger_url) %>
             <i class="mdi mdi-account-plus mdi-24px mdi-dark"></i>
             <em>Sign Up!</em>
           <% else %>
@@ -62,6 +63,7 @@
         </li>
         <li id="login-link">
           <% if !@disabled %>
+            <%= link_to('', messenger_login_url) %>
             <i class="mdi mdi-account-network mdi-24px mdi-dark"></i>
             <em>Log In</em>
           <% else %>

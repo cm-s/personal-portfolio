@@ -15,6 +15,7 @@ class MessengerController < ApplicationController
     render(:index)
   end
   def new
+    @page = "new messenger"
     @user = User.new
   end
   def create
@@ -25,15 +26,17 @@ class MessengerController < ApplicationController
       puts "ApplicationController::MessengerController: Database entry creation successful"
       session[:logged_user_id] = @user.id
       flash[:postprocess] = "User Created Successfully"
-      render(:desktop)
+      @page = "messenger"
+      render(:index)
     else
       puts "ApplicationController::MessengerController: Database entry creation unsuccessful"
       flash[:user_error] = "...Something Went Wrong"
-      render(:desktop, :notice => "Signup Failed")
+      render(:new)
     end
   end
 
   def login
+    @page = "login messenger"
     logged_user = User.authenticate(params[:user_name], params[:password])
 
     if logged_user # If authentication returns, being anything other than false (an object)
@@ -41,12 +44,13 @@ class MessengerController < ApplicationController
       puts "ApplicationController::MessengerController: Success; User logged in sucessfully"
       flash[:pastprocess] = "Logged In Successfully"
       determine_disabled
-      render(:desktop)
+      @page = "messenger"
+      render(:index)
     else
       puts "ApplicationController::MessengerController: Failure; Invalid Credentials, User redirected"
       flash[:user_error] = "Couldn\'t Log In"
       determine_disabled
-      render(:desktop)
+      render(:login)
     end
   end
   def logout

@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   root 'core#index' # This is represented with 'root_url' in the controller.rb file
   get 'core/projects'
   get 'core/nutrition_facts'
+  get 'core/getmessenger'
 
   # Messenger Controller
   get 'messenger/logout' => 'messenger#logout'
   post 'messenger/login' => 'messenger#login'
-  resources( :messenger, :only => [:create, :new, :show, :destroy, :index] )
+  resources( :messenger, :only => [:create, :new, :show, :destroy] )
   # Message Controller
   resources( :message, :only => [:create, :new, :destroy, :index] )
   # The ':only => []' option only supplies routes resources specified in the given array

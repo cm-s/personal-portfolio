@@ -1,9 +1,0 @@
-<% @message.each do |msg| %>
-  <li><%= msg.content %></li>
-<% end %>
-<div id="Messages-toolbar">
-  <%= form_for(:message, :url => {:action => 'create'}) do |f| %>
-    <%= f.text_field(:content, :placeholder => "Send a message...") %>
-    <%= f.submit %>
-  <% end %>
-</div>
