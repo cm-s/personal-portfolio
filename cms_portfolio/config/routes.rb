@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   # Messenger Controller
   get 'messenger/logout' => 'messenger#logout'
-  get 'messenger/login' => 'messenger#login' # need seperate for POST action
+  get 'messenger/logon' => 'messenger#logon' # need seperate for POST action
+  post 'messenger' => 'messenger#login'
   resources( :messenger, :only => [:create, :new, :show, :destroy] )
   # Message Controller
   resources( :message, :only => [:create, :new, :destroy, :index] )

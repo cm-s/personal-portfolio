@@ -29,8 +29,11 @@ class MessengerController < ApplicationController
     end
   end
 
+  def logon
+      @page = "login messenger"
+      render(:login)
+  end
   def login
-    @page = "login messenger"
     logged_user = User.authenticate(params[:user_name], params[:password])
 
     if logged_user # If authentication returns, being anything other than false (an object)
