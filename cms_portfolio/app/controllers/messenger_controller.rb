@@ -8,7 +8,6 @@ class MessengerController < ApplicationController
     @title = "Material Messenger"
     @page = "messenger"
     @users = User.all.order('created_at ASC') # ordering users from least current to most
-    render(:index)
   end
   def new
     @page = "new messenger"

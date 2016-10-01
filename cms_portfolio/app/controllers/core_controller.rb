@@ -1,4 +1,8 @@
 class CoreController < ApplicationController
+  before_filter :authenticate_login, :only => [:desktop, :setting]
+  before_filter :enforce_logged_state, :only => [:new, :create, :login]
+  before_filter :determine_disabled
+
   def index
     @page = 'index'
   end
@@ -10,5 +14,8 @@ class CoreController < ApplicationController
   end
   def getmessenger
     @page = 'messenger ad'
+    if session[:logged_user_id]
+      render(:show)
+    end
   end
 end

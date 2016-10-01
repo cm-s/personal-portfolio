@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate_login
-    if session[:logged_user_id] # If a session logged_user_id exists and isn't nil (logged out);
+    if session[:logged_user_id] # If a session logged_user_id exists and isn't nil (nil being logged out);
       # find the user by the id they logged in with ˥
       @current_user = User.find session[:logged_user_id]
       return true

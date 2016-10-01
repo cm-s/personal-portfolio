@@ -149,7 +149,7 @@ menu
     border-radius: 4px
     box-shadow: 0 5px 10px 5px rgba(0,0,0,0.18)
     overflow: visible
-    #settings-dropdown-arrow
+    #sd-arrow
       height: 0
       width: 0
       border-left: 10px solid transparent
@@ -158,13 +158,13 @@ menu
       position: absolute
       left: 50%
       top: -10px
-    .settings-divider
+    .sd-divider
       display: none
       margin: 10px 0 10px 0
       height: 1px
       width: 100%
       background-color: darken(white, 20)
-    .settings-index
+    .sd-index
       display: none
       height: 20px
       width: auto
@@ -288,23 +288,6 @@ menu
     transform: scale(0)
   100%
     transform: scale(1)
-@keyframes menu_reveal
-  0%
-    width: 0
-    height: 0
-    opacity: 0
-    margin-left: 98px
-    overflow: visible
-  80%
-    width: 196.25px
-    height: 194.4px
-    opacity: 0.8
-    overflow: visible
-  100%
-    margin-left: 0
-    opacity: 1
-    height: 243px
-    overflow: visible
 @keyframes fadein
   0%
     opacity: 0

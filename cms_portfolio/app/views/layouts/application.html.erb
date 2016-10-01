@@ -13,9 +13,6 @@
   <%= javascript_include_tag :application, 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<%= javascript_tag do %>
-  var page = "<%= determine_page %>"
-<% end %>
 
 <% if determine_page == "messenger" %>
 
@@ -51,37 +48,11 @@
 
   <menu>
     <ul>
-        <li id="signup-link">
-          <% if !@disabled %>
-            <%= link_to('', new_messenger_url) %>
-            <i class="mdi mdi-account-plus mdi-24px mdi-dark"></i>
-            <em>Sign Up!</em>
-          <% else %>
-            <i class="mdi mdi-account-plus mdi-24px mdi-dark mdi-inactive"></i>
-            <em class="link-disabled">Sign Up!</em>
-          <% end %>
+      <% @users.each do |usr| %>
+        <li>
+          <em><%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %></em>
         </li>
-        <li id="login-link">
-          <% if !@disabled %>
-            <%= link_to('', messenger_login_url) %>
-            <i class="mdi mdi-account-network mdi-24px mdi-dark"></i>
-            <em>Log In</em>
-          <% else %>
-            <i class="mdi mdi-account-network mdi-24px mdi-dark mdi-inactive"></i>
-            <em class="link-disabled">Log In</em>
-          <% end %>
-        </li>
-        <li id="logout-container">
-          <% if @disabled %>
-            <%= link_to('', messenger_logout_url) %>
-            <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
-            <em>Log Out</em>
-          <% else %>
-            <i class="mdi mdi-logout-variant mdi-24px mdi-dark mdi-inactive"></i>
-            <em class="link-disabled">Log Out</em>
-          <% end %>
-        </li>
-        <%= render(:partial => 'users_index') %>
+      <% end %>
     </ul>
   </menu>
 
@@ -91,19 +62,19 @@
 
     <!--for settings navbutton-->
     <ul id="settings-dropdown">
-      <div id="settings-dropdown-arrow"></div>
-      <li class="settings-index">Settings</li>
-      <div class="settings-divider"></div>
-      <li class="settings-index">Active Face.book Fiends</li>
-      <li class="settings-index">Message Requests</li>
-      <div class="settings-divider"></div>
-      <li class="settings-index">About</li>
-      <li class="settings-index">Terms</li>
-      <li class="settings-index">Priacy Policy</li>
-      <li class="settings-index">Cookie Policy</li>
-      <div class="settings-divider"></div>
-      <li class="settings-index">Help</li>
-      <li class="settings-index">Report a Problem</li>
+      <div id="sd-arrow"></div>
+      <li class="sd-index">Settings</li>
+      <div class="sd-divider"></div>
+      <li class="sd-index">Active Face.book Fiends</li>
+      <li class="sd-index">Message Requests</li>
+      <div class="sd-divider"></div>
+      <li class="sd-index">About</li>
+      <li class="sd-index">Terms</li>
+      <li class="sd-index">Priacy Policy</li>
+      <li class="sd-index">Cookie Policy</li>
+      <div class="sd-divider"></div>
+      <li class="sd-index">Help</li>
+      <li class="sd-index">Report a Problem</li>
     </ul>
 
     <!--for details navbutton-->

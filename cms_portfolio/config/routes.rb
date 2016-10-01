@@ -20,10 +20,11 @@ Rails.application.routes.draw do
   # core_nutrition_facts GET    /core/nutrition_facts(.:format) core#nutrition_facts
   #    core_getmessenger GET    /core/getmessenger(.:format)    core#getmessenger
   #     messenger_logout GET    /messenger/logout(.:format)     messenger#logout
-  #      messenger_login POST   /messenger/login(.:format)      messenger#login
+  #      messenger_logon GET    /messenger/logon(.:format)      messenger#logon
+  #            messenger POST   /messenger(.:format)            messenger#login
   #      messenger_index POST   /messenger(.:format)            messenger#create
   #        new_messenger GET    /messenger/new(.:format)        messenger#new
-  #            messenger GET    /messenger/:id(.:format)        messenger#show
+  #                      GET    /messenger/:id(.:format)        messenger#show
   #                      DELETE /messenger/:id(.:format)        messenger#destroy
   #        message_index GET    /message(.:format)              message#index
   #                      POST   /message(.:format)              message#create
