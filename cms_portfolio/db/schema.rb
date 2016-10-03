@@ -19,10 +19,14 @@ ActiveRecord::Schema.define(version: 20160916234746) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "user_name",  limit: 25, null: false
-    t.string   "password",   limit: 15, null: false
-    t.string   "first_name", limit: 20, null: false
-    t.string   "last_name",  limit: 20, null: false
+    t.string   "user_name",          limit: 25,  null: false
+    t.string   "password",           limit: 15,  null: false
+    t.string   "first_name",         limit: 20,  null: false
+    t.string   "last_name",          limit: 20,  null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
     t.datetime "created_at"
   end
 

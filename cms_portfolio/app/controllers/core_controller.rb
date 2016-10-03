@@ -14,8 +14,6 @@ class CoreController < ApplicationController
   end
   def getmessenger
     @page = 'messenger ad'
-    if session[:logged_user_id]
-      render(:show)
-    end
+    enforce_logged_state
   end
 end

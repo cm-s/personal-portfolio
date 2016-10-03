@@ -7,9 +7,11 @@ Rails.application.routes.draw do
 
   # Messenger Controller
   get 'messenger/logout' => 'messenger#logout'
-  get 'messenger/logon' => 'messenger#logon' # need seperate for POST action
-  post 'messenger' => 'messenger#login'
-  resources( :messenger, :only => [:create, :new, :show, :destroy] )
+  get 'messenger/logon' => 'messenger#logon'
+  post 'messenger/login' => 'messenger#login'
+  post 'messenger' => 'messenger#create'
+  get 'messenger/router' => 'messenger#reroute'
+  resources( :messenger, :only => [:new, :show, :destroy] )
   # Message Controller
   resources( :message, :only => [:create, :new, :destroy, :index] )
   # The ':only => []' option only supplies routes resources specified in the given array
@@ -21,8 +23,8 @@ Rails.application.routes.draw do
   #    core_getmessenger GET    /core/getmessenger(.:format)    core#getmessenger
   #     messenger_logout GET    /messenger/logout(.:format)     messenger#logout
   #      messenger_logon GET    /messenger/logon(.:format)      messenger#logon
-  #            messenger POST   /messenger(.:format)            messenger#login
-  #      messenger_index POST   /messenger(.:format)            messenger#create
+  #      messenger_login POST   /messenger/login(.:format)      messenger#login
+  #            messenger POST   /messenger(.:format)            messenger#create
   #        new_messenger GET    /messenger/new(.:format)        messenger#new
   #                      GET    /messenger/:id(.:format)        messenger#show
   #                      DELETE /messenger/:id(.:format)        messenger#destroy

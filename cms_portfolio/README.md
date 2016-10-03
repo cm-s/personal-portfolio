@@ -1,6 +1,7 @@
 ##This is the rails app for my portfolio
 This application uses **_Ruby 2.3.1_** patch 112 (ruby 2.3.1p112) along with **_Rails 4.2.6_**
 This version uses mysql in the place of sqlite3 as the default database manager, with all the gems listed below;
+* paperclip ~> 4.2
 * mysql ~> 2.9, >= 2.9.1
 * sass-rails ~> 5.0
 * uglifier >= 1.3.0

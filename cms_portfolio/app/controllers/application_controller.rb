@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
   end
   def enforce_logged_state
     if session[:logged_user_id] # Prohibit the user from logging in, if already logged in
-      redirect_to('/messenger/desktop')
+      @page = 'messenger'
+      redirect_to("/messenger/#{session[:logged_user_id]}")
       return false
     else
       return true

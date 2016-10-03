@@ -14,13 +14,14 @@ class MessengerController < ApplicationController
     @user = User.new
   end
   def create
+    @users = User.all.order('created_at ASC')
     @user = User.new(user_params)
     if @user.save!
       puts "ApplicationController::MessengerController: Database entry creation successful"
       session[:logged_user_id] = @user.id
       flash[:postprocess] = "User Created Successfully"
       @page = "messenger"
-      render(:show)
+      redirect_to("/messenger/#{session[:logged_user_id]}")
     else
       puts "ApplicationController::MessengerController: Database entry creation unsuccessful"
       flash[:user_error] = "...Something Went Wrong"
@@ -41,6 +42,7 @@ class MessengerController < ApplicationController
       flash[:pastprocess] = "Logged In Successfully"
       determine_disabled
       @page = "messenger"
+      @users = User.all.order('created_at ASC')
       render(:show)
     else
       puts "ApplicationController::MessengerController: Failure; Invalid Credentials, User redirected"
@@ -59,6 +61,6 @@ class MessengerController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :password, :first_name, :last_name)
+    params.require(:messenger).permit(:user_name, :password, :first_name, :last_name, :image)
   end
 end

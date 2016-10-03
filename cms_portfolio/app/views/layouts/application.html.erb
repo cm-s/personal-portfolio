@@ -48,10 +48,19 @@
 
   <menu>
     <ul>
+      <li>
+        <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
+        <em><%= link_to( 'Logout', messenger_logout_url,  ) %></em>
+      </li>
       <% @users.each do |usr| %>
-        <li>
-          <em><%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %></em>
-        </li>
+        <% if usr.id != session[:logged_user_id] %>
+          <li>
+            <%= image_tag( usr.image ) %>
+            <em>
+              <%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %>
+            </em>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </menu>

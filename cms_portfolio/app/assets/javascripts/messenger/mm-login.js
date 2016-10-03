@@ -50,20 +50,20 @@ function monitor_login_entries(inputObject, reporter, buttonObject, buttonShroud
     };
 };
 
-$(window).on('scroll', function() {
+$(document).ready(function() {
 if ($('body').hasClass('mm-enforced'))
 
     // Forum entry enforcement aggragators, envoking enforcement functions
-    $('#user_user_name').keyup(function() {
+    $('#messenger_user_name').keyup(function() {
         monitor_signup_entries('#messenger_user_name', 'user_name', '#signup-button', '#signup-shroud');
     });
-    $('#user_password').keyup(function() {
+    $('#messenger_password').keyup(function() {
         monitor_signup_entries('#messenger_password', 'password', '#signup-button', '#signup-shroud');
     });
-    $('#user_first_name').keyup(function() {
+    $('#messenger_first_name').keyup(function() {
         monitor_signup_entries('#messenger_first_name', 'first_name', '#signup-button', '#signup-shroud');
     });
-    $('#user_last_name').keyup(function() {
+    $('#messenger_last_name').keyup(function() {
         monitor_signup_entries('#messenger_last_name', 'last_name', '#signup-button', '#signup-shroud');
     });
     $('#user_name').keyup(function() {

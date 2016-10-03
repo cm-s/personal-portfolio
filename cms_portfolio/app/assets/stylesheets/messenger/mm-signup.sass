@@ -6,6 +6,7 @@ body#signup-container
   display: flex
   justify-content: center
   align-items: center
+  overflow-y: hidden
   #signup-forum
     height: 370px
     width: 450px
@@ -17,6 +18,9 @@ body#signup-container
         max-width: 280px
         margin: 20px auto 0 auto
         @include mm-standard-font(1.25rem)
+        mark
+          font-family: 'Pacifico', cursive
+          background-color: transparent
       h4#signup-subtext
         max-width: 200px
         @include mm-standard-font(.9rem)
@@ -52,3 +56,9 @@ body#signup-container
       top: 10px
       height: 30px
       width: 30px
+  footer
+    margin: 440px 0 0 0
+    font: normal normal .9rem 'Arial', sans-serif
+    color: lighten(blue, 12)
+    a
+      color: darken(lightblue, 35)
