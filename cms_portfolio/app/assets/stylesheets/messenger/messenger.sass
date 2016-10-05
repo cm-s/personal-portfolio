@@ -92,44 +92,34 @@ menu
     list-style: none
     margin: 0
     padding: 0
-    .link-disabled
-      color: rgba(0,0,0,0.26)
-    #signup-link
-      border-bottom: 1px solid transparentize(#888, 0.5)
-      cursor: pointer
-    #login-link
-      cursor: pointer
-    #logout-container
-      border-bottom: 1px solid transparentize(#888, 0.5)
-      cursor: pointer
-      position: relative
-      a
-        position: absolute
-        height: 100%
-        width: 100%
-        color: transparent
-    #logout-shroud
-      z-index: 4
-      position: absolute
-      height: 100%
-      width: 105%
-      color: transparent
     li
-      margin: 5px auto 5px auto
-      height: 50px
+      margin: 10px auto 10px auto
+      height: 60px
       width: 100%
       display: flex
       justify-content: flex-start
       align-items: center
-      em
-        font: normal normal 1rem 'Source Sans Pro', sans-serif
-      i
-        margin: auto 10px auto 10px
+      @include mm-standard-font(.8rem)
       img
-        height: 40px
-        width: 40px
+        height: 50px
+        width: 50px
         border-radius: 50%
         margin-right: 15px
+      em
+        font: normal normal 1.1rem 'Source Sans Pro', sans-serif
+      i
+        margin: auto 10px auto 10px
+  .link-disabled
+    color: rgba(0,0,0,0.26)
+  #logout-container
+    margin: 0 0 10px 0
+    border-bottom: 1px solid transparentize(#888, 0.5)
+    cursor: pointer
+    position: relative
+    display: flex
+    align-items: center
+    a
+      @include mm-standard-font(1.1rem)
 #content-section
   width: 100%
   height: 100%
@@ -166,6 +156,7 @@ menu
       background-color: darken(white, 20)
     .sd-index
       display: none
+      cursor: pointer
       height: 20px
       width: auto
       padding: 0 14px 0 18px

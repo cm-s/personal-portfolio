@@ -7,4 +7,14 @@ module ApplicationHelper
     return @page if defined?(@page)
     'index'
   end
+  def read_uri(parameter)
+    require 'uri'
+    @raw_uri = URI.parse(request.original_fullpath)
+    @uri_params_raw = @raw_uri.query
+    if @uri_params_raw =~ /\=/
+      @uri_vars = @uri_params_raw.split('=')
+      return @uri_vars[parameter]
+    end
+    return false
+  end
 end

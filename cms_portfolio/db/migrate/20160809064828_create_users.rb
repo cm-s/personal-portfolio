@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password, :null => false, :limit => 15
       t.string :first_name, :null => false, :limit => 20
       t.string :last_name, :null => false, :limit => 20
+      t.string :last_conversation
       t.attachment :image
       t.datetime :created_at
     end

@@ -48,17 +48,31 @@
 
   <menu>
     <ul>
-      <li>
+        <style media="screen">
+          menu ul a {
+            text-decoration: none;
+            font-weight: 400;
+            color: black
+          }
+        </style>
+      <li id="logout-container">
         <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
         <em><%= link_to( 'Logout', messenger_logout_url,  ) %></em>
       </li>
       <% @users.each do |usr| %>
         <% if usr.id != session[:logged_user_id] %>
           <li>
-            <%= image_tag( usr.image ) %>
-            <em>
-              <%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %>
-            </em>
+            <% if usr.image.path %>
+              <%= image_tag( usr.image ) %>
+            <% else %>
+              <%= image_tag('messenger/profile-pictures/default.svg') %>
+            <% end %>
+            <p>
+              <em>
+                <%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %>
+              </em> <br>
+              This will be a real message
+            </p>
           </li>
         <% end %>
       <% end %>
@@ -89,8 +103,16 @@
     <!--for details navbutton-->
     <div id="details-container">
       <div id="details-header">
-        <%= image_tag('messenger/profile-pictures/default.svg', :id => 'profile-image') %>
-        <h5 id="profile-user_name">Username Here</h5>
+        <% @users.each do |usr| %>
+          <% if !read_uri(1) %>
+            <%= image_tag( 'messenger/profile-pictures/default.svg' ) %>
+            <h5 id="profile-user_name">Username here</h5>
+            <% break %>
+          <% elsif read_uri(1) == usr.user_name %>
+            <%= image_tag( usr.image ) %>
+            <h5 id="profile-user_name"><%= usr.user_name %></h5>
+          <% end %>
+        <% end %>
         <i class="mdi mdi-settings mdi-16px mdi-dark" id="profile-info-settings"></i>
       </div>
       <ul id="details-options">

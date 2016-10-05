@@ -50,8 +50,7 @@ function monitor_login_entries(inputObject, reporter, buttonObject, buttonShroud
     };
 };
 
-$(document).ready(function() {
-if ($('body').hasClass('mm-enforced'))
+$(document).on('click', function() {
 
     // Forum entry enforcement aggragators, envoking enforcement functions
     $('#messenger_user_name').keyup(function() {
