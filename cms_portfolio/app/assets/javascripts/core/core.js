@@ -73,14 +73,14 @@ if ($('body').is('#index'))
     $(document).on('scroll', function() {
         $('#index-navbar').css('background-color', 'rgba(21, 27, 128, ' + ((window.scrollY/3.8)/100) + ')');
         if ( (window.scrollY/3.8)/100 >= 1 ) {
-            $('nav').css('box-shadow', '0 2px 5px 2px rgba(0, 0, 0, 0.25)');
+            $('#index-navbar').css('box-shadow', '0 2px 5px 2px rgba(0, 0, 0, 0.25)');
             if ( !headerHasText ) {
                 $('h3').animate({'opacity': '1'}, 630);
                 headerHasText = true;
             };
         };
         if ( (window.scrollY/3.8)/100 < 1 ) {
-            $('nav').css('box-shadow', 'initial');
+            $('#index-navbar').css('box-shadow', 'initial');
             if ( headerHasText ) {
                 $('h3').animate({'opacity': '0'}, 630);
                 headerHasText = false;

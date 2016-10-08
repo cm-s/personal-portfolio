@@ -106,11 +106,11 @@
         <% @users.each do |usr| %>
           <% if !read_uri(1) %>
             <%= image_tag( 'messenger/profile-pictures/default.svg' ) %>
-            <h5 id="profile-user_name">Username here</h5>
+            <h5 id="profile-user_name">Firstname Lasename</h5>
             <% break %>
           <% elsif read_uri(1) == usr.user_name %>
             <%= image_tag( usr.image ) %>
-            <h5 id="profile-user_name"><%= usr.user_name %></h5>
+            <h5 id="profile-user_name"><%= usr.first_name %> <%= usr.last_name %></h5>
           <% end %>
         <% end %>
         <i class="mdi mdi-settings mdi-16px mdi-dark" id="profile-info-settings"></i>

@@ -1,6 +1,30 @@
+@font-face
+  font-family: 'Source Sans Pro'
+  src: font-url('SourceSansPro-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Montserrat'
+  src: font-url('Montserrat-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Indie Flower'
+  src: font-url('IndieFlower.ttf') format('truetype')
+
+
 body#projects
-  background-color: white
+  background-color: darken(white, 8)
   height: 100%
   width: 100%
   padding: 0
-// Insert second rule here
+  display: flex
+  justify-content: center
+
+  #pw-text-container
+    text-align: center
+    align-self: center
+    #pw-header
+      font: normal normal 3rem 'Montserrat', sans-serif
+    #pw-subtext
+      font: normal normal 1.2rem 'Source Sans Pro', sans-serif
+    mark
+      font: normal normal 1.2rem 'Indie Flower', sans-serif
+      background-color: transparent
+  main

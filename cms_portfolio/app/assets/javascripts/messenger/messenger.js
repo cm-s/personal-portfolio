@@ -8,7 +8,7 @@ var disabled_link = false;
 
 // Simple function to adjust the predetermined positioning of the
 function position_settings_dropdown() {
-    settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 50 - 98;
+    settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 30 - 98;
 };
 
 $(document).ready(function() {
@@ -50,10 +50,10 @@ if ($('body').is('#messenger'))
     // About menu mechanics
     $('#about').click(function() {
         if (!details_menu_out) {
-            $('#details-container').animate({'left': '100%'}, 200);
+            $('#details-container').removeClass('reset').addClass('pressed');
             details_menu_out = true;
         } else {
-            $('#details-container').animate({'left': '120%'}, 200);
+            $('#details-container').removeClass('pressed').addClass('reset');
             details_menu_out = false;
         };
     });
