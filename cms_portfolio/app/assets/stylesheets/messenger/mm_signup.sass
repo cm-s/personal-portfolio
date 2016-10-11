@@ -1,0 +1,64 @@
+@import "mm_standards.sass"
+
+body#signup-container
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow-y: hidden
+  #signup-forum
+    height: 370px
+    width: 450px
+    background-color: $mm-dull-white
+    form
+      height: 95%
+      margin: 0
+      h3
+        max-width: 280px
+        margin: 20px auto 0 auto
+        @include mm-standard-font(1.25rem)
+        mark
+          font-family: 'Pacifico', cursive
+          background-color: transparent
+      h4#signup-subtext
+        max-width: 200px
+        @include mm-standard-font(.9rem)
+        margin: 10px auto 15px auto
+      .mm-forum-entry.mm-signup
+        margin: 12px auto 0 10px
+        &:nth-of-type(1)
+          margin-top: 25px
+      #signup-button
+        @include mm-standard-font(1.5rem)
+        padding: 10px
+        top: 320px
+        border-radius: 4px
+      #signup-shroud
+        height: 200px
+        width: 230px
+        position: absolute
+        z-index: 10
+        left: 50%
+        top: 310px
+        transform: translate(-50%)
+    img#close
+      position: absolute
+      top: 15px
+      left: 430px
+      height: 20px
+      width: 20px
+      color: #777
+    #closing-shroud
+      position: absolute
+      z-index: 6
+      left: 425px
+      top: 10px
+      height: 30px
+      width: 30px
+  footer
+    margin: 440px 0 0 0
+    font: normal normal .9rem 'Arial', sans-serif
+    color: lighten(blue, 12)
+    a
+      color: darken(lightblue, 35)

@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
-<style media="screen">
-  html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  };
-</style>
 <head>
   <title><%= render_title %></title> <!--Taken from http://goo.gl/BZKrzZ-->
-  <%= stylesheet_link_tag :application, 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag :application, 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <% if determine_page == "messenger" %>
@@ -57,7 +51,7 @@
         </style>
       <li id="logout-container">
         <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
-        <em><%= link_to( 'Logout', messenger_logout_url,  ) %></em>
+        <em><%= link_to( 'Logout', mm_users_logout_url,  ) %></em>
       </li>
       <% @users.each do |usr| %>
         <% if usr.id != session[:logged_user_id] %>
@@ -65,7 +59,7 @@
             <% if usr.image.path %>
               <%= image_tag( usr.image ) %>
             <% else %>
-              <%= image_tag('messenger/profile-pictures/default.svg') %>
+              <%= image_tag('mm_users/profile-pictures/default.svg') %>
             <% end %>
             <p>
               <em>
@@ -105,8 +99,8 @@
       <div id="details-header">
         <% @users.each do |usr| %>
           <% if !read_uri(1) %>
-            <%= image_tag( 'messenger/profile-pictures/default.svg' ) %>
-            <h5 id="profile-user_name">Firstname Lasename</h5>
+            <%= image_tag( 'mm_users/profile-pictures/default.svg' ) %>
+            <h5 id="profile-user_name">Firstname Lastname</h5>
             <% break %>
           <% elsif read_uri(1) == usr.user_name %>
             <%= image_tag( usr.image ) %>

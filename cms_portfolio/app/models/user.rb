@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :messages
   validates :user_name, :presence => true, :uniqueness => { :case_sesitive => true, :message => "That Username is taken."}, :length => { :in => 1..25 }
   validates :password, :presence => true, :length => { :in => 1..15 }
@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     convert_options: { thumb: "-quality 70 -strip", original: "-quality 90 -strip" },
     url: "/db/images/:hash.:extension",
     hash_secret: "1bep7000x2312a"
-  validates_attachment :image, content_type: { content_type: [ 'jpg', 'png', 'gif' ] }
+  validates_attachment :image, content_type: { content_type: [ 'image/jpeg', 'image/png', 'image/gif' ] }
 
   def self.authenticate(secure_user_name = '', secure_password = '')
     user = User.find_by_user_name(secure_user_name)

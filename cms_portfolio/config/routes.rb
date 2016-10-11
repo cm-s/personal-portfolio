@@ -6,67 +6,26 @@ Rails.application.routes.draw do
   get 'core/getmessenger'
 
   # Messenger Controller
-  get 'messenger/logout' => 'messenger#logout'
-  get 'messenger/logon' => 'messenger#logon'
-  post 'messenger/login' => 'messenger#login'
-  post 'messenger' => 'messenger#create'
-  get 'messenger/router' => 'messenger#reroute'
-  resources( :messenger, :only => [:new, :show, :destroy] )
-  # Message Controller
-  resources( :message, :only => [:create, :new, :destroy, :index] )
-  # The ':only => []' option only supplies routes resources specified in the given array
+  get 'mm_users/logout' => 'mm_users#logout'
+  get 'mm_users/logon' => 'mm_users#logon'
+  post 'mm_users/login' => 'mm_users#login'
+  post 'mm_users' => 'mm_users#create'
+  get 'mm_users/router' => 'mm_users#reroute'
+  resources( :mm_users, :only => [:new, :show, :destroy] )
   # -------------------- After 'rake routes' -----------------------------------
   #               Prefix Verb   URI Pattern                     Controller#Action
   #                 root GET    /                               core#index
   #        core_projects GET    /core/projects(.:format)        core#projects
   # core_nutrition_facts GET    /core/nutrition_facts(.:format) core#nutrition_facts
   #    core_getmessenger GET    /core/getmessenger(.:format)    core#getmessenger
-  #     messenger_logout GET    /messenger/logout(.:format)     messenger#logout
-  #      messenger_logon GET    /messenger/logon(.:format)      messenger#logon
-  #      messenger_login POST   /messenger/login(.:format)      messenger#login
-  #            messenger POST   /messenger(.:format)            messenger#create
-  #        new_messenger GET    /messenger/new(.:format)        messenger#new
-  #                      GET    /messenger/:id(.:format)        messenger#show
-  #                      DELETE /messenger/:id(.:format)        messenger#destroy
-  #        message_index GET    /message(.:format)              message#index
-  #                      POST   /message(.:format)              message#create
-  #          new_message GET    /message/new(.:format)          message#new
-  #              message DELETE /message/:id(.:format)          message#destroy
+  #      mm_users_logout GET    /mm_users/logout(.:format)      mm_users#logout
+  #       mm_users_logon GET    /mm_users/logon(.:format)       mm_users#logon
+  #       mm_users_login POST   /mm_users/login(.:format)       mm_users#login
+  #             mm_users POST   /mm_users(.:format)             mm_users#create
+  #      mm_users_router GET    /mm_users/router(.:format)      mm_users#reroute
+  #          new_mm_user GET    /mm_users/new(.:format)         mm_users#new
+  #              mm_user GET    /mm_users/:id(.:format)         mm_users#show
+  #                      DELETE /mm_users/:id(.:format)         mm_users#destroy  #
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

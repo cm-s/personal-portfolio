@@ -3,9 +3,13 @@
 one:
   user_name: MyString
   password: MyString
-  display_name: MyString
+  first_name: MyString
+  last_name: MyString
+  last_conversation: MyString
 
 two:
   user_name: MyString
   password: MyString
-  display_name: MyString
+  first_name: MyString
+  last_name: MyString
+  last_conversation: MyString

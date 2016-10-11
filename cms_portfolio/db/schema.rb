@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,22 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916234746) do
+ActiveRecord::Schema.define(version: 20161011184130) do
 
-  create_table "messages", force: :cascade do |t|
-    t.text     "content",    limit: 65535, null: false
-    t.datetime "created_at"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "user_name",          limit: 25,  null: false
-    t.string   "password",           limit: 15,  null: false
-    t.string   "first_name",         limit: 20,  null: false
-    t.string   "last_name",          limit: 20,  null: false
-    t.string   "last_conversation",  limit: 255
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
-    t.integer  "image_file_size",    limit: 4
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "user_name"
+    t.string   "password"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "last_conversation"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.datetime "created_at"
   end
