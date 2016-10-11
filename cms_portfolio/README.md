@@ -1,23 +1,24 @@
-##This is the rails app for my portfolio
+### This is the branch of my portfolio holding the application from conception up to the point at which it was updated to _Rails 5.0_, now on the master branch.
+
 This application uses **_Ruby 2.3.1_** patch 112 (ruby 2.3.1p112) along with **_Rails 4.2.6_**
 This version uses mysql in the place of sqlite3 as the default database manager, with all the gems listed below;
-* paperclip ~> 4.2
-* mysql ~> 2.9, >= 2.9.1
-* sass-rails ~> 5.0
-* uglifier >= 1.3.0
-* jquery-rails
-* turbolinks
-* jbuilder ~> 2.0
-* sdoc ~> 0.4.0
-* byebug (for test and development environments)
-* web-console ~> 2.0 (for development environments only)
-* spring (for development environments only)
+* `paperclip ~> 4.2`
+* `mysql ~> 2.9, >= 2.9.1`
+* `sass-rails ~> 5.0`
+* `uglifier >= 1.3.0`
+* `jquery-rails`
+* `turbolinks`
+* `jbuilder ~> 2.0`
+* `sdoc ~> 0.4.0`
+* `byebug (for test and development environments)`
+* `web-console ~> 2.0 (for development environments only)`
+* `spring (for development environments only)`
 
 Since the upgrade to mysql from sqlite3, there are two databases for development and testing environments.
 These databases are stored on the developer's local machine and are listed below.
 
-- cms_portfolio_dev is the database used for development
-- cms_portfolio_test is the database used for testing
+- `cms_portfolio_dev` is the database used for development
+- `cms_portfolio_test` is the database used for testing
 
 All changes to my personal portfolio will most likely be on this application
 Log of current implemented/transitioned features is organized below;
@@ -27,8 +28,10 @@ Log of current implemented/transitioned features is organized below;
 * Sliding side menu
 * Fully equipped navigation bar
 * Login and logout functions
+* Sign up function
 * Settings menu
-* 'Friends' list
+* List of other users
+* Profile pictures
 
 ###Index page
 * Dynamic navigation bar
