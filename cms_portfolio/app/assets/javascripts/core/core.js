@@ -47,7 +47,7 @@ function spatial_randomizer() {
     }, 300);
 };
 
-$(window).load(function() {
+$(document).on('turbolinks:load', function() {
 if ($('body').is('#index'))
 {
 

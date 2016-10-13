@@ -1,8 +1,8 @@
 var introText = "only"
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
 if ($('body').is('#projects'))
 {
-    
+
 };
 });

@@ -1,6 +1,3 @@
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
 var menu_out = false;
 var details_menu_out = false;
 var settings_dropdown_pos = 0;
@@ -11,7 +8,7 @@ function position_settings_dropdown() {
     settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 30 - 98;
 };
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
 if ($('body').is('#messenger'))
 {
 
