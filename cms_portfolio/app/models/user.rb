@@ -8,7 +8,7 @@ class User < ApplicationRecord
     convert_options: { thumb: "-quality 70 -strip", original: "-quality 90 -strip" },
     url: "/db/images/:hash.:extension",
     hash_secret: "1bep7000x2312a"
-  validates_attachment :image, content_type: { content_type: [ 'image/jpeg', 'image/png', 'image/gif' ] }
+  validates_attachment :image, content_type: { content_type: [ 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' ] }
 
   def self.authenticate(secure_user_name = '', secure_password = '')
     user = User.find_by_user_name(secure_user_name)

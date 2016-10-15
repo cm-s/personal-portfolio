@@ -25,10 +25,7 @@
       <i class=" mdi mdi-settings mdi-24px mdi-light"></i>
       <div class="ripple" id="settings"></div>
     </div>
-    <div id="search-bar">
-      <i class="mdi mdi-magnify mdi-24px mdi-light"></i>
-      <h4>Search for people and groups</h4>
-    </div>
+    <%= search_field_tag('search-bar', nil, :placeholder => "Search for poeple") %>
     <div id="conversation-title"></div>
     <div class="button" id="compose">
       <i class="mdi mdi-message-plus mdi-24px mdi-light"></i>

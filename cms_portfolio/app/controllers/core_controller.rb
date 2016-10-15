@@ -1,7 +1,7 @@
 class CoreController < ApplicationController
-  before_filter :authenticate_login, :only => [:desktop, :setting]
-  before_filter :enforce_logged_state, :only => [:new, :create, :login]
-  before_filter :determine_disabled
+  before_action :authenticate_login, :only => [:desktop, :setting]
+  before_action :enforce_logged_state, :only => [:new, :create, :login]
+  before_action :determine_disabled
 
   def index
     @page = 'index'
