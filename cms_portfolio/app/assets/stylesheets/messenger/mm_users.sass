@@ -6,19 +6,6 @@ body#messenger
   width: 100%
   background-color: $mm-dull-white
   z-index: -3
-  #postprocess-message
-    position: absolute
-    top: -10%
-    left: -50%
-    transform: translate(-50%, -50%)
-    padding: 25px
-    border-radius: 6px
-    @include mm-standard-font(1.2rem)
-    box-shadow: 0 5px 6px 1px rgba(0,0,0,0.3)
-    animation-name: message-popdown
-    animation-duration: 5000ms
-    animation-timing-function: ease-in-out
-    animation-iteration-count: 1
   #navbar-container
     z-index: 2
     position: fixed
@@ -72,12 +59,6 @@ body#messenger
         animation-fill-mode: forwards
         animation-timing-function: ease-out
         animation-iteration-count: 1
-    #conversation-title
-      position: absolute
-      margin-top: 10px
-      left: 50%
-      transform: translate(-50%)
-      font: normal normal large helvetica, sans-serif
     .button#menu
       margin: 0 auto 0 20px
       background-image: asset-url('mm_users/buttons/menu_white.svg')
@@ -120,8 +101,6 @@ body#messenger
           font: normal normal 1.1rem 'Source Sans Pro', sans-serif
         i
           margin: auto 10px auto 10px
-    .link-disabled
-      color: rgba(0,0,0,0.26)
     #logout-container
       margin: 0 0 10px 0
       border-bottom: 1px solid transparentize(#888, 0.5)
