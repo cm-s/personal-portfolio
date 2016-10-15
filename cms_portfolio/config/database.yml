@@ -2,13 +2,13 @@ default: &default
   adapter: mysql2
   pool: 5
   timeout: 5000
-  username: root
-  password: 8gpk6l5
   host: localhost
 
 development:
   <<: *default
   database: cms_portfolio_dev
+  username: dev
+  password: <%= ENV['development_db_password'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -16,6 +16,8 @@ development:
 test:
   <<: *default
   database: cms_portfolio_test
+  username: test
+  password: <%= ENV['testing_db_password'] %>
 
 production:
   <<: *default

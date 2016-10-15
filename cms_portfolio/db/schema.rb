@@ -12,12 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20161011184130) do
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.text     "content",    limit: 65535, null: false
-    t.datetime "created_at"
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "user_name",          limit: 25, null: false
     t.string   "password",           limit: 15, null: false
     t.string   "first_name",         limit: 20, null: false

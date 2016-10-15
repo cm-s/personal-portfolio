@@ -50,7 +50,11 @@ body#messenger
       width: 60%
       height: 39px
       background-color: rgba(191, 191, 191, 0.2)
+      border: none
       text-align: center
+      color: white
+      font: normal normal 1.2rem 'Arial', sans-serif
+      padding-left: 10px
       border-radius: 5px
       display: flex
       justify-content: center
@@ -61,6 +65,13 @@ body#messenger
       &:hover
         background-color: rgba(255, 255, 255, 0.25)
         cursor: text
+      &:focus
+        text-align: left
+        animation-name: searchbar
+        animation-duration: 250ms
+        animation-fill-mode: forwards
+        animation-timing-function: ease-out
+        animation-iteration-count: 1
     #conversation-title
       position: absolute
       margin-top: 10px
@@ -333,3 +344,8 @@ body#messenger
     transform: translate(-50%, 150%)
   100%
     transform: translate(-50%, -50%)
+@keyframes searchbar
+  0%
+    padding-left: 40%
+  100%
+    padding-left: 40px
