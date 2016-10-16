@@ -1,6 +1,10 @@
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
+<%
+    def set_uri
+        require 'uri'
+        puts "mm_users.js.erb: Debug: Set uri"
+    end
+ %>
+
 var menu_out = false;
 var details_menu_out = false;
 var settings_dropdown_pos = 0;
@@ -57,6 +61,9 @@ if ($('body').is('#messenger'))
             details_menu_out = false;
         };
     });
+    $('#search-bar').keyup(function() {
+        <%= set_uri %>
+    })
 
 } // endif
 

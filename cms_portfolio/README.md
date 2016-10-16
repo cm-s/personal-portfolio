@@ -60,7 +60,6 @@ Routing table below. This table is also in the `config/routes.rb` file.
 |mm_users_logon      |GET   |/mm_users/logon(.:format)      |mm_users#logon
 |mm_users_login      |POST  |/mm_users/login(.:format)      |mm_users#login
 |mm_users            |POST  |/mm_users(.:format)            |mm_users#create
-|mm_users_router     |GET   |/mm_users/router(.:format)     |mm_users#reroute
 |new_mm_user         |GET   |/mm_users/new(.:format)        |mm_users#new
 |mm_user             |GET   |/mm_users/:id(.:format)        |mm_users#show
 |{none}              |DELETE|/mm_users/:id(.:format)        |mm_users#destroy

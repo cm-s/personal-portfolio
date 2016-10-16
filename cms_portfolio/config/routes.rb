@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'mm_users/logon' => 'mm_users#logon'
   post 'mm_users/login' => 'mm_users#login'
   post 'mm_users' => 'mm_users#create'
-  get 'mm_users/router' => 'mm_users#reroute'
   resources( :mm_users, :only => [:new, :show, :destroy] )
   # -------------------- After 'rake routes' -----------------------------------
   #               Prefix Verb   URI Pattern                     Controller#Action
@@ -22,10 +21,9 @@ Rails.application.routes.draw do
   #       mm_users_logon GET    /mm_users/logon(.:format)       mm_users#logon
   #       mm_users_login POST   /mm_users/login(.:format)       mm_users#login
   #             mm_users POST   /mm_users(.:format)             mm_users#create
-  #      mm_users_router GET    /mm_users/router(.:format)      mm_users#reroute
   #          new_mm_user GET    /mm_users/new(.:format)         mm_users#new
   #              mm_user GET    /mm_users/:id(.:format)         mm_users#show
-  #                      DELETE /mm_users/:id(.:format)         mm_users#destroy  #
+  #                      DELETE /mm_users/:id(.:format)         mm_users#destroy
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

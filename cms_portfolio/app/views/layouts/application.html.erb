@@ -12,8 +12,9 @@
 
 <body id="messenger">
   <% if flash[:postprocess] %>
-      <div id="postprocess-message">
-        <%= flash[:postprocess] %>
+      <div id="mm-postprocess-message">
+        <i class="mdi mdi-account-check mdi-dark mdi-24px"></i>
+        <mark><%= flash[:postprocess] %></mark>
       </div>
   <% end %>
 
