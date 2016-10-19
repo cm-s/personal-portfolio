@@ -17,4 +17,9 @@ html {
   height: 100%;
   width: 100%;
   padding: 0;
-}
+};
+menu ul a {
+  text-decoration: none;
+  font-weight: 400;
+  color: black;
+};

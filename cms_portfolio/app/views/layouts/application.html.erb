@@ -13,7 +13,7 @@
 <body id="messenger">
   <% if flash[:postprocess] %>
       <div id="mm-postprocess-message">
-        <i class="mdi mdi-account-check mdi-dark mdi-24px"></i>
+        <i class="mdi mdi-account-check mdi-dark mdi-36px"></i>
         <mark><%= flash[:postprocess] %></mark>
       </div>
   <% end %>
@@ -39,13 +39,6 @@
 
   <menu>
     <ul>
-        <style media="screen">
-          menu ul a {
-            text-decoration: none;
-            font-weight: 400;
-            color: black
-          }
-        </style>
       <li id="logout-container">
         <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
         <em><%= link_to( 'Logout', mm_users_logout_url,  ) %></em>

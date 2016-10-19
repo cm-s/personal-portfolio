@@ -1,0 +1,76 @@
+@font-face
+  font-family: 'Source Sans Pro'
+  src: font-url('SourceSansPro-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Montserrat'
+  src: font-url('Montserrat-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Indie Flower'
+  src: font-url('IndieFlower.ttf') format('truetype')
+
+
+body#projects
+  background-color: darken(white, 8)
+  padding: 0
+  margin: 0
+
+  #pw-text-container
+    position: fixed
+    text-align: center
+    height: 100%
+    width: 100%
+    background-color: darken(white, 8)
+    #pw-header
+      margin: auto auto auto auto
+      font: normal normal 3rem 'Montserrat', sans-serif
+    #pw-subtext
+      margin: auto auto auto auto
+      font: normal normal 1.2rem 'Source Sans Pro', sans-serif
+    mark
+      font: normal normal 1.2rem 'Indie Flower', sans-serif
+      background-color: transparent
+  main
+    overflow: visible
+    position: absolute
+    width: 20px
+    margin-top: 10%
+    left: 50%
+    transform: translateX(-50%)
+    button
+      padding: 20px
+      border-radius: 8px
+      border: none
+      transition: all ease-in-out .2s
+      box-shadow: 0 3px 4px rgba(0,0,0,0.2)
+      &:hover
+        transform: translateY(-5px)
+        box-shadow: 0 8px 7px -3px rgba(0,0,0,0.3)
+    .card
+      display: inline
+      padding: 15px
+      border-radius: 7px
+      box-shadow: 0 3px 3px rgba(0,0,0,0.2)
+      text-align: center
+    .right
+      margin-left: 20px
+    .left
+      margin-right: 20px
+    #nutrition-facts
+      height: 300px
+      width: 300px
+      background-color: mix(yellow, red, 50)
+      display: flex
+      flex-flow: column wrap
+      align-items: center
+      font: normal normal 1.1rem 'Source Sans Pro', sans-serif
+      header
+        margin-top: 40px
+        font: bold normal 1.4rem Impact, sans-serif
+      p
+        margin-top: 42px
+      button
+        margin-top: 20px
+    #test
+      height: 500px
+      width: 400px
+      background-color: white
