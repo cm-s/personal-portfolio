@@ -27,7 +27,7 @@ There are also two environment variables that refer to the development database 
 - `export development_db_password=PASSWORD`  
 - `export testing_db_password=PASSWORD`  
 
-PASSWORD being replaced by your passowrd. Alternatively, you can simply alter the user and password fields in the `config/database.yml`
+PASSWORD being replaced by your password. Alternatively, you can simply alter the user and password fields in the `config/database.yml` file.
 ### Current Features
 Log of current implemented/transitioned features is organized below;
 ##### Material Messenger
