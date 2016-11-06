@@ -1,5 +1,18 @@
 var entries_filled = { user_name: false, first_name: false, last_name: false, password: false };
 
+var entry_forum = React.createClass({
+    render: function() {
+        <div>
+            <h3>Login to <mark>Material Messenge</mark></h3>
+            <forum>
+                <TextField id="user-name" className="mm-forum-entry mm-login"/>
+                <PasswordField id="password" className="mm-forum-entry mm-login"/>
+                <SubmitButton id="login-button" className="mm-forum-button"/>
+            </forum>
+        </div>
+    }
+});
+
 // Entry setter, helper function for the monitor_signup_entries() function and the monitor_login_entries() funciton.
 function permit_entry(reporter) {
     switch (reporter) {
