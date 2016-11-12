@@ -1,5 +1,5 @@
 <body id="login-container" class="mm-enforced">
-  <div id="login-forum" class="mm-forum">
+  <div id="login-forum" class="mm-forum"><!--
     <h3>Login to <mark>Material Messenger</mark></h3>
       <%= form_tag(:action => 'login') do %>
         <p id="user-name">Username:
@@ -12,7 +12,9 @@
         </p><br>
         <%= submit_tag('Login', :id => 'login-button', :class => 'mm-forum-button') %>
         <span id="login-shroud"></span>
-      <% end %>
+      <% end %>-->
+      <!--Begin react components-->
+      <%= react_component('EntryForum', html_options={prerender: true}) %>
   </div>
 </body>
 <footer id="login-footer"></footer>

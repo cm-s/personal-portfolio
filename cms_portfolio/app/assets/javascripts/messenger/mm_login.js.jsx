@@ -1,15 +1,29 @@
 var entries_filled = { user_name: false, first_name: false, last_name: false, password: false };
 
-var entry_forum = React.createClass({
+var EntryForum = React.createClass({
+    showVulnerabilities: function(status_code) {
+        console.log("Showing message: " + status_code);
+    },
     render: function() {
-        <div>
-            <h3>Login to <mark>Material Messenge</mark></h3>
-            <forum>
-                <TextField id="user-name" className="mm-forum-entry mm-login"/>
-                <PasswordField id="password" className="mm-forum-entry mm-login"/>
-                <SubmitButton id="login-button" className="mm-forum-button"/>
-            </forum>
-        </div>
+        return (
+            <div>
+                <h3>Login to <mark>Material Messenger</mark></h3>
+                <forum>
+                    <p id="user-name">Username:</p>
+                    <TextField id="user-name"
+                        className="mm-forum-entry mm-login"
+                        placeholder="Someone"/><br/>
+                    <p id="password">Password:</p>
+                    <PasswordField id="password"
+                        className="mm-forum-entry mm-login"
+                        placeholder="More than seven characters"
+                        showVulnerabilities={this.showVulnerabilities}/><br/>
+                    <SubmitButton id="login-button"
+                        className="mm-forum-button"
+                        value="Login"/>
+                </forum>
+            </div>
+        );
     }
 });
 
@@ -64,7 +78,6 @@ function monitor_login_entries(inputObject, reporter, buttonObject, buttonShroud
 };
 
 $(document).on('turbolinks:load', function() {
-
     // Forum entry enforcement aggragators, envoking enforcement functions
     $('#messenger_user_name').keyup(function() {
         monitor_signup_entries('#messenger_user_name', 'user_name', '#signup-button', '#signup-shroud');
