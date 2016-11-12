@@ -2,13 +2,16 @@ var TextField = React.createClass({
     getInitialState: function() {
         return {
             minLength: false,
+            maxLength: false,
             spacesAllowed: true,
-            filled: false
+            filled: false,
+            statusColor: '#777'
         };
     },
     componentDidMount: function() {
         this.setState({
             minLength: this.props.minLength,
+            maxLength: this.props.maxLength,
             spacesAllowed: this.props.spacesAllowed
         });
     },
@@ -28,13 +31,26 @@ var TextField = React.createClass({
         };
     },
     render: function() {
-        return <input type="text" ref="text_field" className={this.props.className} placeholder={this.props.placeholder} onChange={this.assert_filled}></input>;
+        return (
+            <span className="forum-entry-container">
+                <input type="text"
+                    ref="text_field"
+                    className={this.props.className}
+                    placeholder={this.props.placeholder}
+                    onChange={this.assert_filled}></input>
+                <span className="forum-entry-underline"
+                    style={{background: this.state.statusColor}}></span>
+                <span className="forum-entry-error"></span>
+            </span>
+        );
     }
 });
 var PasswordField = React.createClass({
     getInitialState: function() {
         return {
             authenticated: false,
+            error: false,
+            statusColor: '#888'
         };
     },
     assert_filled: function(event) {
@@ -51,7 +67,8 @@ var PasswordField = React.createClass({
                     //this.props.unauthenticated("bchars");
                     this.setState({
                         authenticated: false,
-                        error: "Cannot contain: < > { } [ ] | @ / * % : ; ."
+                        error: "Cannot contain: < > { } [ ] | @ / * % : ; .",
+                        statusColor: '#c5260a'
                     });
                     document.getElementsByClassName('forum-entry-error').innerText(this.state.error);
                     return false;
@@ -72,17 +89,23 @@ var PasswordField = React.createClass({
             //this.props.unauthenticated('numeric');
             this.setState({
                 authenticated: false,
-                error: "Must contain at least one number"
+                error: "Must contain at least one number",
+                statusColor: '#c5260a'
             });
         };
     },
     render: function() {
         return (
-            <div>
-                <input type="password" ref="passwd_field" placeholder={this.props.placeholder} className={this.props.className} onChange={this.assert_filled}></input>;
-                <span className="underline"></span>
+            <span className="forum-entry-container">
+                <input type="password"
+                    ref="passwd_field"
+                    placeholder={this.props.placeholder}
+                    className={this.props.className}
+                    onChange={this.assert_filled}></input>
+                <span className="forum-entry-underline"
+                    style={{background: this.state.statusColor}}></span>
                 <span className="forum-entry-error">{this.state.error}</span>
-            </div>
+            </span>
         );
     }
 });
@@ -91,6 +114,10 @@ var SubmitButton = React.createClass({
         // Submit data if appropriate
     },
     render: function() {
-        return <button type="submit" ref="submit_btn" onClick={this.request_submission} className={this.props.className}>{this.props.value}</button>;
+        return <button
+            type="submit"
+            ref="submit_btn"
+            onClick={this.request_submission}
+            className={this.props.className}>{this.props.value}</button>;
     }
 });

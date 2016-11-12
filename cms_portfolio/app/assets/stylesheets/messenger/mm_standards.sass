@@ -59,15 +59,25 @@ $mm-dull-white: darken(white, 8)
       background-color: $messenger-blue
     &.disabled
       background-color: #777
-  .mm-forum-entry
-    @include mm-standard-font(1rem)
-    padding: 5px
-    height: 1.5rem
-    width: 230px
-    border: none
-    border-bottom: 1px solid #888
-    background-color: $mm-dull-white
-    outline: none
-    transition: all ease-in 200ms
-    &:focus
-      border-bottom: 1px solid $messenger-blue
+  .forum-entry-container
+    display: flex
+    flex-flow: column wrap
+    .mm-forum-entry
+      @include mm-standard-font(1rem)
+      padding: 5px
+      height: 1.5rem
+      width: 300px
+      border: none
+      background-color: $mm-dull-white
+      outline: none
+      z-index: 2
+      transition: all ease-in 200ms
+      & + .forum-entry-underline
+        width: 300px
+        height: 2px
+        background-color: #777
+        z-index: 1
+        & + .forum-entry-error
+          color: #c5260a
+          z-index: 1
+          @include mm-standard-font(.9rem)
