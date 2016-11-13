@@ -8,7 +8,7 @@ function position_settings_dropdown() {
     settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 30 - 98;
 };
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', () => {
 if ($('body').is('#messenger'))
 {
 
@@ -17,35 +17,35 @@ if ($('body').is('#messenger'))
     $('.checkbox-ripple').css('transform', 'scale(0)');
     $('#settings-dropdown-arrow').css('transform', 'translateX(-22px)')
     // Menu mechanics
-    $('#menu').click(function(event) {
+    $('#menu').click( (event) => {
         event.stopPropagation();
         $('html').click(function() {
             $('menu').animate({'margin-left': '-335px'}, 200);
         });
         $('menu').animate({'margin-left': '0'}, 200);
     });
-    $('menu').click(function(event) {
+    $('menu').click( (event) => {
         event.stopPropagation();
     });
     // Settings button & menu mechanics
-    $('#settings').click(function(event) {
+    $('#settings').click( (event) => {
         position_settings_dropdown();
         $('#settings-dropdown').css('left', settings_dropdown_pos + 'px');
         $('#settings-dropdown').addClass('revealed').css('display', 'block').removeClass('hidden');
-        setTimeout(function () {
+        setTimeout( () => {
             $('.sd-index').css('display', 'block');
             $('.sd-divider').css('display', 'block');
         }, 400);
         event.stopPropagation();
-        $('html').click(function() {
+        $('html').click( () => {
             $('#settings-dropdown').removeClass('revealed').addClass('hidden');
         });
     });
-    $('#settings-dropdown').click(function(event) {
+    $('#settings-dropdown').click( (event) => {
         event.stopPropagation();
     });
     // About menu mechanics
-    $('#about').click(function() {
+    $('#about').click( () => {
         if (!details_menu_out) {
             $('#details-container').removeClass('reset').addClass('pressed');
             details_menu_out = true;
@@ -54,7 +54,7 @@ if ($('body').is('#messenger'))
             details_menu_out = false;
         };
     });
-    $('#search-bar').keyup(function() {
+    $('#search-bar').keyup( () => {
 
     })
 

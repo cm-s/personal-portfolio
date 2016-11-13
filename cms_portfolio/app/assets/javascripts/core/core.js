@@ -19,7 +19,7 @@ function drift(applicant) {
             $(applicant).addClass('dritfting_direc3');
             break;
     };
-    setTimeout(function () {
+    setTimeout( () => {
         $(applicant).removeClass('dritfting_direc1');
         $(applicant).removeClass('dritfting_direc2');
         $(applicant).removeClass('dritfting_direc3');
@@ -47,30 +47,30 @@ function spatial_randomizer() {
     }, 300);
 };
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', () => {
 if ($('body').is('#index'))
 {
 
     spatial_randomizer();
 
-    $('#toTop').click(function() {
+    $('#toTop').click( () => {
         $('html, body').animate({scrollTop: 0}, 600);
     });
-    $('#github').click(function() {
+    $('#github').click( () => {
         $('#shroud').css('z-index', '20');
         $('#shroud').animate({'opacity': '1'}, 200);
         document.location.href = 'https://github.com/cm-s/skillsDev';
     });
-    $('#github').on('mouseenter', function() {
+    $('#github').on('mouseenter', () => {
         $('#github-slider').removeClass('reset');
         $('#github-slider').addClass('triggered');
     });
-    $('#github').on('mouseleave', function() {
+    $('#github').on('mouseleave', () => {
         $('#github-slider').removeClass('triggered');
         $('#github-slider').addClass('reset');
     });
     $('#window-close').on('')
-    $(document).on('scroll', function() {
+    $(document).on('scroll', () => {
         $('#index-navbar').css('background-color', 'rgba(21, 27, 128, ' + ((window.scrollY/3.8)/100) + ')');
         if ( (window.scrollY/3.8)/100 >= 1 ) {
             $('#index-navbar').css('box-shadow', '0 2px 5px 2px rgba(0, 0, 0, 0.25)');

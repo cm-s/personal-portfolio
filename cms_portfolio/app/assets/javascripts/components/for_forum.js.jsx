@@ -85,7 +85,6 @@ var PasswordField = React.createClass({
         if (event.target.value.length > 6 && (event.target.value.indexOf(' ') === -1)) {
             for (let index = 0; index < event.target.value.length; index++) {
                 if (!excluded(blacklist, event.target.value[index])) {
-                    console.log("informing contains invalid characters");
                     //this.props.unauthenticated("bchars");
                     this.setState({
                         authenticated: false,
@@ -97,7 +96,6 @@ var PasswordField = React.createClass({
                     return false;
                 };
             };
-            console.log("passed blacklist authentication");
             for (let index = 0; index < event.target.value.length; index++) {
                 if (!excluded(numbers, event.target.value[index])) {
                     console.log("authenticated, data is numeric");
@@ -110,7 +108,6 @@ var PasswordField = React.createClass({
                     return true;
                 };
             };
-            console.log("information not numeric");
             //this.props.unauthenticated('numeric');
             this.setState({
                 authenticated: false,
