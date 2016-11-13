@@ -6,6 +6,32 @@
   font-style: normal
   font-weight: 400
   src: font-url('Pacifico.ttf') format('truetype')
+@font-face
+  font-family: 'Pacifico'
+  font-style: normal
+  font-weight: 400
+  src: font-url('Pacifico.ttf') format('truetype')
+@font-face
+  font-family: 'Titillium Web'
+  src: font-url('TitilliumWeb-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'PT Sans'
+  src: font-url('PT_Sans-Web-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Mononoki'
+  src: font-url('mononoki-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Ubuntu Mono'
+  src: font-url('UbuntuMono-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Source Sans Pro'
+  src: font-url('SourceSansPro-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Montserrat'
+  src: font-url('Montserrat-Regular.ttf') format('truetype')
+@font-face
+  font-family: 'Indie Flower'
+  src: font-url('IndieFlower.ttf') format('truetype')
 
 @import 'MaterialDesignIcons/materialdesignicons.scss'
 
@@ -29,7 +55,7 @@ $mm-dull-white: darken(white, 8)
 @mixin user-select($value)
   -webkit-touch-callout: $value
   -webkit-user-select: $value
-  -khtml-user-select: $value
+  -html-user-select: $value
   -moz-user-select: $value
   -ms-user-select: $value
 
@@ -41,28 +67,27 @@ $mm-dull-white: darken(white, 8)
   transform: translate(-50%, -50%)
   padding: 10px
   background-color: white
-  border-radius: 8px
+  border-radius: 4px
   box-shadow: 0 6px 8px 2px rgba(0,0,0,0.2)
-  .mm-forum-button
-    position: absolute
-    left: 50%
-    transform: translate(-50%)
-    background-color: #777
+  .forum-label
+    @include mm-standard-font(1rem)
+    margin: 25px 0 10px 0
+  .forum-button
+    margin: 35px auto auto calc(50% - 49px)
     border: none
+    font-size: 1rem
+    padding: 15px
+    border-radius: 6px
     color: mix(#333, darken($messenger-blue, 50), 50)
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.5)
     transition: all ease-in-out 0.2s
     &:hover
       box-shadow: 0 12px 18px -6px rgba(0,0,0,0.3)
-      transform: translate(-50%, -4px)
-    &.enabled
-      background-color: $messenger-blue
-    &.disabled
-      background-color: #777
+      transform: translateY(-4px)
   .forum-entry-container
     display: flex
     flex-flow: column wrap
-    .mm-forum-entry
+    .forum-entry-field
       @include mm-standard-font(1rem)
       padding: 5px
       height: 1.5rem
@@ -72,12 +97,14 @@ $mm-dull-white: darken(white, 8)
       outline: none
       z-index: 2
       transition: all ease-in 200ms
-      & + .forum-entry-underline
-        width: 300px
-        height: 2px
-        background-color: #777
-        z-index: 1
-        & + .forum-entry-error
-          color: #c5260a
-          z-index: 1
-          @include mm-standard-font(.9rem)
+    .forum-entry-underline
+      width: 300px
+      height: 2px
+      background-color: #777
+      z-index: 1
+    .forum-entry-error
+      position: absolute
+      color: #c5260a
+      z-index: 1
+      @include mm-standard-font(.9rem)
+      transition: all ease-in-out 200ms
