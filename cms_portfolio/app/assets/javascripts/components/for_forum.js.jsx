@@ -155,7 +155,7 @@ var SubmitButton = React.createClass({
         };
     },
     render: function() {
-        return <button
+        return <button id={this.props.id}
             type="submit"
             onClick={this.attemptSubmission}
             className={this.props.className}

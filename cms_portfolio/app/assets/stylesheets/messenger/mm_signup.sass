@@ -1,4 +1,5 @@
-@import "standards.sass"
+@import "standards/mixins.sass"
+@import "standards/forums.sass"
 
 body#signup-container
   height: 100%
@@ -21,27 +22,6 @@ body#signup-container
         mark
           font-family: 'Pacifico', cursive
           background-color: transparent
-      h4#signup-subtext
-        max-width: 200px
-        @include mm-standard-font(.9rem)
-        margin: 10px auto 15px auto
-      .mm-signup
-        margin: 12px auto 0 10px
-        &:nth-of-type(1)
-          margin-top: 25px
-      #signup-button
-        @include mm-standard-font(1.5rem)
-        padding: 10px
-        top: 320px
-        border-radius: 4px
-      #signup-shroud
-        height: 200px
-        width: 230px
-        position: absolute
-        z-index: 10
-        left: 50%
-        top: 310px
-        transform: translate(-50%)
   footer
     margin: 590px 0 0 0
     font: normal normal .9rem 'Arial', sans-serif

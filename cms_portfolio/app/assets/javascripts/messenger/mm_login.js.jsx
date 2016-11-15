@@ -17,17 +17,15 @@ var LoginForum = React.createClass({
             <div>
                 <h3>Login to <mark>Material Messenger</mark></h3>
                 <forum>
-                    <p id="user-name">Username:</p>
-                    <TextField id="user-name"
-                        className="mm-login"
+                    <p className="forum-label">Username:</p>
+                    <TextField className="mm-login"
                         placeholder="Someone"
                         ref="user_name"
                         minimumLenght={3}
                         maximumLength={25}
                         spacesAllowed={false}/><br/>
-                    <p id="password">Password:</p>
-                    <PasswordField id="password"
-                        className="mm-login"
+                    <p className="forum-label">Password:</p>
+                    <PasswordField className="mm-login"
                         ref="password"
                         placeholder="More than seven characters"/><br/>
                     <SubmitButton id="login-button"

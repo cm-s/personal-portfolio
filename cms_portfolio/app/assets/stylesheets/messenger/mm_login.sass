@@ -1,4 +1,4 @@
-@import "standards.sass"
+@import "standards/mixins.sass"
 
 body#login-container
   height: 100%
@@ -17,25 +17,5 @@ h3
   mark
     font-family: 'Pacifico', cursive
     background-color: transparent
-form
-  height: 80%
-  position: relative
-  .mm-login
-    margin: 15px auto 0 20px
-  #user-name
-    @include mm-standard-font(1rem)
-    text-align: center
-    position: absolute
-    top: 40px
-    left: 50%
-    transform: translate(-50%, -50%)
-  #password
-    @extend #user-name
-    top: 120px
-  #login-button
-    @include mm-standard-font(1rem)
-    position: absolute
-    top: 195px
-    left: 50%
-    padding: 15px
-    border-radius: 12px
+#login-button
+  margin-top: 9px
