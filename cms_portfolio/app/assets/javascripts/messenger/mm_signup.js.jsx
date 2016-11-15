@@ -11,6 +11,18 @@ var SignupForum = React.createClass({
                 return false;
             };
         });
+        $('button').on('click', (event) => {
+            event.preventDefault();
+        });
+    },
+    commstate: function() {
+        if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()
+         && this.refs.last_name.getAuthState() && this.refs.first_name.getAuthState()) {
+            console.log("data submitted");
+            return true;
+        };
+        console.log("data not submitted");
+        return false;
     },
     render: function() {
         return (
@@ -18,24 +30,25 @@ var SignupForum = React.createClass({
                 <h3>Signup for <mark>Material Messenger</mark></h3>
                 <form>
                     <p className="forum-label">First Name:</p>
-                    <TextField spacesAllowed={true}
+                    <TextField spacesAllowed={false}
                         placeholder="First name"
-                        reference="first_name"/>
+                        ref="first_name"/>
                     <p className="forum-label">Last Name:</p>
                     <TextField spacesAllowed={true}
                         placeholder="Last name"
-                        reference="last_name"/>
+                        ref="last_name"/>
                     <p className="forum-label">Username:</p>
                     <TextField minimumLenght={3}
                         maximumLength={25}
                         spacesAllowed={false}
-                        reference="user_name"
+                        ref="user_name"
                         placeholder="Over three characters"/>
                     <p className="forum-label">Password:</p>
-                    <PasswordField placeholder="Over six characters"/>
+                    <PasswordField placeholder="Over six characters"
+                        ref="password"/>
                     <SubmitButton value="Sign Up"
-                        className="forum-button"
-                        ref="submitButton"/>
+                        commstate={this.commstate}
+                        className="forum-button"/>
                 </form>
             </div>
         );

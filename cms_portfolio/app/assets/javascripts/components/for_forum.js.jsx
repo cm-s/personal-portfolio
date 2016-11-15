@@ -5,6 +5,7 @@ var TextField = React.createClass({
             maximumLength: false,
             spacesAllowed: true,
             filled: false,
+            error: false,
             statusColor: '#777',
             errorState: 'translateY(0)'
         };
@@ -29,6 +30,7 @@ var TextField = React.createClass({
                     });
                 } else {
                     this.setState({
+                        filled: false,
                         error: "Cannot contain spaces",
                         statusColor: '#c5260a',
                         errorState: 'translateY(2.4rem)'
@@ -44,17 +46,24 @@ var TextField = React.createClass({
             };
         } else if (this.state.maximumLength && event.target.value.length > this.state.maximumLength) {
             this.setState({
+                filled: false,
                 error: "Cannot be beyond " + this.state.maximumLength + " characters long",
                 statusColor: '#c5260a',
                 errorState: 'translateY(2.4rem)'
             });
-        }
+        } else if (!this.state.minimumLenght || !this.state.maximumLength) {
+            this.setState({
+                filled: true
+            });
+        };
+    },
+    getAuthState: function() {
+        return this.state.filled;
     },
     render: function() {
         return (
             <span className="forum-entry-container">
                 <input type="text"
-                    ref={this.props.reference}
                     className={this.props.className + ' forum-entry-field'}
                     placeholder={this.props.placeholder}
                     onChange={this.assert_filled}></input>
@@ -85,14 +94,12 @@ var PasswordField = React.createClass({
         if (event.target.value.length > 6 && (event.target.value.indexOf(' ') === -1)) {
             for (let index = 0; index < event.target.value.length; index++) {
                 if (!excluded(blacklist, event.target.value[index])) {
-                    //this.props.unauthenticated("bchars");
                     this.setState({
                         authenticated: false,
                         error: "Cannot contain: < > { } [ ] | @ / * % : ; .",
                         statusColor: '#c5260a',
                         errorState: 'translateY(2.4rem)'
                     });
-                    document.getElementsByClassName('forum-entry-error').innerText(this.state.error);
                     return false;
                 };
             };
@@ -108,20 +115,22 @@ var PasswordField = React.createClass({
                     return true;
                 };
             };
-            //this.props.unauthenticated('numeric');
             this.setState({
                 authenticated: false,
                 error: "Must contain at least one number",
                 statusColor: '#c5260a',
                 errorState: 'translateY(2.4rem)'
             });
+        } else {
         };
+    },
+    getAuthState: function() {
+        return this.state.authenticated;
     },
     render: function() {
         return (
             <span className="forum-entry-container">
                 <input type="password"
-                    ref={this.props.reference}
                     placeholder={this.props.placeholder}
                     className={this.props.className + ' forum-entry-field'}
                     onChange={this.assert_filled}></input>
@@ -136,21 +145,18 @@ var PasswordField = React.createClass({
 var SubmitButton = React.createClass({
     getInitialState: function() {
         return {
-            permitted: false,
             statusColor: '#777'
         };
     },
     attemptSubmission: function() {
-        console.log(this.state.permitted);
-        if (this.state.permitted) {
+        if (this.props.commstate()) {
             // submit
+            console.log("Submitting");
         };
-        console.log("Submitting");
     },
     render: function() {
         return <button
             type="submit"
-            ref={this.props.reference}
             onClick={this.attemptSubmission}
             className={this.props.className}
             style={{ background: this.state.statusColor }}>{this.props.value}</button>;
