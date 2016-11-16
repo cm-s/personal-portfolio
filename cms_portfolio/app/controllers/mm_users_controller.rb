@@ -30,8 +30,8 @@ class MmUsersController < ApplicationController
   end
 
   def logon
-      @page = "login messenger"
-      render(:login)
+    @page = "login messenger"
+    render(:login)
   end
   def login
     logged_user = User.authenticate(params[:user_name], params[:password])
@@ -39,11 +39,11 @@ class MmUsersController < ApplicationController
     if logged_user # If authentication returns, being anything other than false (an object)
       session[:logged_user_id] = logged_user.id
       puts "ApplicationController::MessengerController: Success; User logged in sucessfully"
-      flash[:pastprocess] = "Logged In Successfully"
+      flash[:postprocess] = "Logged In Successfully"
       determine_disabled
       @page = "messenger"
       @users = User.all.order('created_at ASC')
-      render(:show)
+      redirect_to("/mm_users/#{session[:logged_user_id]}")
     else
       puts "ApplicationController::MessengerController: Failure; Invalid Credentials, User redirected"
       flash[:user_error] = "Couldn\'t Log In"

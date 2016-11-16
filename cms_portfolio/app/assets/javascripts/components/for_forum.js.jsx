@@ -60,13 +60,17 @@ var TextField = React.createClass({
     getAuthState: function() {
         return this.state.filled;
     },
+    getValue: function() {
+        return this.refs.input.value;
+    },
     render: function() {
         return (
             <span className="forum-entry-container">
                 <input type="text"
                     className={this.props.className + ' forum-entry-field'}
                     placeholder={this.props.placeholder}
-                    onChange={this.assert_filled}></input>
+                    onChange={this.assert_filled}
+                    ref="input"></input>
                 <span className="forum-entry-underline"
                     style={{ background: this.state.statusColor }}></span>
                 <span className="forum-entry-error"
@@ -127,13 +131,17 @@ var PasswordField = React.createClass({
     getAuthState: function() {
         return this.state.authenticated;
     },
+    getValue: function() {
+        return this.refs.input.value;
+    },
     render: function() {
         return (
             <span className="forum-entry-container">
                 <input type="password"
                     placeholder={this.props.placeholder}
                     className={this.props.className + ' forum-entry-field'}
-                    onChange={this.assert_filled}></input>
+                    onChange={this.assert_filled}
+                    ref="input"></input>
                 <span className="forum-entry-underline"
                     style={{ background: this.state.statusColor }}></span>
                 <span className="forum-entry-error"
@@ -150,8 +158,8 @@ var SubmitButton = React.createClass({
     },
     attemptSubmission: function() {
         if (this.props.commstate()) {
-            // submit
             console.log("Submitting");
+            this.props.postData();
         };
     },
     render: function() {

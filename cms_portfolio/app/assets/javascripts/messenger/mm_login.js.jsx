@@ -12,6 +12,18 @@ var LoginForum = React.createClass({
         console.log("data not submitted");
         return false;
     },
+    postData: function() {
+        let user_name = this.refs.user_name.getValue();
+        let password = this.refs.password.getValue();
+        $.ajax({
+            url: '/mm_users/login',
+            type: 'POST',
+            data: {
+                user_name: user_name,
+                password: password
+            }
+        });
+    },
     render: function() {
         return (
             <div>
@@ -31,6 +43,7 @@ var LoginForum = React.createClass({
                     <SubmitButton id="login-button"
                         className="forum-button"
                         commstate={this.commstate}
+                        postData={this.postData}
                         value="Login"/>
                 </forum>
             </div>

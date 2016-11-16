@@ -24,6 +24,24 @@ var SignupForum = React.createClass({
         console.log("data not submitted");
         return false;
     },
+    postData: function() {
+        let first_name = this.refs.first_name.getValue();
+        let last_name = this.refs.last_name.getValue();
+        let user_name = this.refs.user_name.getValue();
+        let password = this.refs.password.getValue();
+        $.ajax({
+            url: '/mm_users',
+            type: 'POST',
+            data: { messenger: {
+                user_name: user_name,
+                password: password,
+                first_name: first_name,
+                last_name: last_name,
+                image: null
+                }
+            }
+        })
+    },
     render: function() {
         return (
             <div>
@@ -48,6 +66,7 @@ var SignupForum = React.createClass({
                         ref="password"/>
                     <SubmitButton value="Sign Up"
                         commstate={this.commstate}
+                        postData={this.postData}
                         className="forum-button"/>
                 </form>
             </div>
