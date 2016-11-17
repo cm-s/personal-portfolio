@@ -29,15 +29,16 @@ var SignupForum = React.createClass({
         let last_name = this.refs.last_name.getValue();
         let user_name = this.refs.user_name.getValue();
         let password = this.refs.password.getValue();
+        let image = this.refs.image.getValue();
         $.ajax({
             url: '/mm_users',
             type: 'POST',
             data: { messenger: {
-                user_name: user_name,
-                password: password,
-                first_name: first_name,
-                last_name: last_name,
-                image: null
+                    user_name: user_name,
+                    password: password,
+                    first_name: first_name,
+                    last_name: last_name,
+                    image: image
                 }
             }
         })
@@ -64,6 +65,7 @@ var SignupForum = React.createClass({
                     <p className="forum-label">Password:</p>
                     <PasswordField placeholder="Over six characters"
                         ref="password"/>
+                    <ImageField ref="image"/>
                     <SubmitButton value="Sign Up"
                         commstate={this.commstate}
                         postData={this.postData}

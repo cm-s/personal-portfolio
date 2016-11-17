@@ -170,3 +170,26 @@ var SubmitButton = React.createClass({
             style={{ background: this.state.statusColor }}>{this.props.value}</button>;
     }
 });
+var ImageField = React.createClass({
+    getInitialState: function() {
+        return {
+            imageData: false
+        };
+    },
+    sanitizeData: function(event) {
+        let imageData = new FormData();
+        imageData.append('messenger[image]', event.target.files[0]);
+        console.log(imageData);
+        this.setState({
+            imageData: imageData
+        });
+    },
+    getValue: function() {
+        return this.state.imageData;
+    },
+    render: function() {
+        return <input type="file"
+            className={() => {return this.props.className} + ' forum-image'}
+            onChange={this.sanitizeData}></input>
+    }
+});
