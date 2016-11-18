@@ -1,7 +1,8 @@
 var SignupForum = React.createClass({
     getInitialState: function() {
         return {
-            user: this.props.user
+            user: this.props.user,
+            stateTracker: false
         };
     },
     componentDidMount: function() {
@@ -15,7 +16,7 @@ var SignupForum = React.createClass({
             event.preventDefault();
         });
     },
-    commstate: function() {
+    commState: function() {
         if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()
          && this.refs.last_name.getAuthState() && this.refs.first_name.getAuthState()) {
             console.log("data submitted");
@@ -24,12 +25,29 @@ var SignupForum = React.createClass({
         console.log("data not submitted");
         return false;
     },
+    renderState: function() {
+        if (!this.state.stateTracker) {
+            this.setState({
+                stateTracker: true
+            });
+            setTimeout( () => {
+                if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()
+                && this.refs.last_name.getAuthState() && this.refs.first_name.getAuthState()) {
+                    this.refs.submit.setState({
+                        statusColor: '#1eb437'
+                    });
+                };
+                this.setState({
+                    stateTracker: false
+                });
+            }.bind(this), 800);
+        };
+    },
     postData: function() {
         let first_name = this.refs.first_name.getValue();
         let last_name = this.refs.last_name.getValue();
         let user_name = this.refs.user_name.getValue();
         let password = this.refs.password.getValue();
-        let image = this.refs.image.getValue();
         $.ajax({
             url: '/mm_users',
             type: 'POST',
@@ -37,8 +55,7 @@ var SignupForum = React.createClass({
                     user_name: user_name,
                     password: password,
                     first_name: first_name,
-                    last_name: last_name,
-                    image: image
+                    last_name: last_name
                 }
             }
         })
@@ -47,7 +64,7 @@ var SignupForum = React.createClass({
         return (
             <div>
                 <h3>Signup for <mark>Material Messenger</mark></h3>
-                <form>
+                <form onKeyDown={this.renderState}>
                     <p className="forum-label">First Name:</p>
                     <TextField spacesAllowed={false}
                         placeholder="First name"
@@ -65,9 +82,9 @@ var SignupForum = React.createClass({
                     <p className="forum-label">Password:</p>
                     <PasswordField placeholder="Over six characters"
                         ref="password"/>
-                    <ImageField ref="image"/>
                     <SubmitButton value="Sign Up"
-                        commstate={this.commstate}
+                        ref="submit"
+                        commState={this.commState}
                         postData={this.postData}
                         className="forum-button"/>
                 </form>

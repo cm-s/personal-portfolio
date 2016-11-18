@@ -125,7 +125,15 @@ var PasswordField = React.createClass({
                 statusColor: '#c5260a',
                 errorState: 'translateY(2.4rem)'
             });
-        } else {
+        } else if (event.target.value.length > 6) {
+            if (this.state.authenticated) {
+                this.setState({
+                    authenticated: false,
+                    error: "Cannot contain any spaces",
+                    statusColor: '#c5260a',
+                    errorState: 'translateY(2.4rem)'
+                });
+            };
         };
     },
     getAuthState: function() {
@@ -157,7 +165,7 @@ var SubmitButton = React.createClass({
         };
     },
     attemptSubmission: function() {
-        if (this.props.commstate()) {
+        if (this.props.commState()) {
             console.log("Submitting");
             this.props.postData();
         };
@@ -165,6 +173,7 @@ var SubmitButton = React.createClass({
     render: function() {
         return <button id={this.props.id}
             type="submit"
+            tabIndex="-1"
             onClick={this.attemptSubmission}
             className={this.props.className}
             style={{ background: this.state.statusColor }}>{this.props.value}</button>;
