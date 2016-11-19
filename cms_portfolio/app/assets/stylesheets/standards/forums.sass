@@ -14,6 +14,7 @@
   margin: 25px 0 10px 0
 .forum-button
   margin: 35px auto auto calc(50% - 49px)
+  overflow: hidden
   border: none
   outline: none
   font-size: 1rem
@@ -25,6 +26,16 @@
   &:hover
     box-shadow: 0 12px 18px -6px rgba(0,0,0,0.3)
     transform: translateY(-4px)
+  .ripple
+    position: absolute
+    height: 100px
+    width: 100px
+    background-color: transparentize(#999, .5)
+    border-radius: 50%
+    transform-origin: center
+    transform: scale(0)
+    &.animating
+      animation: ripple 300ms ease-in-out 1
 .forum-entry-container
   display: flex
   flex-flow: column wrap
@@ -49,3 +60,7 @@
     z-index: 1
     @include mm-standard-font(.9rem)
     transition: all ease-in-out 200ms
+@keyframes ripple
+  100%
+    transform: scale(1)
+    opacity: 0

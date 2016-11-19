@@ -161,7 +161,9 @@ var PasswordField = React.createClass({
 var SubmitButton = React.createClass({
     getInitialState: function() {
         return {
-            statusColor: '#777'
+            statusColor: '#777',
+            offsetY: false,
+            offsetX: false
         };
     },
     attemptSubmission: function() {
@@ -170,13 +172,74 @@ var SubmitButton = React.createClass({
             this.props.postData();
         };
     },
+    componentDidMount: function() {
+        let offset = $(this.refs.self).offset();
+        this.setState({
+            offsetY: Math.round(offset.top),
+            offsetX: Math.round(offset.left),
+        });
+    },
+    getDimensions: function() {
+        if (this.props.width > this.props.height) {
+            return this.props.width
+        };
+        return this.props.height;
+    },
     render: function() {
-        return <button id={this.props.id}
-            type="submit"
-            tabIndex="-1"
-            onClick={this.attemptSubmission}
-            className={this.props.className}
-            style={{ background: this.state.statusColor }}>{this.props.value}</button>;
+        return (
+            <button id={this.props.id}
+                ref="self"
+                type="submit"
+                tabIndex="-1"
+                onClick={this.attemptSubmission}
+                className={this.props.className}
+                style={{ background: this.state.statusColor }}
+                width={this.props.width + 'px'}
+                height={this.props.height + 'px'}>
+                {this.props.value}
+                <Responder ref="ripple"
+                    dimensions={this.getDimensions()}
+                    offsetY={this.state.offsetY}
+                    offsetX={this.state.offsetX}/>
+            </button>
+        );
+    }
+});
+var Responder = React.createClass({
+    getInitialState: function() {
+        return {
+            animating: false,
+            top: false,
+            left: false,
+            offsetY: false,
+            offsetX: false
+        };
+    },
+    componentDidMount: function() {
+        this.setState({
+            offsetY: this.props.offsetY,
+            offsetX: this.props.offsetX
+        });
+        $($(this.refs.self)[0].parentElement).on('click', (event) => {
+            this.setState({
+                animating: 'animating',
+                top: (event.pageY - (this.props.dimensions / 2)) - this.props.offsetY,
+                left: (event.pageX - (this.props.dimensions / 2)) - this.props.offsetX
+            });
+            setTimeout(function () {
+                this.setState({
+                    animating: false
+                });
+            }.bind(this), 300);
+        });
+    },
+    render: function() {
+        return <span ref="self"
+            className={this.state.animating + ' ripple'}
+            height={this.state.dimensions * 2 + 'px'}
+            width={this.props.dimensions * 2 + 'px'}
+            style={{ top: this.state.top + 'px',
+                     left: this.state.left + 'px' }}></span>;
     }
 });
 var ImageField = React.createClass({

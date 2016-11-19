@@ -23,3 +23,7 @@ menu ul a {
   font-weight: 400;
   color: black;
 };
+.turbolinks-progress-bar {
+  height: 7px;
+  background-color: mix(red, tomato, 40)
+};
