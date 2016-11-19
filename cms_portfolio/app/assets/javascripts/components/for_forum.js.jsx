@@ -180,9 +180,8 @@ var SubmitButton = React.createClass({
         });
     },
     getDimensions: function() {
-        if (this.props.width > this.props.height) {
+        if (this.props.width > this.props.height)
             return this.props.width
-        };
         return this.props.height;
     },
     render: function() {
