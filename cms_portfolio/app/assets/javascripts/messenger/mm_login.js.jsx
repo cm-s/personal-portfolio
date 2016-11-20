@@ -4,13 +4,30 @@ var LoginForum = React.createClass({
             forumFilled: false
         };
     },
-    commstate: function() {
+    commState: function() {
         if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()) {
             console.log("data submitted");
             return true;
         };
         console.log("data not submitted");
         return false;
+    },
+    renderState: function() {
+        if (!this.state.stateTracker) {
+            this.setState({
+                stateTracker: true
+            });
+            setTimeout( () => {
+                if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()) {
+                    this.refs.submit.setState({
+                        statusColor: '#1eb437'
+                    });
+                };
+                this.setState({
+                    stateTracker: false
+                });
+            }.bind(this), 800);
+        };
     },
     postData: function() {
         let user_name = this.refs.user_name.getValue();
@@ -28,7 +45,7 @@ var LoginForum = React.createClass({
         return (
             <div>
                 <h3>Login to <mark>Material Messenger</mark></h3>
-                <forum>
+                <forum onKeyDown={this.renderState}>
                     <p className="forum-label">Username:</p>
                     <TextField className="mm-login"
                         placeholder="Someone"
@@ -40,11 +57,14 @@ var LoginForum = React.createClass({
                     <PasswordField className="mm-login"
                         ref="password"
                         placeholder="More than seven characters"/><br/>
-                    <SubmitButton id="login-button"
+                    <SubmitButton ref="submit"
+                        id="login-button"
                         className="forum-button"
-                        commstate={this.commstate}
+                        commState={this.commState}
                         postData={this.postData}
-                        value="Login"/>
+                        value="Login"
+                        width={68}
+                        height={47}/>
                 </forum>
             </div>
         );
