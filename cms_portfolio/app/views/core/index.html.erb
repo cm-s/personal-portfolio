@@ -92,7 +92,7 @@
             <div class="mm-background-bubble" id="mm-outer-bubble2"></div>
             <div class="mm-background-bubble" id="mm-outer-bubble3"></div>
           </div>
-          <%= link_to("Goto Messenger", core_getmessenger_url, :id => 'messenger-link', :class => 'topic-button') %>
+          <%= react_component('WideButton', props={href: 'core/getmessenger', margin: '0', background: '#2998ff', text: 'Goto Messenger', width: 140}, html_options={prerender: false}) %>
         </div>
         <div class="topic-container">
           <span class="topic-title" id="projects-title">Projects</span>
