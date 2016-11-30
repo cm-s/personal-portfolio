@@ -87,8 +87,8 @@ var SignupForum = React.createClass({
                         commState={this.commState}
                         postData={this.postData}
                         className="forum-button"
-                        width={90}
-                        height={50}/>
+                        width={120}
+                        height={55}/>
                 </form>
             </div>
         );

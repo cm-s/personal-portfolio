@@ -47,10 +47,24 @@ function spatial_randomizer() {
     }, 300);
 };
 
-$(document).on('turbolinks:load', () => {
-if ($('body').is('#index'))
-{
+var AboutMeSection = React.createClass({
+    temptIntro: function() {
+        if (window.scrollY > 1830) {
+            console.debug("running into");
+        };
+    },
+    render: function() {
+        return (
+            <article mouseMove={this.temptIntro}>
+                <div id="attention">
+                    <h5><strong>Scroll Down, Get A Better View</strong></h5>
+                </div>
+            </article>
+        );
+    }
+});
 
+document.addEventListener('turbolinks:load', () => { if (document.querySelector('body').id == 'index') {
     spatial_randomizer();
 
     $('#toTop').click( () => {
@@ -87,6 +101,4 @@ if ($('body').is('#index'))
             };
         };
     });
-
-} // endif
-});
+}});

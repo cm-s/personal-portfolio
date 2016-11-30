@@ -63,8 +63,8 @@ var LoginForum = React.createClass({
                         commState={this.commState}
                         postData={this.postData}
                         value="Login"
-                        width={68}
-                        height={47}/>
+                        width={70}
+                        height={55}/>
                 </forum>
             </div>
         );

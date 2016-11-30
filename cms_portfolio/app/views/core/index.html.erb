@@ -99,7 +99,7 @@
           <div class="canvas">
 
           </div>
-          <%= link_to("Check it Out", 'core/projects', :id => 'projects-link', :class => 'topic-button') %>
+          <%= react_component('WideButton', props={href: 'core/projects', margin: '0', background: '#ffc966', text: 'Check it Out', width: 110}, html_options={prerender: false}) %>
         </div>
       </div>
       <div id="site-ext-info-container">
@@ -118,7 +118,7 @@
       </div>
     </div>
     <div class="section-card" id="card-three">
-
+      <%= react_component('AboutMeSection', html_options={prerender: true}, props={}) %>
     </div>
   </div>
 </body>
