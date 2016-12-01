@@ -46,18 +46,100 @@ function spatial_randomizer() {
         spatial_randomizer();
     }, 300);
 };
+var Letter = React.createClass({
+    getInitialState: function() {
+        return {
+            opacity: 1,
+            passedTrigger: false
+        };
+    },
+    triggerRecurser: function() {
+        console.debug("One got Triggered");
+        this.setState({
+            opacity: 0
+        });
+        setTimeout(function () {
+            this.props.invokeNextRecursion(this.props.iref - 1);
+        }.bind(this), this.props.iref);
+    },
+    render: function() {
+        return <mark className="intro-text"
+            style={{ opacity: this.state.opacity }}>{this.props.innerText}</mark>
+    }
+})
 
 var AboutMeSection = React.createClass({
-    temptIntro: function() {
-        if (window.scrollY > 1830) {
-            console.debug("running into");
+    configureArray: function(sentance) {
+        let output = Array.from(sentance);
+        output = output.map((letter, index) => {
+            return <Letter innerText={letter}
+                ref={'l' + index}
+                iref={index}
+                invokeNextRecursion={this.invokeNextRecursion}/>
+        }.bind(this));
+        return output;
+    },
+    getInitialState: function() {
+        return {
+            latch: true,
+            introText: this.configureArray("Scroll Down, Get A Better View"),
+            descDisplay: 'none',
+            introDisplay: 'flex',
+            width: 0,
+            height: 86
         };
+    },
+    invokeNextRecursion: function(nextref) {
+        if (eval('this.refs.l' + nextref)) {
+            eval('this.refs.l' + nextref + '.triggerRecurser()');
+        } else {
+            setTimeout(function () {
+                this.setState({
+                    introDisplay: 'none'
+                });
+                this.portrayDiscription()
+            }.bind(this), 400);
+        };
+    },
+    temptIntro: function() {
+        if (window.scrollY > 1830 && this.state.latch) {
+            this.setState({
+                latch: false
+            });
+            setTimeout(function () {
+                this.refs.l29.triggerRecurser();
+            }.bind(this), 400);
+        };
+    },
+    portrayDiscription: function() {
+        this.setState({
+            width: 100,
+            descDisplay: 'flex'
+        });
+        setTimeout(function () {
+            this.setState({
+                height: 100
+            });
+        }.bind(this), 1500);
     },
     render: function() {
         return (
-            <article mouseMove={this.temptIntro}>
-                <div id="attention">
-                    <h5><strong>Scroll Down, Get A Better View</strong></h5>
+            <article onMouseMove={this.temptIntro}>
+                <div id="introduction"
+                    style={{ display: this.state.introDisplay }}>
+                    <h5><strong>{this.state.introText}</strong></h5>
+                </div>
+                <div id="description"
+                    style={{
+                        display: this.state.descDisplay,
+                        width: this.state.width + '%',
+                        height: this.state.height + '%'
+                    }}>
+                    <span></span>
+                    <p>
+                        I have been searching...
+                    </p>
+                    <span></span>
                 </div>
             </article>
         );

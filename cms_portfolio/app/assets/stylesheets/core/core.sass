@@ -429,15 +429,36 @@ body#index
             color: #555
             padding: 0 20px 0 20px
     #card-three
+      padding: 0
+      overflow: hidden
       div, article
         height: 100%
         width: 100%
-        #attention
+        display: flex
+        align-items: center
+        justify-content: center
+        #introduction
           display: flex
           justify-content: center
           align-items: center
           h5
             font: normal normal 1.5rem 'Calligraffitti'
+            .intro-text
+              transition: all ease-in-out 500ms
+              background-color: transparent
+        #description
+          flex-flow: column wrap
+          span
+            transition: all ease-in-out 1.4s
+            background-color: darken(white, 7)
+            height: 43px
+            width: 100%
+          span:nth-of-type(1)
+            box-shadow: 0 2px 6px 4px rgba(0,0,0,0.28)
+            align-self: flex-start
+          span:nth-of-type(2)
+            box-shadow: 0 -2px 6px 4px rgba(0,0,0,0.28)
+            align-self: flex-end
 @keyframes blink
   0%
     opacity: 1
