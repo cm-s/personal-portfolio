@@ -22,7 +22,7 @@ gem 'turbolinks', '~> 5'
 gem 'responders', '~> 2.1', '>= 2.1.1'
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  # Access an IRB console by using <%= console %> anywhere in the code.
   gem 'web-console', '~> 2.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

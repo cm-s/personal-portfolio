@@ -86,11 +86,11 @@
             <div class="background-bottom" id="mm-icon-right-bottom">
               <div id="blue-cutoff-right"></div>
             </div>
-
-            <div class="mm-background-bubble" id="mm-center-bubble"></div>
-            <div class="mm-background-bubble" id="mm-outer-bubble1"></div>
-            <div class="mm-background-bubble" id="mm-outer-bubble2"></div>
-            <div class="mm-background-bubble" id="mm-outer-bubble3"></div>
+            <%= react_component('MmBubble', props = { size: 50, top: 155, left: 235, interval: 3800 }, html_options = { prerender: false }) %>
+            <%= react_component('MmBubble', props = { size: 40, top: 20, left: 30, interval: 4800 }, html_options = { prerender: false }) %>
+            <%= react_component('MmBubble', props = { size: 120, top: -23, left: 147, interval: 5000 }, html_options = { prerender: false }) %>
+            <%= react_component('MmBubble', props = { size: 85, top: -27, left: 66, interval: 3400 }, html_options = { prerender: false }) %>
+            <%= react_component('MmBubble', props = { size: 95, top: 60, left: 20, interval: 4400 }, html_options = { prerender: false }) %>
           </div>
           <%= react_component('WideButton', props={href: 'core/getmessenger', margin: '0', background: '#2998ff', text: 'Goto Messenger', width: 140}, html_options={prerender: false}) %>
         </div>

@@ -56,3 +56,31 @@ var Responder = React.createClass({
             }}></span>;
     }
 });
+var CircularButton = React.createClass({
+    getInitialState: function() {
+        if (!this.props.opaque) return {
+            boxShadow: 'none',
+            backgroundColor: 'transparent'
+        };
+        else return {
+            boxShadow: '0 1px 1px rgba(0,0,0,0.3)',
+            backgroundColor: '#dddddd'
+        };
+    },
+    render: function() {
+        return (
+            <div className="circular-button"
+                id={this.props.id}
+                style={{
+                    boxShadow: this.state.boxShadow,
+                    backgroundColor: this.state.backgroundColor,
+                    position: this.props.position,
+                    height: this.props.size + 'px',
+                    width: this.props.size + 'px'
+                }}>
+                <i className={this.props.icon}></i>
+                <Responder dimensions={this.props.size}/>
+            </div>
+        );
+    }
+})

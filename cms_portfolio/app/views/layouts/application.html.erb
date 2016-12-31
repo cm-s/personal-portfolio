@@ -11,13 +11,8 @@
 <% if determine_page == "messenger" %>
 
 <body id="messenger">
-  <% if flash[:postprocess] %>
-      <div id="mm-postprocess-message">
-        <i class="mdi mdi-account-check mdi-dark mdi-36px"></i>
-        <mark><%= flash[:postprocess] %></mark>
-      </div>
-  <% end %>
 
+  <%= react_component('MmNavbar', html_options={ prerender: true }) %><!--
   <nav id="navbar-container">
     <div class="button" id="menu">
       <div class="ripple" id="menu"></div>
@@ -35,7 +30,7 @@
       <i class=" mdi mdi-information-outline mdi-24px mdi-light"></i>
       <div class="ripple" id="about"></div>
     </div>
-  </nav>
+  </nav>-->
 
   <menu>
     <ul>
@@ -128,6 +123,12 @@
     </div>
 
   </div>
+
+  <% if flash[:postprocess] %>
+      <div id="mm-postprocess-message">
+        <mark><%= flash[:postprocess] %></mark>
+      </div>
+  <% end %>
 </body>
 
 <% else %>

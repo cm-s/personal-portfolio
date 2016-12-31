@@ -22,3 +22,8 @@ function sleep(miliseconds) {
     let currentTime = new Date().getTime();
     while (currentTime + miliseconds >= new Date().getTime()) {};
 };
+function getBrowserType() {
+    let statset = navigator.userAgent.match(/\w+(?=\/(?=\d+\.\d+))/gi);
+    if (statset[statset.length - 1] == "Safari") statset.splice(statset.length - 1, 1);
+    return statset[statset.length - 1];
+};

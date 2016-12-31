@@ -3,49 +3,49 @@
 //= require turbolinks
 var headerHasText = false;
 
-// MM bubble floating effects
-var spatial_delimiter = 0;
-var drift_direction = 0;
+var MmBubble = React.createClass({
+    getInitialState: function() {
+        return {
+            top: this.props.top,
+            left: this.props.left
+        }
+    },
+    componentDidMount: function() {
+        this.drift();
+    },
+    drift: function() {
+        if ($('body').attr('id') == 'index') {
+            let rand = Math.round(Math.random() * 20);
+            if (rand >= 10) this.setState({
+                top: this.state.top + rand + (rand + Math.round(Math.random() * 30)),
+                left: this.state.left + rand - (rand + Math.round(Math.random() * 30))
+            });
+            else this.setState({
+                top: this.state.top + rand - (rand + Math.round(Math.random() * 30)),
+                left: this.state.left + rand + (rand + Math.round(Math.random() * 30))
+            });
+            setTimeout(function () {
+                this.setState({
+                    top: this.props.top,
+                    left: this.props.left
+                });
+                setTimeout(function () {
+                    this.drift();
+                }.bind(this), this.props.interval / 2);
+            }.bind(this), this.props.interval);
+        };
+    },
+    render: function() {
+        return <div className="mm-background-bubble"
+            style={{
+                top: this.state.top + 'px',
+                left: this.state.left + 'px',
+                height: this.props.size + 'px',
+                width: this.props.size + 'px'
+            }}></div>
+    }
+});
 
-function drift(applicant) {
-    switch (drift_direction) {
-        case 1:
-            $(applicant).addClass('dritfting_direc1');
-            break;
-        case 2:
-            $(applicant).addClass('dritfting_direc2');
-            break;
-        case 3:
-            $(applicant).addClass('dritfting_direc3');
-            break;
-    };
-    setTimeout( () => {
-        $(applicant).removeClass('dritfting_direc1');
-        $(applicant).removeClass('dritfting_direc2');
-        $(applicant).removeClass('dritfting_direc3');
-    }, 600);
-};
-
-function spatial_randomizer() {
-    spatial_delimiter = Math.floor(Math.random() * 40);
-    drift_direction = (drift_direction >= 25) ? 1 : 2;
-    drift_direction = (drift_direction == 2 && spatial_delimiter > 10) ? 3 : 2;
-    if (spatial_delimiter <= 10) {
-        drift('#mm-center-bubble');
-    };
-    if ((spatial_delimiter <= 25) && (spatial_delimiter >= 8)) {
-        drift('#mm-outer-bubble1');
-    };
-    if ((spatial_delimiter <= 30) && (spatial_delimiter >= 21)) {
-        drift('#mm-outer-bubble2');
-    };
-    if ((spatial_delimiter <= 40) && (spatial_delimiter >= 28)) {
-        drift('#mm-outer-bubble3');
-    };
-    setTimeout(function () {
-        spatial_randomizer();
-    }, 300);
-};
 var Letter = React.createClass({
     getInitialState: function() {
         return {
@@ -66,7 +66,7 @@ var Letter = React.createClass({
         return <mark className="intro-text"
             style={{ opacity: this.state.opacity }}>{this.props.innerText}</mark>
     }
-})
+});
 
 var AboutMeSection = React.createClass({
     configureArray: function(sentance) {
@@ -108,7 +108,7 @@ var AboutMeSection = React.createClass({
             });
             setTimeout(function () {
                 this.refs.l29.triggerRecurser();
-            }.bind(this), 400);
+            }.bind(this), 780);
         };
     },
     portrayDiscription: function() {
@@ -147,7 +147,6 @@ var AboutMeSection = React.createClass({
 });
 
 document.addEventListener('turbolinks:load', () => { if (document.querySelector('body').id == 'index') {
-    spatial_randomizer();
 
     $('#toTop').click( () => {
         $('html, body').animate({scrollTop: 0}, 600);

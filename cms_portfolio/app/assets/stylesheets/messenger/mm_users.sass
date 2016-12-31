@@ -8,17 +8,15 @@ body#messenger
   z-index: -3
   #mm-postprocess-message
     z-index: 4
-    height: 64px
-    width: 30%
     position: fixed
-    top: -75px
+    top: 100%
     left: 50%
     display: flex
     align-items: center
-    padding-left: 20px
-    border-radius: 3px
-    background-color: white
-    box-shadow: 0 3px 6px 3px rgba(0,0,0,0.2)
+    padding: 8px 12px 8px 12px
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
+    background-color: mix(#444, grey, 80)
     font: normal normal 1.1rem 'Source Sans Pro', sans-serif
     transform: translate(-50%)
     animation-name: notify
@@ -28,7 +26,7 @@ body#messenger
     animation-timing-function: ease-in-out
     animation-iteration-count: 1
     mark
-      color: desaturate(darken(red, 20), 25)
+      color: desaturate(green, 50)
       background-color: transparent
   #navbar-container
     z-index: 2
@@ -39,23 +37,14 @@ body#messenger
     display: flex
     align-items: center
     box-shadow: 0 4px 4px rgba(0,0,0,0.35)
-    .button
-      position: relative
-      height: 25px
-      width: 25px
-      cursor: pointer
-    .ripple
-      z-index: 3
-      position: absolute
-      height: 41px
-      width: 41px
-      margin: -33px 0 0 -8px
-      background-color: #777
-      border-radius: 50%
-      opacity: 0
-      transition: all ease-in-out 0.2s
-      &:hover
-        opacity: 0.5
+    .circular-button#menu
+      margin: 0 auto 0 20px
+    .circular-button#settings
+      margin: 0 auto 0 50px
+    .circular-button#compose
+      margin: 0 50px 0 auto
+    .circular-button#about
+      margin: 0 20px 0 auto
     #search-bar
       margin: 0 auto 0 auto
       width: 60%
@@ -74,26 +63,15 @@ body#messenger
         font: normal normal large helvetica, sans-serif
         color: white
       &:hover
-        background-color: rgba(255, 255, 255, 0.25)
         cursor: text
       &:focus
+        background-color: rgba(255, 255, 255, 0.35)
         text-align: left
         animation-name: searchbar
         animation-duration: 250ms
         animation-fill-mode: forwards
         animation-timing-function: ease-out
         animation-iteration-count: 1
-    .button#menu
-      margin: 0 auto 0 20px
-      background-image: asset-url('mm_users/buttons/menu_white.svg')
-      .ripple#menu
-        margin: -8px 0 0 -8px
-    .button#settings
-      margin: 0 auto 0 50px
-    .button#compose
-      margin: 0 50px 0 auto
-    .button#about
-      margin: 0 20px 0 auto
   menu
     z-index: 3
     height: 100%
@@ -353,7 +331,7 @@ body#messenger
   100%
     padding-left: 40px
 @keyframes notify
-  18%, 80%
-    top: 20px
+  50%, 80%
+    transform: translate(-50%, -100%)
   100%
-    top: -75px
+    transform: translate(-50%)

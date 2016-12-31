@@ -8,6 +8,44 @@ function position_settings_dropdown() {
     settings_dropdown_pos = parseInt($('#menu').css('marginLeft')) + parseInt($('#menu').css('marginRight')) + parseInt($('#settings').css('marginLeft')) + 30 - 98;
 };
 
+var MmNavbar = React.createClass({
+    getInitialState: function() {
+        return {
+
+        }
+    },
+    render: function() {
+        if (document.querySelector('body').id.match(/messenger/i))
+        return (
+            <nav id="navbar-container">
+                <CircularButton opaque={false}
+                    size={40}
+                    icon=''
+                    id="menu"
+                    position='relative'/>
+                <CircularButton opaque={false}
+                    size={40}
+                    icon='mdi mdi-settings mdi-24px mdi-light'
+                    id="settings"
+                    position='relative'/>
+                <input type="search"
+                    placeholder="Search for poeple"
+                    id="search-bar"></input>
+                <CircularButton opaque={false}
+                    size={40}
+                    icon='mdi mdi-message-plus mdi-24px mdi-light'
+                    id="compose"
+                    position='relative'/>
+                <CircularButton opaque={false}
+                    size={40}
+                    icon='mdi mdi-information-outline mdi-24px mdi-light'
+                    id="about"
+                    position='relative'/>
+            </nav>
+        )
+    }
+})
+
 $(document).on('turbolinks:load', () => {
 if ($('body').is('#messenger'))
 {
@@ -15,7 +53,7 @@ if ($('body').is('#messenger'))
     // Presets
     position_settings_dropdown();
     $('.checkbox-ripple').css('transform', 'scale(0)');
-    $('#settings-dropdown-arrow').css('transform', 'translateX(-22px)')
+    if (getBrowserType() == 'Chrome') $('#settings-dropdown-arrow').css('transform', 'translateX(-22px)')
     // Menu mechanics
     $('#menu').click( (event) => {
         event.stopPropagation();

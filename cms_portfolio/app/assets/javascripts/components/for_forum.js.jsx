@@ -7,7 +7,9 @@ var TextField = React.createClass({
             filled: false,
             error: false,
             statusColor: '#777',
-            errorState: 'translateY(0)'
+            errorState: 'translateY(0)',
+            browser: getBrowserType(),
+            esa: 'translateY(2.4rem)'
         };
     },
     componentDidMount: function() {
@@ -16,10 +18,10 @@ var TextField = React.createClass({
             maximumLength: this.props.maximumLength,
             spacesAllowed: this.props.spacesAllowed
         });
+        if (this.state.browser != 'Chrome') this.setState({ esa: 'translateY(0)' });
     },
     assert_filled: function(event) {
         if (this.state.minimumLenght && event.target.value.length >= this.state.minimumLenght && this.state.maximumLength && event.target.value.length <= this.state.maximumLength) {
-            console.log("Passed length validation");
             if (!this.state.spacesAllowed) {
                 if (event.target.value.indexOf(' ') == -1) {
                     this.setState({
@@ -33,7 +35,7 @@ var TextField = React.createClass({
                         filled: false,
                         error: "Cannot contain spaces",
                         statusColor: '#c5260a',
-                        errorState: 'translateY(2.4rem)'
+                        errorState: this.state.esa
                     });
                 };
             } else {
@@ -49,7 +51,7 @@ var TextField = React.createClass({
                 filled: false,
                 error: "Cannot be beyond " + this.state.maximumLength + " characters long",
                 statusColor: '#c5260a',
-                errorState: 'translateY(2.4rem)'
+                errorState: this.state.esa
             });
         } else if (!this.state.minimumLenght || !this.state.maximumLength) {
             this.setState({
@@ -85,8 +87,13 @@ var PasswordField = React.createClass({
             authenticated: false,
             error: false,
             statusColor: '#888',
-            errorState: 'translateY(0)'
+            errorState: 'translateY(0)',
+            browser: getBrowserType(),
+            esa: 'translateY(2.4rem)'
         };
+    },
+    componentDidMount: function() {
+        if (this.state.browser != 'Chrome') this.setState({ esa: 'translateY(0)' });
     },
     assert_filled: function(event) {
         var blacklist = ['<', '>', '{', '}', '[', ']', '|', '@', '/', '*', '%', ':', ';', '.'];
@@ -102,7 +109,7 @@ var PasswordField = React.createClass({
                         authenticated: false,
                         error: "Cannot contain: < > { } [ ] | @ / * % : ; .",
                         statusColor: '#c5260a',
-                        errorState: 'translateY(2.4rem)'
+                        errorState: this.state.esa
                     });
                     return false;
                 };
@@ -123,7 +130,7 @@ var PasswordField = React.createClass({
                 authenticated: false,
                 error: "Must contain at least one number",
                 statusColor: '#c5260a',
-                errorState: 'translateY(2.4rem)'
+                errorState: this.state.esa
             });
         } else if (event.target.value.length > 6) {
             if (this.state.authenticated) {
@@ -131,7 +138,7 @@ var PasswordField = React.createClass({
                     authenticated: false,
                     error: "Cannot contain any spaces",
                     statusColor: '#c5260a',
-                    errorState: 'translateY(2.4rem)'
+                    errorState: this.state.esa
                 });
             };
         };

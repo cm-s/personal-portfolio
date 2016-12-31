@@ -6,18 +6,9 @@
 #
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
 threads 1, 4
-
-# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-#
 port        ENV.fetch("PORT") { 3000 }
-
-# Specifies the `environment` that Puma will run in.
 rails_env = ENV.fetch("RAILS_ENV") { "development" };
 environment(rails_env)
-
-# changed logging files
-#stdout_redirect(Logger.new(STDOUT), "#{Rails.root}/log/puma.stderr.log")
-
 workers 4
 
 # Use the `preload_app!` method when specifying a `workers` number.
@@ -27,7 +18,6 @@ workers 4
 # you need to make sure to reconnect any threads in the `on_worker_boot`
 # block.
 #
-preload_app!
 state_path("/home/ubuntu/Portfolio/new/cms_portfolio/tmp/pids/puma.state")
 activate_control_app
 
