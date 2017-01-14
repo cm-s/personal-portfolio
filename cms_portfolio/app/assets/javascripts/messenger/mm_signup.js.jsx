@@ -34,7 +34,7 @@ var SignupForum = React.createClass({
                 if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()
                 && this.refs.last_name.getAuthState() && this.refs.first_name.getAuthState()) {
                     this.refs.submit.setState({
-                        statusColor: '#1eb437'
+                        statusColor: 'rgb(0, 176, 89)'
                     });
                 };
                 this.setState({

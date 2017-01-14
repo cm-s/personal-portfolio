@@ -4,10 +4,19 @@ class MmUsersController < ApplicationController
   before_action :enforce_logged_state, :only => [:new, :create, :login]
 
   def show
-    @title = "Material Messenger"
+    title = "Material Messenger"
     @page = "messenger"
     @users = User.all.order('created_at ASC') # ordering users from least current to most
   end
+  def search
+    matches = scanDB(params[:query])
+    respond_to do |response|
+      data = { :status => 'ok', :data => matches }
+      response.json { render :json => data }
+    end
+  end
+
+  # The view (new) and the action of creating the user (create)
   def new
     @page = "new messenger"
     @user = User.new
@@ -15,7 +24,7 @@ class MmUsersController < ApplicationController
   def create
     @users = User.all.order('created_at ASC')
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save! && 1#secureParams(@user.user_name)
       puts "MessengerController: Database entry creation successful"
       session[:logged_user_id] = @user.id
       flash[:postprocess] = "User Created Successfully"
@@ -28,6 +37,8 @@ class MmUsersController < ApplicationController
     end
   end
 
+  # The view (logon) and the action of logging in (login)
+  # As well as the action of logging out (logout)
   def logon
     @page = "login messenger"
     render(:login)
@@ -55,7 +66,30 @@ class MmUsersController < ApplicationController
     redirect_to(root_url)
   end
 
+  # Member functions private for heightened security
   private
+
+  def secureParams(input)
+    puts input
+    filtered = input.scan(/\{|\}|\(|\)|\&|\$|#|\[|\]|\*|\^|\:|\;/i)
+    if filtered.length
+      false
+    end
+    true
+  end
+
+  def scanDB(query)
+    results = []
+    User.all.each do |usr|
+      if usr.first_name.scan(/#{query}/i).length > 0
+        sanitized = usr.attributes
+        sanitized.compact!
+        sanitized.except!('user_name', 'password', 'created_at')
+        results.push(sanitized)
+      end
+    end
+    results.to_json
+  end
 
   def user_params
     params.require(:messenger).permit(:user_name, :password, :first_name, :last_name, :image)

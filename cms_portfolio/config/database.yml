@@ -8,7 +8,7 @@ development:
   <<: *default
   database: cms_portfolio_dev
   username: dev
-  password: <%= ENV['development_db_password'] %>
+  password: ts427r
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

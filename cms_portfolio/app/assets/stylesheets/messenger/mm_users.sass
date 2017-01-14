@@ -26,7 +26,7 @@ body#messenger
     animation-timing-function: ease-in-out
     animation-iteration-count: 1
     mark
-      color: desaturate(green, 50)
+      color: lighten(green, 30)
       background-color: transparent
   #navbar-container
     z-index: 2
@@ -45,33 +45,49 @@ body#messenger
       margin: 0 50px 0 auto
     .circular-button#about
       margin: 0 20px 0 auto
-    #search-bar
-      margin: 0 auto 0 auto
+    #search-container
       width: 60%
       height: 39px
-      background-color: rgba(191, 191, 191, 0.2)
-      border: none
-      text-align: center
-      color: white
-      font: normal normal 1.2rem 'Arial', sans-serif
-      padding-left: 10px
-      border-radius: 5px
-      display: flex
-      justify-content: center
-      align-items: center
-      h4
-        font: normal normal large helvetica, sans-serif
-        color: white
-      &:hover
-        cursor: text
-      &:focus
-        background-color: rgba(255, 255, 255, 0.35)
-        text-align: left
-        animation-name: searchbar
-        animation-duration: 250ms
-        animation-fill-mode: forwards
-        animation-timing-function: ease-out
-        animation-iteration-count: 1
+      overflow: visible
+      font: normal normal .96rem 'Helvetica', sans-serif
+      #search-bar
+        margin: 0 auto 0 auto
+        width: calc(100% - 10px)
+        height: 39px
+        background-color: white
+        color: #222
+        padding-left: 10px
+        border-top-left-radius: 5px
+        border-top-right-radius: 5px
+        border-bottom: 1px solid rgba(0,0,0,0.2)
+        display: flex
+        align-items: center
+        &:hover
+          cursor: text
+        input
+          font: normal normal 1.2rem 'Arial', sans-serif
+          border: none
+          background-color: transparent
+          width: 90%
+          height: 100%
+      .search-result
+        width: calc(100% - 20px)
+        height: 50px
+        padding-left: 10px
+        border-bottom: 1px solid rgba(0,0,0,0.2)
+        background-color: white
+        display: flex
+        align-items: center
+        justify-content: left
+        img
+          height: 40px
+          width: 40px
+          border-radius: 50%
+        pre
+          padding-left: 10px
+        &:nth-last-child(1)
+          border-bottom-left-radius: 5px
+          border-bottom-left-radius: 5px
   menu
     z-index: 3
     height: 100%
@@ -325,13 +341,8 @@ body#messenger
     transform: translate(-50%, 150%)
   100%
     transform: translate(-50%, -50%)
-@keyframes searchbar
-  0%
-    padding-left: 40%
-  100%
-    padding-left: 40px
 @keyframes notify
-  50%, 80%
+  20%, 90%
     transform: translate(-50%, -100%)
   100%
     transform: translate(-50%)

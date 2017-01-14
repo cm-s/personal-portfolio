@@ -27,3 +27,9 @@ function getBrowserType() {
     if (statset[statset.length - 1] == "Safari") statset.splice(statset.length - 1, 1);
     return statset[statset.length - 1];
 };
+function readURI(section) {
+    let URI_sections = window.location.href.split(/\//);
+    URI_sections.splice(0,1);URI_sections.splice(0,1);
+    if (section == undefined) return URI_sections.length;
+    return URI_sections[section];
+};

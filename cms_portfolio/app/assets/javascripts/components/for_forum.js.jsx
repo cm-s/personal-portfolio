@@ -192,6 +192,7 @@ var SubmitButton = React.createClass({
                 }}>
                 {this.props.value}
                 <Responder ref="ripple"
+                    level={1}
                     dimensions={this.props.width}/>
             </button>
         );

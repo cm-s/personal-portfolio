@@ -17,6 +17,7 @@ var WideButton = React.createClass({
                 {this.props.text}
                 <Responder ref="ripple"
                     className="generic"
+                    level={1}
                     dimensions={this.props.width}/>
             </button>
         );
@@ -31,8 +32,7 @@ var Responder = React.createClass({
         };
     },
     componentDidMount: function() {
-        console.log(this.props.dimensions);
-        $($(this.refs.self)[0].parentElement).on('click', (event) => {
+        let primaryFxn = (event) => {
             this.setState({
                 animating: 'animating',
                 top: (event.pageY - (this.props.dimensions)) - $($(this.refs.self)[0].parentElement).offset().top,
@@ -43,17 +43,32 @@ var Responder = React.createClass({
                     animating: false
                 });
             }.bind(this), 300);
-        });
+        };
+        this.props.level == 2 ? $($(this.refs.self)[0].parentElement.parentElement).on('click', primaryFxn) :
+        $($(this.refs.self)[0].parentElement).on('click', primaryFxn);
     },
     render: function() {
-        return <span ref="self"
-            className={this.state.animating + ' ' + this.props.className + ' ripple'}
-            style={{
-                top: this.state.top + 'px',
-                left: this.state.left + 'px',
-                height: this.props.dimensions * 2 + 'px',
-                width: this.props.dimensions * 2 + 'px'
-            }}></span>;
+        if (this.props.level == 2) return (
+            <span className="ripple-container">
+                <span ref="self"
+                    className={this.state.animating + ' ' + this.props.className + ' ripple'}
+                    style={{
+                        top: this.state.top + 'px',
+                        left: this.state.left + 'px',
+                        height: this.props.dimensions * 2 + 'px',
+                        width: this.props.dimensions * 2 + 'px'
+                    }}>
+                </span>
+            </span>
+        );
+        else return <span ref="self"
+                className={this.state.animating + ' ' + this.props.className + ' ripple'}
+                style={{
+                    top: this.state.top + 'px',
+                    left: this.state.left + 'px',
+                    height: this.props.dimensions * 2 + 'px',
+                    width: this.props.dimensions * 2 + 'px'
+                }}></span>;
     }
 });
 var CircularButton = React.createClass({
@@ -79,7 +94,7 @@ var CircularButton = React.createClass({
                     width: this.props.size + 'px'
                 }}>
                 <i className={this.props.icon}></i>
-                <Responder dimensions={this.props.size}/>
+                <Responder dimensions={this.props.size} level={2}/>
             </div>
         );
     }
