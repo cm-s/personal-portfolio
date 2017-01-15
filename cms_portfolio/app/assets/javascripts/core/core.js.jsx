@@ -84,25 +84,25 @@ var AboutMeSection = React.createClass({
             latch: true,
             introText: this.configureArray("Scroll Down, Get A Better View"),
             descDisplay: 'none',
-            introDisplay: 'flex',
-            width: 0,
-            height: 86
+            introDisplay: 'flex'
         };
     },
     invokeNextRecursion: function(nextref) {
-        if (eval('this.refs.l' + nextref)) {
+        if (eval('this.refs.l' + nextref))
             eval('this.refs.l' + nextref + '.triggerRecurser()');
-        } else {
+        else {
             setTimeout(function () {
                 this.setState({
-                    introDisplay: 'none'
+                    introDisplay: 'none',
+                    descDisplay: 'flex'
                 });
+                $('#card-three').css('background-color', '#222')
                 this.portrayDiscription()
             }.bind(this), 400);
         };
     },
     temptIntro: function() {
-        if (window.scrollY > 1830 && this.state.latch) {
+        if (window.scrollY > 1630 && this.state.latch) {
             this.setState({
                 latch: false
             });
@@ -112,34 +112,31 @@ var AboutMeSection = React.createClass({
         };
     },
     portrayDiscription: function() {
-        this.setState({
-            width: 100,
-            descDisplay: 'flex'
-        });
-        setTimeout(function () {
-            this.setState({
-                height: 100
-            });
-        }.bind(this), 1500);
+
     },
     render: function() {
         return (
-            <article onMouseMove={this.temptIntro}>
+            <article onMouseMove={this.temptIntro}
+                style={{
+                    backgroundColor: this.state.backgroundColor
+                }}>
                 <div id="introduction"
+                    className="desc-element"
                     style={{ display: this.state.introDisplay }}>
                     <h5><strong>{this.state.introText}</strong></h5>
                 </div>
                 <div id="description"
+                    className="desc-element"
                     style={{
-                        display: this.state.descDisplay,
-                        width: this.state.width + '%',
-                        height: this.state.height + '%'
+                        display: this.state.descDisplay
                     }}>
-                    <span></span>
                     <p>
-                        I have been searching...
+                    {"As a young programmer, I don't dislike working with anything. I have taken on projects of varying creative and technical skill. With some deeper principle, I quite enjoy systems; Working in them, Creating them, Improving them. I've exercised myself through many projects. First and foremost the aptly named "}
+                    <a href='https://github.com/cm-s/skillsDev'>skillsDev</a>
+                    {" repository, with numerous others from "}
+                    <a href='https://www.butte.edu/'>Butte College</a>
+                    {" and one small repo that even contains exercises in assembly language."}
                     </p>
-                    <span></span>
                 </div>
             </article>
         );

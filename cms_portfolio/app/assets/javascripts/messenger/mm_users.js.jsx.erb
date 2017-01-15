@@ -33,6 +33,9 @@ var MmNavbar = React.createClass({
                     overflow: 'visible',
                     borderBottomRadius: 0
                 });
+            },
+            error: () => {
+                console.error("Error: Server didn't respond.");
             }
         });
     },
