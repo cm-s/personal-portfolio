@@ -1,15 +1,15 @@
-var WideButton = React.createClass({
-    follow: function() {
+class WideButton extends React.Component {
+    follow() {
         document.addEventListener('turbolinks:before-render', () => {
             sleep(300);
         });
         Turbolinks.visit(this.props.href);
-    },
-    render: function() {
+    }
+    render() {
         return (
             <button ref="self"
                 className={this.props.className + ' wide-button'}
-                onClick={this.follow}
+                onClick={this.follow.bind(this)}
                 style={{
                     margin: this.props.margin,
                     background: this.props.background,
@@ -22,16 +22,17 @@ var WideButton = React.createClass({
             </button>
         );
     }
-});
-var Responder = React.createClass({
-    getInitialState: function() {
-        return {
+}
+class Responder extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             animating: false,
             top: false,
             left: false
         };
-    },
-    componentDidMount: function() {
+    }
+    componentDidMount() {
         let primaryFxn = (event) => {
             this.setState({
                 animating: 'animating',
@@ -46,8 +47,8 @@ var Responder = React.createClass({
         };
         this.props.level == 2 ? $($(this.refs.self)[0].parentElement.parentElement).on('click', primaryFxn) :
         $($(this.refs.self)[0].parentElement).on('click', primaryFxn);
-    },
-    render: function() {
+    }
+    render() {
         if (this.props.level == 2) return (
             <span className="ripple-container">
                 <span ref="self"
@@ -70,19 +71,21 @@ var Responder = React.createClass({
                     width: this.props.dimensions * 2 + 'px'
                 }}></span>;
     }
-});
-var CircularButton = React.createClass({
-    getInitialState: function() {
-        if (!this.props.opaque) return {
-            boxShadow: 'none',
-            backgroundColor: 'transparent'
-        };
-        else return {
+}
+class CircularButton extends React.Component {
+    constructor(props) {
+        super(props);
+        if (!this.props.opaque)
+            this.state = {
+                boxShadow: 'none',
+                backgroundColor: 'transparent'
+            };
+        else this.state = {
             boxShadow: '0 1px 1px rgba(0,0,0,0.3)',
             backgroundColor: '#dddddd'
         };
-    },
-    render: function() {
+    }
+    render() {
         return (
             <div className="circular-button"
                 id={this.props.id}
@@ -98,4 +101,4 @@ var CircularButton = React.createClass({
             </div>
         );
     }
-})
+}

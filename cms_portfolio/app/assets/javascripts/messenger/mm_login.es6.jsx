@@ -1,18 +1,19 @@
-var LoginForum = React.createClass({
-    getInitialState: function() {
-        return {
+class LoginForum extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             forumFilled: false
         };
-    },
-    commState: function() {
+    }
+    commState() {
         if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()) {
             console.log("data submitted");
             return true;
         };
         console.log("data not submitted");
         return false;
-    },
-    renderState: function() {
+    }
+    renderState() {
         if (!this.state.stateTracker) {
             this.setState({
                 stateTracker: true
@@ -28,8 +29,8 @@ var LoginForum = React.createClass({
                 });
             }.bind(this), 800);
         };
-    },
-    postData: function() {
+    }
+    postData() {
         let user_name = this.refs.user_name.getValue();
         let password = this.refs.password.getValue();
         $.ajax({
@@ -40,12 +41,12 @@ var LoginForum = React.createClass({
                 password: password
             }
         });
-    },
-    render: function() {
+    }
+    render() {
         return (
             <div>
                 <h3>Login to <mark>Material Messenger</mark></h3>
-                <forum onKeyDown={this.renderState}>
+                <forum onKeyDown={this.renderState.bind(this)}>
                     <p className="forum-label">Username:</p>
                     <TextField className="mm-login"
                         placeholder="Someone"
@@ -60,8 +61,8 @@ var LoginForum = React.createClass({
                     <SubmitButton ref="submit"
                         id="login-button"
                         className="forum-button"
-                        commState={this.commState}
-                        postData={this.postData}
+                        commState={this.commState.bind(this)}
+                        postData={this.postData.bind(this)}
                         value="Login"
                         width={70}
                         height={55}/>
@@ -69,4 +70,4 @@ var LoginForum = React.createClass({
             </div>
         );
     }
-});
+}

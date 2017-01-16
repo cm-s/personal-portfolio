@@ -1,6 +1,7 @@
-var TextField = React.createClass({
-    getInitialState: function() {
-        return {
+class TextField extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             minimumLenght: false,
             maximumLength: false,
             spacesAllowed: true,
@@ -11,16 +12,16 @@ var TextField = React.createClass({
             browser: getBrowserType(),
             esa: 'translateY(2.4rem)'
         };
-    },
-    componentDidMount: function() {
+    }
+    componentDidMount() {
         this.setState({
             minimumLenght: this.props.minimumLenght,
             maximumLength: this.props.maximumLength,
             spacesAllowed: this.props.spacesAllowed
         });
         if (this.state.browser != 'Chrome') this.setState({ esa: 'translateY(0)' });
-    },
-    assert_filled: function(event) {
+    }
+    assert_filled(event) {
         if (this.state.minimumLenght && event.target.value.length >= this.state.minimumLenght && this.state.maximumLength && event.target.value.length <= this.state.maximumLength) {
             if (!this.state.spacesAllowed) {
                 if (event.target.value.indexOf(' ') == -1) {
@@ -58,20 +59,20 @@ var TextField = React.createClass({
                 filled: true
             });
         };
-    },
-    getAuthState: function() {
+    }
+    getAuthState() {
         return this.state.filled;
-    },
-    getValue: function() {
+    }
+    getValue() {
         return this.refs.input.value;
-    },
-    render: function() {
+    }
+    render() {
         return (
             <span className="forum-entry-container">
                 <input type="text"
                     className={this.props.className + ' forum-entry-field'}
                     placeholder={this.props.placeholder}
-                    onChange={this.assert_filled}
+                    onChange={this.assert_filled.bind(this)}
                     ref="input"></input>
                 <span className="forum-entry-underline"
                     style={{ background: this.state.statusColor }}></span>
@@ -80,22 +81,23 @@ var TextField = React.createClass({
             </span>
         );
     }
-});
-var PasswordField = React.createClass({
-    getInitialState: function() {
-        return {
+}
+class PasswordField extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             authenticated: false,
             error: false,
             statusColor: '#888',
             errorState: 'translateY(0)',
             browser: getBrowserType(),
             esa: 'translateY(2.4rem)'
-        };
-    },
-    componentDidMount: function() {
+        }
+    }
+    componentDidMount() {
         if (this.state.browser != 'Chrome') this.setState({ esa: 'translateY(0)' });
-    },
-    assert_filled: function(event) {
+    }
+    assert_filled(event) {
         var blacklist = ['<', '>', '{', '}', '[', ']', '|', '@', '/', '*', '%', ':', ';', '.'];
         var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
         function excluded(array, value) {
@@ -142,20 +144,20 @@ var PasswordField = React.createClass({
                 });
             };
         };
-    },
-    getAuthState: function() {
+    }
+    getAuthState() {
         return this.state.authenticated;
-    },
-    getValue: function() {
+    }
+    getValue() {
         return this.refs.input.value;
-    },
-    render: function() {
+    }
+    render() {
         return (
             <span className="forum-entry-container">
                 <input type="password"
                     placeholder={this.props.placeholder}
                     className={this.props.className + ' forum-entry-field'}
-                    onChange={this.assert_filled}
+                    onChange={this.assert_filled.bind(this)}
                     ref="input"></input>
                 <span className="forum-entry-underline"
                     style={{ background: this.state.statusColor }}></span>
@@ -164,26 +166,27 @@ var PasswordField = React.createClass({
             </span>
         );
     }
-});
-var SubmitButton = React.createClass({
-    getInitialState: function() {
-        return {
+}
+class SubmitButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             statusColor: '#777'
         };
-    },
-    attemptSubmission: function() {
+    }
+    attemptSubmission() {
         if (this.props.commState()) {
             console.log("Submitting");
             this.props.postData();
         };
-    },
-    render: function() {
+    }
+    render() {
         return (
             <button id={this.props.id}
                 ref="self"
                 type="submit"
                 tabIndex="-1"
-                onClick={this.attemptSubmission}
+                onClick={this.attemptSubmission.bind(this)}
                 className={this.props.className}
                 style={{
                     background: this.state.statusColor,
@@ -197,27 +200,28 @@ var SubmitButton = React.createClass({
             </button>
         );
     }
-});
-var ImageField = React.createClass({
-    getInitialState: function() {
-        return {
+}
+class ImageField extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             imageData: false
         };
-    },
-    sanitizeData: function(event) {
+    }
+    sanitizeData(event) {
         let imageData = new FormData();
         imageData.append('messenger[image]', event.target.files[0]);
         console.log(imageData);
         this.setState({
             imageData: imageData
         });
-    },
-    getValue: function() {
+    }
+    getValue() {
         return this.state.imageData;
-    },
-    render: function() {
+    }
+    render() {
         return <input type="file"
             className={() => {return this.props.className} + ' forum-image'}
             onChange={this.sanitizeData}></input>
     }
-});
+}

@@ -1,11 +1,12 @@
-var SignupForum = React.createClass({
-    getInitialState: function() {
-        return {
+class SignupForum extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             user: this.props.user,
             stateTracker: false
         };
-    },
-    componentDidMount: function() {
+    }
+    componentDidMount() {
         $('input').on('keydown', (event) => {
             if (event.keyCode == 13) {
                 event.preventDefault();
@@ -15,8 +16,8 @@ var SignupForum = React.createClass({
         $('button').on('click', (event) => {
             event.preventDefault();
         });
-    },
-    commState: function() {
+    }
+    commState() {
         if (this.refs.password.getAuthState() && this.refs.user_name.getAuthState()
          && this.refs.last_name.getAuthState() && this.refs.first_name.getAuthState()) {
             console.log("data submitted");
@@ -24,8 +25,8 @@ var SignupForum = React.createClass({
         };
         console.log("data not submitted");
         return false;
-    },
-    renderState: function() {
+    }
+    renderState() {
         if (!this.state.stateTracker) {
             this.setState({
                 stateTracker: true
@@ -42,8 +43,8 @@ var SignupForum = React.createClass({
                 });
             }.bind(this), 800);
         };
-    },
-    postData: function() {
+    }
+    postData() {
         let first_name = this.refs.first_name.getValue();
         let last_name = this.refs.last_name.getValue();
         let user_name = this.refs.user_name.getValue();
@@ -59,12 +60,12 @@ var SignupForum = React.createClass({
                 }
             }
         })
-    },
-    render: function() {
+    }
+    render() {
         return (
             <div>
                 <h3>Signup for <mark>Material Messenger</mark></h3>
-                <form onKeyDown={this.renderState}>
+                <form onKeyDown={this.renderState.bind(this)}>
                     <p className="forum-label">First Name:</p>
                     <TextField spacesAllowed={false}
                         placeholder="First name"
@@ -84,8 +85,8 @@ var SignupForum = React.createClass({
                         ref="password"/>
                     <SubmitButton value="Sign Up"
                         ref="submit"
-                        commState={this.commState}
-                        postData={this.postData}
+                        commState={this.commState.bind(this)}
+                        postData={this.postData.bind(this)}
                         className="forum-button"
                         width={120}
                         height={55}/>
@@ -93,4 +94,4 @@ var SignupForum = React.createClass({
             </div>
         );
     }
-});
+}

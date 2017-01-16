@@ -1,13 +1,14 @@
-var MmNavbar = React.createClass({
-    getInitialState: function() {
-        return {
+class MmNavbar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             user: readURI(readURI() - 1),
             results: [],
             overflow: 'hidden',
             borderBottomRadius: 5
         };
-    },
-    search: function(event) {
+    }
+    search(event) {
         if (event.target.value)
         $.ajax({
             url: '/mm_users/' + this.state.user + '/search',
@@ -38,21 +39,21 @@ var MmNavbar = React.createClass({
                 console.error("Error: Server didn't respond.");
             }
         });
-    },
-    expand: function() {
+    }
+    expand() {
         if (this.state.results.length)
         this.setState({
             overflow: 'visible',
             borderBottomRadius: 0
         });
-    },
-    contract: function() {
+    }
+    contract() {
         this.setState({
             overflow: 'hidden',
             borderBottomRadius: 5
         });
-    },
-    render: function() {
+    }
+    render() {
         if (document.querySelector('body').id.match(/messenger/i))
         return (
             <nav id="navbar-container">
@@ -67,8 +68,8 @@ var MmNavbar = React.createClass({
                     id="settings"
                     position='relative'/>
                 <div id="search-container"
-                    onFocus={this.expand}
-                    onBlur={this.contract}
+                    onFocus={this.expand.bind(this)}
+                    onBlur={this.contract.bind(this)}
                     style={{
                         overflow: this.state.overflow,
                         borderBottomLeftRadius: this.state.borderBottomRadius + 'px',
@@ -78,7 +79,7 @@ var MmNavbar = React.createClass({
                         <i className="mdi mdi-magnify mdi-24px mdi-dark"></i>
                         <input type="search"
                             placeholder="Search for poeple"
-                            onChange={this.search}
+                            onChange={this.search.bind(this)}
                             autoComplete="no"/>
                     </div>
                     {this.state.results}
@@ -96,7 +97,7 @@ var MmNavbar = React.createClass({
             </nav>
         )
     }
-});
+}
 
 var menu_out = false;
 var details_menu_out = false;

@@ -3,17 +3,18 @@
 //= require turbolinks
 var headerHasText = false;
 
-var MmBubble = React.createClass({
-    getInitialState: function() {
-        return {
+class MmBubble extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             top: this.props.top,
             left: this.props.left
-        }
-    },
-    componentDidMount: function() {
+        };
+    }
+    componentDidMount() {
         this.drift();
-    },
-    drift: function() {
+    }
+    drift() {
         if ($('body').attr('id') == 'index') {
             let rand = Math.round(Math.random() * 20);
             if (rand >= 10) this.setState({
@@ -34,60 +35,62 @@ var MmBubble = React.createClass({
                 }.bind(this), this.props.interval / 2);
             }.bind(this), this.props.interval);
         };
-    },
-    render: function() {
+    }
+    render() {
         return <div className="mm-background-bubble"
             style={{
                 top: this.state.top + 'px',
                 left: this.state.left + 'px',
                 height: this.props.size + 'px',
                 width: this.props.size + 'px'
-            }}></div>
+            }}></div>;
     }
-});
+}
 
-var Letter = React.createClass({
-    getInitialState: function() {
-        return {
+class Letter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             opacity: 1,
             passedTrigger: false
         };
-    },
-    triggerRecurser: function() {
-        console.debug("One got Triggered");
+    }
+    triggerRecurser() {
         this.setState({
             opacity: 0
         });
         setTimeout(function () {
             this.props.invokeNextRecursion(this.props.iref - 1);
         }.bind(this), this.props.iref);
-    },
-    render: function() {
-        return <mark className="intro-text"
-            style={{ opacity: this.state.opacity }}>{this.props.innerText}</mark>
     }
-});
+    render() {
+        return <mark className="intro-text"
+            style={{ opacity: this.state.opacity }}>{this.props.innerText}</mark>;
+    }
+}
 
-var AboutMeSection = React.createClass({
-    configureArray: function(sentance) {
-        let output = Array.from(sentance);
-        output = output.map((letter, index) => {
-            return <Letter innerText={letter}
-                ref={'l' + index}
-                iref={index}
-                invokeNextRecursion={this.invokeNextRecursion}/>
-        }.bind(this));
-        return output;
-    },
-    getInitialState: function() {
-        return {
+class AboutMeSection extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             latch: true,
             introText: this.configureArray("Scroll Down, Get A Better View"),
             descDisplay: 'none',
             introDisplay: 'flex'
         };
-    },
-    invokeNextRecursion: function(nextref) {
+    }
+    configureArray(sentance) {
+        let output = Array.from(sentance);
+        output = output.map((letter, index) => {
+            return <Letter innerText={letter}
+                ref={'l' + index}
+                iref={index}
+                invokeNextRecursion={this.invokeNextRecursion.bind(this)}
+                key={index}/>
+        }.bind(this));
+        return output;
+    }
+    invokeNextRecursion(nextref) {
         if (eval('this.refs.l' + nextref))
             eval('this.refs.l' + nextref + '.triggerRecurser()');
         else {
@@ -100,8 +103,8 @@ var AboutMeSection = React.createClass({
                 this.portrayDiscription()
             }.bind(this), 400);
         };
-    },
-    temptIntro: function() {
+    }
+    temptIntro() {
         if (window.scrollY > 1630 && this.state.latch) {
             this.setState({
                 latch: false
@@ -110,13 +113,11 @@ var AboutMeSection = React.createClass({
                 this.refs.l29.triggerRecurser();
             }.bind(this), 780);
         };
-    },
-    portrayDiscription: function() {
-
-    },
-    render: function() {
+    }
+    portrayDiscription() {}
+    render() {
         return (
-            <article onMouseMove={this.temptIntro}
+            <article onMouseMove={this.temptIntro.bind(this)}
                 style={{
                     backgroundColor: this.state.backgroundColor
                 }}>
@@ -137,11 +138,16 @@ var AboutMeSection = React.createClass({
                     <a href='https://www.butte.edu/'>Butte College</a>
                     {" and one small repo that even contains exercises in assembly language."}
                     </p>
+                    <blockquote>
+                        {"I'm not one to believe the devil's in the details, more and more, the devil's in "}
+                        <mark>abstraction</mark>
+                        {" . After looking past that, the problems are all to obvious."}
+                    </blockquote>
                 </div>
             </article>
         );
     }
-});
+}
 
 document.addEventListener('turbolinks:load', () => { if (document.querySelector('body').id == 'index') {
 
