@@ -19,17 +19,17 @@
 //= require components
 //= require_tree .
 function sleep(miliseconds) {
-    let currentTime = new Date().getTime();
-    while (currentTime + miliseconds >= new Date().getTime()) {};
+  let currentTime = new Date().getTime();
+  while (currentTime + miliseconds >= new Date().getTime()) {};
 };
 function getBrowserType() {
-    let statset = navigator.userAgent.match(/\w+(?=\/(?=\d+\.\d+))/gi);
-    if (statset[statset.length - 1] == "Safari") statset.splice(statset.length - 1, 1);
-    return statset[statset.length - 1];
+  let statset = navigator.userAgent.match(/\w+(?=\/(?=\d+\.\d+))/gi);
+  if (statset[statset.length - 1] == "Safari") statset.splice(statset.length - 1, 1);
+  return statset[statset.length - 1];
 };
 function readURI(section) {
-    let URI_sections = window.location.href.split(/\//);
-    URI_sections.splice(0,1);URI_sections.splice(0,1);
-    if (section == undefined) return URI_sections.length;
-    return URI_sections[section];
+  let URI_sections = window.location.href.split(/\//);
+  URI_sections.splice(0,1);URI_sections.splice(0,1);
+  if (section == undefined) return URI_sections.length;
+  return URI_sections[section];
 };
