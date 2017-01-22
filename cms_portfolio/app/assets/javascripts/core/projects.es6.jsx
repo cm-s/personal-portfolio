@@ -1,4 +1,13 @@
 var introText = "only"
+class ElementalCard extends React.Component {
+  render() {
+    return (
+      <div className={'card' + this.props.side}>
+
+      </div>
+    )
+  }
+}
 
 $(document).on('turbolinks:load', () => {
 if ($('body').is('#projects'))

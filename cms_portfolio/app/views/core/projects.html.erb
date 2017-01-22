@@ -13,7 +13,7 @@
       <p>
         This is a small project that I created when I was practicing creating somewhat complex markup.
       </p>
-      <button><%= link_to("Take a Look", core_nutrition_facts_url) %></button>
+      <%= react_component('WideButton', props = { href: core_nutrition_facts_url, width: 109, height: 59, margin: 0, background: 'white', text: 'Nutrition Facts' }) %>
     </div>
     <div class="card left" id="test">
 

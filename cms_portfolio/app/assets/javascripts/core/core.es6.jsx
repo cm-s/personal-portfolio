@@ -55,12 +55,16 @@ class Letter extends React.Component {
       passedTrigger: false
     };
   }
-  triggerRecurser() {
-    this.setState({
-      opacity: 0
-    });
+  triggerFwdRecurser() { // RTL
+    this.setState({ opacity: 0 });
     setTimeout(function () {
-      this.props.invokeNextRecursion(this.props.iref - 1);
+      this.props.invokeNextRecursion(this.props.iref - 1, true /* this exp is 'nextref' */ );
+    }.bind(this), this.props.iref);
+  }
+  triggerBkwdRecurser() { // LTR
+    this.setState({ opacity: 1 });
+    setTimeout(function () {
+      this.props.invokeNextRecursion(this.props.iref + 1, false /* this exp is 'nextref' */ );
     }.bind(this), this.props.iref);
   }
   render() {
@@ -90,34 +94,55 @@ class AboutMeSection extends React.Component {
     }.bind(this));
     return output;
   }
-  invokeNextRecursion(nextref) {
+  invokeNextRecursion(nextref, goal) {
     if (eval('this.refs.l' + nextref))
-      eval('this.refs.l' + nextref + '.triggerRecurser()');
-    else {
+      goal ? eval('this.refs.l' + nextref + '.triggerFwdRecurser()')
+      : eval('this.refs.l' + nextref + '.triggerBkwdRecurser()');
+    else if (goal) {
       setTimeout(function () {
         this.setState({
           introDisplay: 'none',
           descDisplay: 'flex'
         });
-        $('#card-three').css('background-color', '#222')
+        $('#card-three').css('background-color', '#222');
         this.portrayDiscription()
       }.bind(this), 400);
     };
   }
-  temptIntro() {
-    if (window.scrollY > 1630 && this.state.latch) {
-      this.setState({
-        latch: false
-      });
-      setTimeout(function () {
-        this.refs.l29.triggerRecurser();
-      }.bind(this), 780);
+  temptReveal() {
+    let revealFxn = () => {
+      if (window.scrollY > 1630 && this.state.latch) {
+        $(window).off('scroll', revealFxn);
+        this.setState({
+          latch: false
+        });
+        setTimeout(function () {
+          this.refs.l29.triggerFwdRecurser();
+        }.bind(this), 780);
+      };
     };
+    $(window).on('scroll', revealFxn);
+  }
+  temptShroud() {
+    let deltaTrigger = () => {
+      if (window.scrollY > 1700) {
+        this.setState({
+          introDisplay: 'flex',
+          descDisplay: 'none'
+        });
+        $('#card-three').css('background-color', 'white');
+        this.refs.l0.triggerBkwdRecurser();
+        this.setState({ latch: true });
+        document.removeEventListener('scroll', deltaTrigger);
+      };
+    };
+    $(window).on('scroll', deltaTrigger);
   }
   portrayDiscription() {}
   render() {
     return (
-      <article onMouseMove={this.temptIntro.bind(this)}
+      <article onMouseEnter={this.temptReveal.bind(this)}
+        onMouseLeave={this.temptShroud.bind(this)}
         style={{
           backgroundColor: this.state.backgroundColor
         }}>

@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 20161011184130) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "user_name",          limit: 25, null: false
-    t.string   "password",           limit: 15, null: false
-    t.string   "first_name",         limit: 20, null: false
-    t.string   "last_name",          limit: 20, null: false
+    t.string   "password",           limit: 35, null: false
+    t.string   "first_name",         limit: 30, null: false
+    t.string   "last_name",          limit: 30, null: false
     t.string   "last_conversation"
     t.string   "image_file_name"
     t.string   "image_content_type"
