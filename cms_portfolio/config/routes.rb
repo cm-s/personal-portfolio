@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # Core Controller
   root 'core#index' # This is represented with 'root_url' in the controller.rb file
-  get 'core/projects'
+  get 'core/extras'
+  get 'core/extras/project' => 'core#project'
   get 'core/nutrition_facts'
   get 'core/getmessenger'
 
@@ -13,10 +14,11 @@ Rails.application.routes.draw do
   resources( :mm_users, :only => [:new, :show, :destroy] ) do
     get '/search' => 'mm_users#search'
   end
-  # -------------------- After 'rake routes' -----------------------------------
+  # -------------------- After 'rake routes' -------------------------------------------------------
   #               Prefix Verb   URI Pattern                            Controller#Action
   #                 root GET    /                                      core#index
-  #        core_projects GET    /core/projects(.:format)               core#projects
+  #          core_extras GET    /core/extras(.:format)                 core#extras
+  #  core_extras_project GET    /core/extras/project(.:format)         core#project
   # core_nutrition_facts GET    /core/nutrition_facts(.:format)        core#nutrition_facts
   #    core_getmessenger GET    /core/getmessenger(.:format)           core#getmessenger
   #      mm_users_logout GET    /mm_users/logout(.:format)             mm_users#logout
