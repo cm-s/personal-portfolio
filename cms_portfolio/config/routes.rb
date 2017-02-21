@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'core/getmessenger'
 
   # Messenger Controller
+  mount ActionCable.server => '/cable'
   get 'mm_users/logout' => 'mm_users#logout'
   get 'mm_users/logon' => 'mm_users#logon'
   post 'mm_users/login' => 'mm_users#login'

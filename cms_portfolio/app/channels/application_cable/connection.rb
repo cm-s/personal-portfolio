@@ -9,12 +9,8 @@ module ApplicationCable
     protected
 
     def find_verified_user
-      if current_user = User.find_by(id: session[:logged_user_id])
-        return current_user
-      else
-        reject_unauthorized_connection
-      end
+      # temporarily emptied
     end
-    
+
   end
 end
