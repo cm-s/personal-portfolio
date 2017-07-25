@@ -1,0 +1,21 @@
+@import "standards/mixins.sass"
+
+body#login-container
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  #login-forum
+    height: 340px
+    width: 400px
+    background-color: $mm-dull-white
+h3
+  max-width: 260px
+  margin: 20px auto 0 auto
+  @include mm-standard-font(1.25rem)
+  mark
+    font-family: 'Pacifico', cursive
+    background-color: transparent
+#login-button
+  margin-top: 9px

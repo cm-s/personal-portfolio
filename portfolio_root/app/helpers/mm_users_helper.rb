@@ -1,0 +1,2 @@
+module MmUsersHelper
+end

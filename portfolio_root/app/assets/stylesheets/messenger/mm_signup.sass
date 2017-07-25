@@ -1,0 +1,30 @@
+@import "standards/mixins.sass"
+@import "standards/forums.sass"
+
+body#signup-container
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow-y: hidden
+  #signup-forum
+    height: 520px
+    width: 450px
+    background-color: $mm-dull-white
+    form
+      height: 95%
+      margin: 0
+      h3
+        max-width: 280px
+        margin: 10px auto 0 auto
+        @include mm-standard-font(1.25rem)
+        mark
+          font-family: 'Pacifico', cursive
+          background-color: transparent
+  footer
+    margin: 590px 0 0 0
+    font: normal normal .9rem 'Arial', sans-serif
+    color: lighten(blue, 12)
+    a
+      color: darken(lightblue, 35)

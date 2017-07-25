@@ -1,0 +1,141 @@
+$standard: 2px 4px 2px 4px
+
+body#nutrition_facts
+  margin: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  height: auto
+  width: 100%
+  background-color: darken(lavender, 30%)
+#container
+  border: 4px solid black
+  display: flex
+  flex-direction: column
+  background-color: white
+  margin: 150px 0 150px 0
+  max-width: 350px
+  .line
+    width: 100%
+    display: inline-block
+  span
+    margin: $standard
+    display: inline-block
+    font: normal normal 16px arial, sans-serif
+  #section-one
+    h1
+      margin: 2px 4px 2px 4px
+      font: bold normal xx-large impact, sans-serif
+      letter-spacing: 1vh
+    .line
+      span:nth-of-type(1)
+        text-align: left
+      span:nth-of-type(2)
+        text-align: right
+    .line
+      span:nth-of-type(1)
+        float: left
+      span:nth-of-type(2)
+        float: right
+  .seperator
+    margin: $standard
+    width: auto
+    height: 10px
+    background-color: black
+  span#aps
+    border-bottom: 1px solid black
+  #section-two
+    span:nth-of-type(1)
+      text-align: left
+    span:nth-of-type(2)
+      text-align: right
+  .seperator#skinny
+    height: 5px
+  span#chart-header
+    text-align: right
+    border-bottom: 1px solid black
+  ul#content-chart-a
+    list-style: none
+    padding: 0
+    margin: $standard
+    .bold
+      font-weight: bold
+      font-family: arial, sans-serif
+    mark
+      background-color: white
+      font-weight: normal
+    li:nth-of-type(1)
+      border: none
+    li
+      font-family: arial, sans-serif
+      border-bottom: 1px solid black
+    .subitem
+      margin-left: 20px
+    #first-subitem
+      border-top: 1px solid black
+    li:nth-last-child(1)
+      border: none
+  ul#content-chart-b
+    display: flex
+    align-content: space-around
+    padding: 0 0 0 0
+    margin: $standard
+    font: normal normal 14px arial, sans-serif
+    li
+      margin-left: 15px
+  p
+    border-top: 1px solid black
+    margin: $standard
+    padding: 3px 0 0 0
+    font-family: arial, sans-serif
+  ul#row-outlier
+    vertical-align: middle
+    display: flex
+    align-content: flex-end
+    list-style: none
+    margin: $standard
+    margin-bottom: 0
+    li:nth-of-type(1)
+      width: 80px
+      height: 14px
+    li:nth-of-type(2)
+      margin-left: 9px
+    li:nth-of-type(3)
+      margin-left: 13px
+    li:nth-of-type(4)
+      margin-left: 25px
+  table
+    border-top: 1px solid black
+    border-bottom: 1px solid black
+    margin: $standard
+  ul#content-chart-c
+    display: flex
+    align-content: space-around
+    padding: 0 0 0 0
+    margin: $standard
+    font: normal normal 14px arial, sans-serif
+    li
+      margin-left: 17px
+  #thick-total-width-separator
+    width: 100%
+    height: 5px
+    margin: 2px 0 2px 0
+    background-color: black
+  p
+    margin: $standard
+    border: none
+    font-size: 14px
+    mark
+      background-color: white
+      font-weight: bold
+  #thin-total-width-separator
+    width: 100%
+    height: 3px
+    margin: 2px 0 2px 0
+    background-color: black
+  #disclaimer
+    font-size: 14px
+@keyframes sink
+  100%
+    background-color: darken(lavender, 30%)
+    box-shadow: none

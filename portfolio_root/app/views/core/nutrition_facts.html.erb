@@ -1,0 +1,106 @@
+<body id="nutrition_facts">
+  <div id="container">
+    <div id="section-one">
+      <h1>Nutrition Facts</h1>
+      <div class="line"><span>Serving Size</span><span>27 Crackers (30g)</span></div>
+      <div class="line"><span>Servings Per Container</span><span>About 6</span></div>
+    </div>
+    <div class="seperator"></div><span id="aps">Amount Per Serving</span>
+    <div id="section-two"><span>Calories 150</span><span>Calories From Fat 70</span></div>
+    <div class="seperator" id="skinny"></div><span id="chart-header">% Daily Value*</span>
+    <ul id="content-chart-a">
+      <li class="bold">Total Fat
+        <mark>8g</mark><span>12</span>
+        <mark>%</mark>
+        <li class="subitem" id="first-subitem">Saturated Fat 2g<span>12</span>
+          <mark>%</mark>
+        </li>
+        <li class="subitem"><em>Trans</em> Fat 0g</li>
+        <li class="subitem">Polyunsaturated Fat 4g</li>
+        <li class="subitem">Monounsaturated Fat 2g</li>
+      </li>
+      <li class="bold">Colesterol
+        <mark>0mg</mark><span>0</span>
+        <mark>%</mark>
+      </li>
+      <li class="bold">Sodium
+        <mark>230mg</mark><span>10</span>
+        <mark>%</mark>
+      </li>
+      <li class="bold">Total Carbohydrate
+        <mark>17g</mark><span>6</span>
+        <mark>%</mark>
+        <li class="subitem">Dietary Fiber less than 1g<span>3</span>
+          <mark>%</mark>
+        </li>
+        <li class="subitem">Sugars 0g</li>
+      </li>
+      <li class="bold">Protien
+        <mark>3g</mark>
+      </li>
+    </ul>
+    <div class="seperator"></div>
+    <ul id="content-chart-b">Vitamin A 2%
+      <li>Vitamin C 0%</li>
+      <li>Calcium 4%</li>
+      <li>Iron 6%</li>
+    </ul>
+    <p>Percent Daily Values are based on a 2,000 valorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
+    <ul id="row-outlier">
+      <li> </li>
+      <li>Calories</li>
+      <li>2,000</li>
+      <li>2,500</li>
+    </ul>
+    <table>
+      <tr>
+        <td>Total Fat</td>
+        <td>Less than</td>
+        <td>65g</td>
+        <td>80g</td>
+      </tr>
+      <tr>
+        <td>Sat. Fat</td>
+        <td>Less than</td>
+        <td>20g</td>
+        <td>25g</td>
+      </tr>
+      <tr>
+        <td>Colesterol</td>
+        <td>Less than</td>
+        <td>300mg</td>
+        <td>300mg</td>
+      </tr>
+      <tr>
+        <td>Sodium</td>
+        <td>Less than</td>
+        <td>2,400mg</td>
+        <td>2,400mg</td>
+      </tr>
+      <tr>
+        <td>Total Carbohydrate</td>
+        <td> </td>
+        <td>300g</td>
+        <td>375g</td>
+      </tr>
+      <tr>
+        <td>Dietary Fiber</td>
+        <td> </td>
+        <td>25g</td>
+        <td>30g</td>
+      </tr>
+    </table>
+    <ul id="content-chart-c">Calories per gram: Fat 9
+      <li>Carbohydrate 4</li>
+      <li>Protien 4</li>
+    </ul>
+    <div id="thick-total-width-separator"></div>
+    <p>
+      <mark>INGREDIENTS:</mark> ENRICHED FLOUR (WHEAT FLOUR, NIACIN, REDUCED IRON, THIAMIN MONONITRATE [VITAMIN B], RIBOFLAVIN [VITAMIN B], FOLIC ACID), VEGETABLE OIL (SOYBEAN AND PALM OIL WITH TBHQ FOR FRESHNESS), CHEESE MADE WITH SKIM MILK (SKIM MILK, WHEY PROTIEN, CHEESE CULTURES, SALT ENZYMES, ANNATTO EXTRACT FOR COLOR), CONTAINS TWO PERCENT OR LESS OF SALT, PAPRIKA, YEAST, PAPRIKA OLEDORESIN FOR COLOR, SOY LECITHIN.
+    </p>
+    <div id="thin-total-width-separator"></div>
+    <p class="bold" id="disclaimer">CONTAINS WHEAT, MILK AND SOY INGREDIENTS.</p>
+  </div>
+
+  <%= react_component('WideButton', props = { href: core_extras_url, width: 90, height: 50, background: 'black', text: 'Go Back' }) %>
+</body>

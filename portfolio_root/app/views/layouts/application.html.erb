@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= render_title %></title> <!--Taken from http://goo.gl/BZKrzZ-->
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<% if determine_page == "messenger" %>
+
+<body id="messenger">
+
+  <%= react_component('MmNavbar', html_options={ prerender: true }) %>
+
+  <menu>
+    <ul>
+      <li id="logout-container">
+        <i class="mdi mdi-logout-variant mdi-24px mdi-dark"></i>
+        <em><%= link_to( 'Logout', mm_users_logout_url,  ) %></em>
+      </li>
+      <% @users.each do |usr| %>
+        <% if usr.id != session[:logged_user_id] %>
+          <li>
+            <% if usr.image.path %>
+              <%= image_tag( usr.image ) %>
+            <% else %>
+              <%= image_tag('mm_users/profile-pictures/default.svg') %>
+            <% end %>
+            <p>
+              <em>
+                <%= link_to( usr.first_name + ' ' + usr.last_name, :conversation => usr.user_name ) %>
+              </em> <br>
+              This will be a real message
+            </p>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </menu>
+
+  <div id="content-section">
+
+    <%= yield %>
+
+    <!--for settings navbutton-->
+    <ul id="settings-dropdown">
+      <div id="sd-arrow"></div>
+      <li class="sd-index">Settings</li>
+      <div class="sd-divider"></div>
+      <li class="sd-index">Active Face.book Fiends</li>
+      <li class="sd-index">Message Requests</li>
+      <div class="sd-divider"></div>
+      <li class="sd-index">About</li>
+      <li class="sd-index">Terms</li>
+      <li class="sd-index">Priacy Policy</li>
+      <li class="sd-index">Cookie Policy</li>
+      <div class="sd-divider"></div>
+      <li class="sd-index">Help</li>
+      <li class="sd-index">Report a Problem</li>
+    </ul>
+
+    <!--for details navbutton-->
+    <div id="details-container">
+      <div id="details-header">
+        <% @users.each do |usr| %>
+          <% if !read_uri(1) %>
+            <%= image_tag( 'mm_users/profile-pictures/default.svg' ) %>
+            <h5 id="profile-user_name">Firstname Lastname</h5>
+            <% break %>
+          <% elsif read_uri(1) == usr.user_name %>
+            <%= image_tag( usr.image ) %>
+            <h5 id="profile-user_name"><%= usr.first_name %> <%= usr.last_name %></h5>
+          <% end %>
+        <% end %>
+        <i class="mdi mdi-settings mdi-16px mdi-dark" id="profile-info-settings"></i>
+      </div>
+      <ul id="details-options">
+        Options
+        <p>
+          <i class="mdi mdi-border-color mdi-24px account-color"></i>
+          Edit Nicknames
+        </p>
+        <p>
+          <i class="mdi mdi-format-color-fill mdi-24px account-color"></i>
+          Change Color
+        </p>
+        <p>
+          <i class="mdi mdi-emoticon mdi-24px account-color"></i>
+          Change Emoji
+        </p>
+        <label>
+          <input type="checkbox" name="mute" value="" class="mdi">
+          <i class="mdi mdi-checkbox-blank-outline mdi-24px mdi-dark account-color unchecked"></i>
+          <i class="mdi mdi-checkbox-marked mdi-24px mdi-dark account-color checked"></i>
+          <div class="checkbox-ripple"></div>
+          <span>Mute Notifications</span>
+        </label>
+      </ul>
+      <div id="details-page-info">
+        <span>Face.book Page</span><br>
+        <span>https://face.book.com/enteruser.here</span>
+      </div>
+    </div>
+
+  </div>
+
+  <% if flash[:postprocess] %>
+      <div id="mm-postprocess-message">
+        <mark><%= flash[:postprocess] %></mark>
+      </div>
+  <% end %>
+</body>
+
+<% else %>
+
+  <%= yield %>
+
+<% end %>
+
+</html>

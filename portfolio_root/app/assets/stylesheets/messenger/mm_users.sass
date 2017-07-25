@@ -1,0 +1,348 @@
+@import "standards/mixins.sass"
+
+body#messenger
+  margin: 0
+  height: 100%
+  width: 100%
+  background-color: $mm-dull-white
+  z-index: -3
+  #mm-postprocess-message
+    z-index: 4
+    position: fixed
+    top: 100%
+    left: 50%
+    display: flex
+    align-items: center
+    padding: 8px 12px 8px 12px
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
+    background-color: mix(#444, grey, 80)
+    font: normal normal 1.1rem 'Source Sans Pro', sans-serif
+    transform: translate(-50%)
+    animation-name: notify
+    animation-duration: 4s
+    animation-fill-mode: forwards
+    animation-delay: 1s
+    animation-timing-function: ease-in-out
+    animation-iteration-count: 1
+    mark
+      color: lighten(green, 30)
+      background-color: transparent
+  #navbar-container
+    z-index: 2
+    position: fixed
+    height: 55px
+    width: 100%
+    background-color: darken($messenger-blue, 10%)
+    display: flex
+    align-items: center
+    box-shadow: 0 4px 4px rgba(0,0,0,0.35)
+    .circular-button#menu
+      margin: 0 auto 0 20px
+    .circular-button#settings
+      margin: 0 auto 0 50px
+    .circular-button#compose
+      margin: 0 50px 0 auto
+    .circular-button#about
+      margin: 0 20px 0 auto
+    #search-container
+      width: 60%
+      height: 39px
+      overflow: visible
+      font: normal normal .96rem 'Helvetica', sans-serif
+      #search-bar
+        margin: 0 auto 0 auto
+        width: calc(100% - 10px)
+        height: 39px
+        background-color: white
+        color: #222
+        padding-left: 10px
+        border-top-left-radius: 5px
+        border-top-right-radius: 5px
+        border-bottom: 1px solid rgba(0,0,0,0.2)
+        display: flex
+        align-items: center
+        &:hover
+          cursor: text
+        input
+          font: normal normal 1.2rem 'Arial', sans-serif
+          border: none
+          background-color: transparent
+          width: 90%
+          height: 100%
+      .search-result
+        width: calc(100% - 10px)
+        height: 50px
+        padding-left: 10px
+        border-bottom: 1px solid rgba(0,0,0,0.2)
+        background-color: white
+        display: flex
+        align-items: center
+        justify-content: left
+        img
+          height: 40px
+          width: 40px
+          border-radius: 50%
+        pre
+          padding-left: 10px
+        &:nth-last-child(1)
+          border-bottom-left-radius: 5px
+          border-bottom-left-radius: 5px
+  menu
+    z-index: 3
+    height: 100%
+    width: 300px
+    position: fixed
+    margin: 0 0 0 -335px
+    overflow-y: auto
+    background-color: white
+    padding: 15px
+    box-shadow: 3px 0 3px rgba(0,0,0,0.2)
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+      li
+        margin: 10px auto 10px auto
+        height: 60px
+        width: 100%
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        @include mm-standard-font(.8rem)
+        img
+          height: 50px
+          width: 50px
+          border-radius: 50%
+          margin-right: 15px
+        em
+          font: normal normal 1.1rem 'Source Sans Pro', sans-serif
+        i
+          margin: auto 10px auto 10px
+    #logout-container
+      margin: 0 0 10px 0
+      border-bottom: 1px solid transparentize(#888, 0.5)
+      cursor: pointer
+      position: relative
+      display: flex
+      align-items: center
+      a
+        @include mm-standard-font(1.1rem)
+  #content-section
+    width: 100%
+    height: 100%
+    z-index: -1
+    padding-top: 55px
+    ul#settings-dropdown
+      display: none
+      position: fixed
+      z-index: 4
+      margin: 0
+      top: 54px
+      list-style: none
+      @include mm-standard-font(.95rem)
+      padding: 8px 0 8px 0
+      background-color: white
+      opacity: 0
+      border-radius: 4px
+      box-shadow: 0 5px 10px 5px rgba(0,0,0,0.18)
+      overflow: visible
+      #sd-arrow
+        height: 0
+        width: 0
+        border-left: 10px solid transparent
+        border-right: 10px solid transparent
+        border-bottom: 10px solid white
+        position: absolute
+        left: 50%
+        top: -10px
+      .sd-divider
+        display: none
+        margin: 10px 0 10px 0
+        height: 1px
+        width: 100%
+        background-color: darken(white, 20)
+      .sd-index
+        display: none
+        cursor: pointer
+        height: 20px
+        width: auto
+        padding: 0 14px 0 18px
+        &:hover
+          background-color: darken(white, 22)
+      &.revealed
+        animation-name: menu_reveal
+        animation-duration: 380ms
+        animation-fill-mode: forwards
+        animation-timing-function: ease-in-out
+        animation-iteration-count: 1
+        & > *
+          opacity: 0
+          animation-name: fadein
+          animation-duration: 600ms
+          animation-fill-mode: forwards
+          animation-timing-function: ease-out
+          animation-iteration-count: 1
+      &.hidden
+        animation-name: menu_fadeout
+        animation-duration: 300ms
+        animation-fill-mode: forwards
+        animation-timing-function: ease-in-out
+        animation-iteration-count: 1
+        & > *
+          opacity: 1
+    #details-container
+      position: fixed
+      left: 100%
+      height: 100%
+      width: 275px
+      padding-top: 10px
+      transition: all 200ms linear
+      &.pressed
+        transform: translateX(-275px)
+      &.reset
+        transform: translateX(275px)
+      #details-header
+        height: 60px
+        width: 100%
+        display: flex
+        align-items: center
+        img
+          margin: auto 5px auto 5px
+          height: 50px
+          width: 50px
+          border-radius: 50%
+        h5
+          margin: auto auto auto 5px
+          @include mm-standard-font(.8rem)
+        #profile-info-settings
+          margin: auto 20px auto auto
+      #details-options
+        margin: 0
+        width: 100%
+        padding: 18px 0 0 5px
+        color: #777
+        font: bold italic .8rem 'Source Sans Pro', sans-serif
+        .account-color
+          color: $messenger-blue
+        p
+          color: black
+          @include mm-standard-font(1rem)
+          @include user-select(none)
+          cursor: pointer
+          display: flex
+          align-items: center
+          i
+            margin-right: 8px
+        label
+          position: relative
+          cursor: pointer
+          display: flex
+          align-items: center
+          .checkbox-ripple
+            position: absolute
+            height: 40px
+            width: 40px
+            border-radius: 50%
+            background-color: #666
+            opacity: .7
+            top: -9px
+            left: -7px
+            transform-origin: center
+          span
+            color: black
+            @include mm-standard-font(1rem)
+            margin-left: 8px
+            @include user-select(none)
+          .checked
+            display: none
+          .unchecked
+            display: block
+          input[type='checkbox']
+            display: none
+            &:checked + .unchecked
+              display: none
+              + .checked
+                display: block
+                + .checkbox-ripple
+                  animation-name: ripple
+                  animation-duration: 350ms
+                  animation-fill-mode: none
+                  animation-timing-function: ease-in-out
+                  animation-iteration-count: 1
+      #details-page-info
+        height: 50px
+        width: 100%
+        @include mm-standard-font(.8rem)
+        color: #777
+        padding: 15px 0 0 5px
+        display: flex
+        flex-wrap: wrap
+        align-content: space-around
+        span
+          margin-top: 5px
+          @include user-select(none)
+        span:nth-last-of-type(1)
+          color: $messenger-blue
+          cursor: pointer
+          @include user-select(all)
+@keyframes fadein
+  0%
+    opacity: 0
+  50%
+    opacity: 0
+  100%
+    opacity: 1
+@keyframes menu_reveal
+  0%
+    width: 0
+    height: 0
+    opacity: 0
+    margin-left: 98px
+    overflow: visible
+  80%
+    width: 196.25px
+    height: 194.4px
+    opacity: 0.8
+    overflow: visible
+  100%
+    margin-left: 0
+    opacity: 1
+    height: 243px
+    overflow: visible
+@keyframes menu_fadeout
+  0%
+    opacity: 1
+    overflow: hidden
+  99%
+    opacity: 0
+    overflow: hidden
+  100%
+    opacity: 0
+    height: 0
+    width: 0
+    display: none
+    overflow: hidden
+@keyframes ripple
+  0%
+    transform: scale(0)
+  70%
+    opacity: .6
+    transform: scale(1)
+  100%
+    opacity: 0
+    transform: scale(1)
+@keyframes message-popdown
+  0%
+    transform: translate(-50% -50%)
+  10%
+    transform: translate(-50%, 150%)
+  90%
+    transform: translate(-50%, 150%)
+  100%
+    transform: translate(-50%, -50%)
+@keyframes notify
+  20%, 90%
+    transform: translate(-50%, -100%)
+  100%
+    transform: translate(-50%)
