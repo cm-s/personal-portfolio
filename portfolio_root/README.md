@@ -3,7 +3,7 @@
 This application uses **_Ruby 2.2.4_** patch 230 (ruby 2.2.4p230) along with **_Rails 5.0.0_**
 This version uses mysql2 in the place of sqlite3 as the default database manager and paperclip for managing profile pictures.
 All gems are listed below.
-* `paperclip ~> 4.2`
+* `paperclip ~> 4.2` _paperclip has been temporarily removed_
 * `mysql2, ~> 0.4.4`
 * `sass-rails ~> 5.0`
 * `uglifier >= 1.3.0`
@@ -22,10 +22,12 @@ These databases are listed below.
 - `cms_portfolio_dev` is the database used for development
 - `cms_portfolio_test` is the database used for testing
 
-The database configuration assumes you have a user named "dev" for development and a user named "test" for testing.  
+# Use the > operator
+
+The database configuration assumes you have a user named "dev" for development and a user named "test" for testing.
 There are also two environment variables that refer to the development database password and the testing database password. You can set these to your passwords by ensuring you have the following lines in your `~/.bashrc` or equivalent profile.
-- `export development_db_password=PASSWORD`  
-- `export testing_db_password=PASSWORD`  
+- `export development_db_password=PASSWORD`
+- `export testing_db_password=PASSWORD`
 
 PASSWORD being replaced by your password. Alternatively, you can simply alter the user and password fields in the `config/database.yml` file.
 ### Current Features
@@ -50,19 +52,19 @@ Log of current implemented/transitioned features is organized below;
 
 Routing table below. This table is also in the `config/routes.rb` file.
 
-|Prefix              |Verb  |URI Pattern                    |Controller#Action
-|:-------------------|:-----|:------------------------------|:----------------
-|root                |GET   |/                              |core#index
-|core_projects       |GET   |/core/projects(.:format)       |core#projects
-|core_nutrition_facts|GET   |/core/nutrition_facts(.:format)|core#nutrition_facts
-|core_getmessenger   |GET   |/core/getmessenger(.:format)   |core#getmessenger
-|mm_users_logout     |GET   |/mm_users/logout(.:format)     |mm_users#logout
-|mm_users_logon      |GET   |/mm_users/logon(.:format)      |mm_users#logon
-|mm_users_login      |POST  |/mm_users/login(.:format)      |mm_users#login
-|mm_users            |POST  |/mm_users(.:format)            |mm_users#create
-|new_mm_user         |GET   |/mm_users/new(.:format)        |mm_users#new
-|mm_user             |GET   |/mm_users/:id(.:format)        |mm_users#show
-|{none}              |DELETE|/mm_users/:id(.:format)        |mm_users#destroy
+| Prefix               | Verb   | URI Pattern                     | Controller#Action
+|:---------------------|:-------|:--------------------------------|:----------------
+| root                 | GET    | /                               | core#index
+| core_projects        | GET    | /core/projects(.:format)        | core#projects
+| core_nutrition_facts | GET    | /core/nutrition_facts(.:format) | core#nutrition_facts
+| core_getmessenger    | GET    | /core/getmessenger(.:format)    | core#getmessenger
+| mm_users_logout      | GET    | /mm_users/logout(.:format)      | mm_users#logout
+| mm_users_logon       | GET    | /mm_users/logon(.:format)       | mm_users#logon
+| mm_users_login       | POST   | /mm_users/login(.:format)       | mm_users#login
+| mm_users             | POST   | /mm_users(.:format)             | mm_users#create
+| new_mm_user          | GET    | /mm_users/new(.:format)         | mm_users#new
+| mm_user              | GET    | /mm_users/:id(.:format)         | mm_users#show
+| {none}               | DELETE | /mm_users/:id(.:format)         | mm_users#destroy
 
 
 ### Elements

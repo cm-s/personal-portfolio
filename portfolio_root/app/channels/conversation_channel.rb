@@ -10,6 +10,6 @@ class ConversationChannel < ApplicationCable::Channel
   end
 
   def send(data) # receiving the object from app/assets/javascripts/channels/conversation.js - send()
-    ActionCable.server.broadcast("conversation_channel", message: data['message'])
+    ActionCable.server.broadcast(data['message'])
   end
 end

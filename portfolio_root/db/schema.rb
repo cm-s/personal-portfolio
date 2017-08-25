@@ -10,23 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219072309) do
+ActiveRecord::Schema.define(version: 20170820154602) do
+
+  create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.string "recipients"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_conversations_on_user_id"
+  end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",    limit: 65535
+    t.integer "conversation_id"
+    t.text "content"
+    t.datetime "read_at"
     t.datetime "created_at"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "user_name",          limit: 25, null: false
-    t.string   "password",           limit: 35, null: false
-    t.string   "first_name",         limit: 30, null: false
-    t.string   "last_name",          limit: 30, null: false
-    t.string   "last_conversation"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.string "user_name"
+    t.string "password"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "last_conversation"
     t.datetime "created_at"
   end
 

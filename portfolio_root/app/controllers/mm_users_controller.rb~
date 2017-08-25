@@ -3,6 +3,7 @@ class MmUsersController < ApplicationController
   before_action :authenticate_login, :only => [:desktop, :setting]
   before_action :enforce_logged_state, :only => [:new, :create, :login]
 
+
   def show
     title = "Material Messenger"
     @page = "messenger"

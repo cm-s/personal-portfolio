@@ -1,20 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-User.create(first_name: 'Bob', last_name: 'Carepenter', user_name: 'basicbob', password: 'bbob12b1b1b')
-User.create(first_name: 'Joe', last_name: 'Swatch', user_name: 'joesmessenger', password: 'jswatch1456')
-User.create(first_name: 'Allan', last_name: 'Speicher', user_name: 'speicherfurname', password: 'sfnxz2ii0pxl')
-User.create(first_name: 'Simpleton', last_name: 'Shoomaker', user_name: 'simpletonshoomaker', password: '123456789')
-User.create(first_name: 'Snape', last_name: 'Ceberus', user_name: 'HalfBloodPrince', password: 'st15shgfpt4')
-User.create(first_name: 'Cisco', last_name: 'Manning', user_name: 'ciscohere', password: 'cmanning10532')
-User.create(first_name: 'Pepper', last_name: 'Pots', user_name: 'ppotts', password: 'pp123mmuser')
-User.create(first_name: 'Atom', last_name: 'Editor', user_name: 'atom.io', password: 'madebygithub456')
-User.create(first_name: 'Electron', last_name: 'Framer', user_name: 'efmachine', password: 'efrocksandmatter101')
-User.create(first_name: 'Beth', last_name: 'Willson', user_name: 'BethWillsonBrave', password: 'bwb53000000000')
-User.create(first_name: 'Json', last_name: 'Surgiel', user_name: 'username.js', password: 'jspasssaltandhash123420')
-User.create(first_name: 'Ali', last_name: 'McCormick', user_name: 'ack.user', password: 'ackMmhere1')
-User.create(first_name: 'Seth', last_name: 'Bonds', user_name: 'sbondsiscoolname', password: 'asx3p20xpcHbev')
+
+users = User.create([
+  { first_name: 'Calzo', last_name: 'Han', user_name: 'Han Calo', password: 'Hcalo1998' },
+  { first_name: 'Manny', last_name: 'zaterian', user_name: 'Mz_the_man', password: 'squirtyismypuppy123' },
+  { first_name: 'Taz', last_name: 'Maneian', user_name: 'TheDevil', password: 'looneyMcTooney' },
+  { first_name: 'Guy', last_name: 'Connor', user_name: 'ConnorTheMan', password: 'gctm145' },
+  { first_name: 'Zachery', last_name: 'Taylor', user_name: 'ZacheryT', password: 'ZTaylor4696' }
+  ])
+@user1 = User.find(1)
+@user2 = User.find(2)
+@user3 = User.find(3)
+@user4 = User.find(4)
+@user5 = User.find(5)
+@user1.conversations = Conversation.create([ { recipients: "2, 3" }, { recipients: ' ' } ])
+@user2.conversations = Conversation.create([ { recipients: '4' } ])
+@user3.conversations = Conversation.create([ { recipients: '4' } ])
+@user5.conversations = Conversation.create([ { recipients: '1' } ])
+@user1_recipt2 = @user1.conversations.find_by( id: 1 )
+@user1_recipt2.messages = Message.create([ { content: "Do you get my message guys?" }, { content: "I can't hear you." } ])
+# Es funktioniert nich richtig
