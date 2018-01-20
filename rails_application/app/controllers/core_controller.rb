@@ -11,8 +11,9 @@ class CoreController < ApplicationController
 		request = params[:target]
 		if request.id
 			respond_to do |response|
-			data = { div: 'text' }
-			response.html { render :html => data }
+  			data = { div: 'text' }
+  			response.html { render :html => data }
+      end
 		end
 	end
 

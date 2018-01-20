@@ -30,7 +30,7 @@ Rails.application.configure do
     whitelist = ENV['portfolio_whitelisted_ips']
     config.web_console.whitelisted_ips = whitelist
   else
-    puts "Notice: Rails.application.configure in #{Rails.root}/config/development.rb:#{__LINE__}: environment variable 'rails_whitelisted_ips' is not provided in the shell rc and/or profile"
+    puts "Notice: Rails.application.configure in #{Rails.root}/config/environments/development.rb:#{__LINE__}: environment variable 'rails_whitelisted_ips' is not provided in the shell rc and/or profile"
   end
   # Leave a notice of console access restriction
   config.web_console.whiny_requests = true

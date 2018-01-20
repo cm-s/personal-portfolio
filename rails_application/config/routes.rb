@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-	# Zentrumregler
+	# Core
 	root 'core#index'
 	get 'core/extras'
 	get 'core/extras/project' => 'core#project'
 	get 'core/nutrition_facts'
 
-	# Benutzercontroller
+	# User controller
 	get 'users/logon' => 'users#logon'
 	post 'users/login' => 'users#login'
 	resources(:users, :only => [:new, :show, :create, :edit, :destroy]) do
-		# Konversationscontroller
+		# Conversations controller
 		resources(:conversations, :only => [:show, :new, :create, :destroy])
 	end
 
