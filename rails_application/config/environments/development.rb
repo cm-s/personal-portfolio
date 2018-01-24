@@ -12,13 +12,18 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  # Determine the LAN subnet being used and allow all from that origin.
+  system('ip a | awk -f bin/readip.awk > tmp/awk.out')
+  allowdRequestOrigins = File.read('tmp/awk.out').gsub(/\/[0-9]+$/, "").gsub(/\.[0-9]+$/, ".*")
+  config.action_cable.allowed_request_origins = allowdRequestOrigins
+
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{1.days.seconds.to_i}"
+      'Cache-Control' => "public, max-age=#{1.hours.seconds.to_i}"
     }
   else
     config.action_controller.perform_caching = false
