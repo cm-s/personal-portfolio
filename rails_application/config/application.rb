@@ -19,11 +19,5 @@ module CmsPortfolio
         config.preferred_syntax = :sass
       end
     end
-
-    Rails.configuration do |config|
-      # Allowing all local origins. Add others to the array.
-      config.action_cable.allowed_request_origins = [%r{http://192.168.1.*}]
-    end
-
   end
 end
