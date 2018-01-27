@@ -12,11 +12,6 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-  # Determine the LAN subnet being used and allow all from that origin.
-  system('ip a | awk -f bin/readip.awk > tmp/awk.out')
-  allowdRequestOrigins = File.read('tmp/awk.out').gsub(/\/[0-9]+$/, "").gsub(/\.[0-9]+$/, ".*")
-  config.action_cable.allowed_request_origins = allowdRequestOrigins
-
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
@@ -40,18 +35,14 @@ Rails.application.configure do
   # Leave a notice of console access restriction
   config.web_console.whiny_requests = true
 
-
   # Demote the mailer's functions
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_caching = false
 
-  # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
-
-  # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  # Debug mode disables concatenation and preprocessing of assets.
+  # Debug mode disables concatenation and preprocessing of assets.0
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
@@ -60,7 +51,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # Raises error for missing translations
-  config.action_view.raise_on_missing_translations = true
+  # config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
