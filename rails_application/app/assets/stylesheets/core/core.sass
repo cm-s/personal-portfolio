@@ -1,0 +1,55 @@
+// Place all the styles related to the core controller here.
+// They will automatically be included in application.css.
+// You can use Sass here: http://sass-lang.com/
+@import "standards/mixins.sass"
+
+$black: #393d4c
+
+@mixin section
+  width: calc(100% - 30px)
+  position: absolute
+  padding: 15px 15px 15px 15px
+  transform: translate(0, -200px)
+  background-color: $black
+  z-index: 1
+
+body
+  height: 3000px
+  background-color: $black
+  margin: 0
+  z-index: 0
+  nav
+    top: 0
+    left: 0
+    position: fixed
+    min-height: 56px
+    min-width: 100%
+    overflow: hidden
+    z-index: 2
+    #background
+      height: 131%
+      width: 102%
+      background-color: $black
+      position: absolute
+      top: -25%
+      left: -1%
+      filter: blur(15px)
+      --webkit-filter: blur(15px)
+  h1
+    position: absolute
+    z-index: 1
+    color: white
+    width: 100%
+    text-align: center
+    top: 45%
+  img
+    background-position: center
+    background-size: cover
+    width: 100%
+    filter: saturate(40%)
+    @include user-select(none)
+  section
+    @include section
+
+i.material-icons
+  size: 36px
